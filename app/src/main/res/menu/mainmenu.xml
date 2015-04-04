@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:myapp="http://schemas.android.com/apk/res-auto" >
+
+    <item android:id="@+id/action_new"
+          android:icon="@drawable/ic_action_new"
+          android:title="@string/action_new"
+          android:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_action_call"
+        android:title="Refresh"/>
+        
+         <item
+        android:id="@+id/action_overflow"
+        android:orderInCategory="110"
+        android:icon="@drawable/ic_action_overflow"
+        android:showAsAction="ifRoom"
+        myapp:actionProviderClass="android.support.v7.widget.ShareActionProvider"
+        />
+    
+    <item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        android:showAsAction="never"
+        />
+            <item
+        android:id="@+id/sort_title"
+        android:title="Sort by Title"
+        android:showAsAction="never"
+        />
+   
+            <item
+        android:id="@+id/date_modified"
+        android:title="Sort By Date Modified"
+        android:showAsAction="never"
+        />
+        
+    
+</menu> 

@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/add"
+        android:showAsAction="always"
+        android:title="Add"/>
+    <item
+        android:id="@+id/edit"
+        android:showAsAction="always"
+        android:title="Edit"/>
+    <item
+        android:id="@+id/delete"
+        android:title="Delete"
+        android:showAsAction="never"
+        >
+    </item>
+        <item
+        android:id="@+id/share"
+        android:title="Share"
+        android:showAsAction="never"
+        >
+    </item>
+    
+
+</menu> 
