@@ -1,5 +1,6 @@
+ToDoList Android application
 
-This application is a To Do List Android application for keep track of list created by the user.
+This application is an To Do List application for keep track of list created by the user.
 The user can create a new title for the new list and add items to the list.
 There are validation checks such as empty checks, special characters, to ensure the names of
 the list and the list items are valid.
