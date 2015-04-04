@@ -136,7 +136,8 @@ this.contextinfo = context;
     /* (non-Javadoc)
      * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
      * 
-     * Event that occured when Action items are clicked in Action Bar.
+     * Event that occurred when Action items are clicked in Action Bar.
+     *
      * 
      */
     @Override
@@ -270,8 +271,7 @@ this.contextinfo = context;
     	            alertDialog.show();
     					
     				}
-    				//else if(!MyListFragment.currentspinner.equals("New List") && !MyListFragment.currentspinner.equals("Sample List"))
-    				else	
+    				else
     				{
     					
     					
@@ -286,13 +286,10 @@ this.contextinfo = context;
 						 ListOrganizerActivity.listvalues.add(listinput);
     				    final ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(ListOrganizerActivity.this,
     			    	        android.R.layout.simple_list_item_1, ListOrganizerActivity.listvalues);
-    				    //adapter3.add(listinput);
     				    adapter3.notifyDataSetChanged();
     				    
     					detailfragment.setListAdapter(adapter3);
-    					
-    					//ListOrganizerActivity.values=ConvertArrayListtoArray(values);
-    					
+
     		
     	
     				}
