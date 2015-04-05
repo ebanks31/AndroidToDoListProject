@@ -7,7 +7,7 @@ the list and the list items are valid.
 
 I will eventually evolved this application to a full List Organization application.
 
-In the main git folder, there is the classes and Documentation folder.
-The classes folder contain the actually classes for the project.
+In the main git folder, there is the Classes and Documentation folder.
+The Classes folder contain the actually classes for the project.
 The Documentation folder contain various documentation of the project
 including a UML Diagram, Coding and Solution Document, etc.
