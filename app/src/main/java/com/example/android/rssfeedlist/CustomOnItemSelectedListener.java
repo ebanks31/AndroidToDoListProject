@@ -43,12 +43,12 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	 * @param spinnerlist List of spinner items that are located int he spinner
 	 */
 	public CustomOnItemSelectedListener(Context context, Spinner listspinner,
-			ArrayAdapter<String> dataAdapter,ArrayList<String> spinnerlist) {
+			ArrayAdapter<String> dataAdapter, ArrayList<String> spinnerlist) {
 		// TODO Auto-generated constructor stub
-    	CustomOnItemSelectedListener.spinnertitles=listspinner;
-    	CustomOnItemSelectedListener.context=context;
-    	CustomOnItemSelectedListener.spinnerAdapter=dataAdapter;
-    	this.spinnerlist=spinnerlist;
+    	CustomOnItemSelectedListener.spinnertitles = listspinner;
+    	CustomOnItemSelectedListener.context = context;
+    	CustomOnItemSelectedListener.spinnerAdapter = dataAdapter;
+    	this.spinnerlist = spinnerlist;
 	}
 
 
@@ -60,7 +60,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	}
 	
 
-	//Handler for when New List is selected in the spinner drop down menu	
+	//Handler for when New List is selected in the spinner drop down menu.
 	static Handler newlisthandler = new Handler() {
 		  @Override
 		  public void handleMessage(Message msg) {
@@ -74,9 +74,8 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 
 				 //set the selected spinner item according to value
 				 spinnertitles.setSelection(spinnerPosition);
-				 MyListFragment.currentspinner=listinput;
+				 MyListFragment.currentspinner = listinput;
 				 MyListFragment.staticlistener.clearFragmentList(1);
-				 
 		     }
 		 };
 		 
@@ -89,7 +88,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 				String listinput = bundle.getString("mysecondKey");
 			    ToDoListDbHelper db = new ToDoListDbHelper(context);
 				List<ListItem> itemlistbytitle = db.getAllListItemsByTitle(listinput);
-				ArrayList<String> values =getListItems(itemlistbytitle);
+				ArrayList<String> values = getListItems(itemlistbytitle);
 				MyListFragment.staticlistener.updateList(values);
 				 
 		     }
@@ -105,10 +104,10 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
             long id) {
          final String itemselected = parent.getItemAtPosition(pos).toString();
          
-         MyListFragment.currentspinner=itemselected;
-		 if(itemselected.equals("New List"))
+         MyListFragment.currentspinner = itemselected;
+		 if (itemselected.equals("New List"))
 		 {
-			 AlertDialog.Builder alertDialog =null;
+			 AlertDialog.Builder alertDialog = null;
 
 		     // Creating alert Dialog with one Button
 			 alertDialog = new AlertDialog.Builder(context);
@@ -118,7 +117,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 
             // Setting Dialog Message
             alertDialog.setMessage("Enter title for your list");
-             final EditText input = new EditText(context);  
+            final EditText input = new EditText(context);
   			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT);
@@ -136,9 +135,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 
              final String listinput = input.getText().toString();
 			//Checks if edittext is empty,space, or null. Not a valid list item.
-			if(listinput.equals("") || listinput.equals(" ") || input==null)
-			{
-				
+			if (listinput.equals("") || listinput.equals(" ") || input == null) {
 				 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
             // Setting Dialog Title
             alertDialog.setTitle("Invalid Name");
@@ -152,13 +149,9 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 			else
 			{
 			
-		 if(!checkDuplicates(spinnerlist,listinput)) //check duplicate spinner items
-		 {
-			 try
-			 {
-		
-				 
-		
+		 if (!checkDuplicates(spinnerlist,listinput)) //check duplicate spinner items{
+			 try {
+
 			Runnable runnable = new Runnable() { //Run in separate thread
 		        public void run() {     	
 			 
@@ -168,25 +161,23 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	    			bundle.putString("myKey", listinput);
 	                msg.setData(bundle);
 	                newlisthandler.sendMessage(msg);
-	                 
 		        }
 		      };
 		      Thread mythread = new Thread(runnable);
 		      mythread.start();
 		 
 			 }
-	      	catch(ArrayIndexOutOfBoundsException ex)
+	      	catch (ArrayIndexOutOfBoundsException ex)
 	      	{
 	      		System.out.println("Index Out Of Bounds Exception has occurred" + ex.getMessage());
 	      	}
-	      	catch(NullPointerException ex)
+	      	catch (NullPointerException ex)
 	      	{
 	      		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
 	      	}
 		 }
-		 else
-		 {
-			 	//Spinner item is a duplicated
+		 else {
+			 	//S   pinner item is a duplicated
 			 	AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 	            // Setting Dialog Title
 	            alertDialog.setTitle("Duplicate item");
@@ -195,12 +186,9 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	            alertDialog.setMessage("Cannot add duplicate item");
 	            setPositiveAlertOptionOK(alertDialog);
 	            alertDialog.show();
+		 }
 
 		 }
-		 
-		 }
-			
-		 
                         }}
                         );
             setPositiveAlertOptionNO(alertDialog);
@@ -212,7 +200,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 			alertDialog1.show();
         }
 		 
-			else if(itemselected.equals("Sample List"))
+			else if (itemselected.equals("Sample List"))
 			{
 				MyListFragment.staticlistener.sampleFragmentList(1);
 		
@@ -241,12 +229,12 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	
 				}
 				
-	      	catch(ArrayIndexOutOfBoundsException ex)
+	      	catch (ArrayIndexOutOfBoundsException ex)
 	      	{
 	      		System.out.println("Array Index Out Of Bounds Exception has occurred" + ex.getMessage());
 	      		Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred",ex);                  //Log error for Array Out of Bounds Exception
 	      	}
-	      	catch(NullPointerException ex)
+	      	catch (NullPointerException ex)
 	      	{
 	      		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
 	      		Log.e("Null", "Null Pointer Exception Error",ex);                  //Log error for Null Pointer Exception
@@ -270,7 +258,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 		
 		Runnable runnable = new Runnable() { //Run in separate thread
 	        public void run() {    
-		for(ListItem listitem:itemlistbytitle)
+		for (ListItem listitem:itemlistbytitle)
 		{
 			finallist.add(listitem.getListItem());
 		}
@@ -297,13 +285,13 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	        public void run() {     	
 		
 	
-		for(ListItem listitem:itemlist)
-		{
-			String currenttitle = listitem.getTitle();
-			if(currenttitle!=null)
-			{
-			if(currenttitle.equals(title))
-			{
+		for (ListItem listitem:itemlist) {
+
+            String currenttitle = listitem.getTitle();
+			if (currenttitle!=null)
+            {
+			if (currenttitle.equals(title))
+            {
 			finallist.add(listitem.getListItem());
 			}
 			}
@@ -333,7 +321,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
     	Runnable runnable = new Runnable() { //Run in separate thread
 	        public void run() {     	
 		
-		for(ListItem listitem:itemlistbytitle)
+		for (ListItem listitem:itemlistbytitle)
 		{
 			finallist.add(listitem.getTitle());
 		}
@@ -359,9 +347,9 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	 */
 	public boolean checkDuplicates(ArrayList<String> arraylist,String input)
 	{
-		for(String listitem: arraylist)
+		for (String listitem: arraylist)
 		{
-			if(listitem.equals(input))
+			if (listitem.equals(input))
 			{
 				return true;
 			}
@@ -423,7 +411,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
      *
      */
     public interface OnItemSelectedListener {
-	    public void onRssItemSelected(int position);
-	      public void sampleFragmentList(int position);
+	     void onRssItemSelected(int position);
+	      void sampleFragmentList(int position);
 	    }
 }

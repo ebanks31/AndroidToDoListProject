@@ -199,7 +199,7 @@ this.contextinfo = context;
 		//UPDATE Database. Update Database Sort Method by Title in DB class. Remove everything by title and insert into table by title.*/
 	
 	}
-	public void SortListByDateModified(MenuItem item)
+    public void SortListByDateModified(MenuItem item)
 		{
 		/*
 	    FeedReaderDbHelper db = new FeedReaderDbHelper(this);
