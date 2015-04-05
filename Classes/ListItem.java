@@ -1,4 +1,4 @@
-package com.example.android.rssfeedlist;
+package com.example.android.todolist;
 
 import java.util.Date;
 
@@ -34,8 +34,8 @@ public class ListItem {
 	 */
 	public ListItem(String title, String listitem)
 	{
-		this.title=title;
-		this.listitem=listitem;
+		this.title = title;
+		this.listitem = listitem;
 	}
 	
 		/**
@@ -47,9 +47,9 @@ public class ListItem {
 	 */
 	public ListItem(String title, String listitem, Date date)
 	{
-		this.title=title;
-		this.listitem=listitem;
-		this.date=date;
+		this.title = title;
+		this.listitem = listitem;
+		this.date = date;
 	}
 	
 	/**
@@ -109,7 +109,7 @@ public class ListItem {
 	 * @param title title of the spinner
 	 */
 	public void setTitle(String title) {
-		this.title=title;
+		this.title = title;
 		
 	}
 
@@ -120,7 +120,7 @@ public class ListItem {
 	 * @param listitem List Item from the associated to the title
 	 */
 	public void setListItem(String listitem) {
-		this.listitem=listitem;
+		this.listitem = listitem;
 		
 	}
 

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.example.android.rssfeedlist"
+        applicationId "com.example.android.todolist"
         minSdkVersion 11
         targetSdkVersion 21
     }

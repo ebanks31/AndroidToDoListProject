@@ -1,4 +1,4 @@
-package com.example.android.rssfeedlist;
+package com.example.android.todolist;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +35,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.rssfeedlist.DetailFragment.detailFragmentSelectedListener;
+import com.example.android.todolist.DetailFragment.detailFragmentSelectedListener;
 
 /**
  * 
@@ -136,7 +136,8 @@ this.contextinfo = context;
     /* (non-Javadoc)
      * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
      * 
-     * Event that occured when Action items are clicked in Action Bar.
+     * Event that occurred when Action items are clicked in Action Bar.
+     *
      * 
      */
     @Override
@@ -198,7 +199,7 @@ this.contextinfo = context;
 		//UPDATE Database. Update Database Sort Method by Title in DB class. Remove everything by title and insert into table by title.*/
 	
 	}
-	public void SortListByDateModified(MenuItem item)
+    public void SortListByDateModified(MenuItem item)
 		{
 		/*
 	    FeedReaderDbHelper db = new FeedReaderDbHelper(this);
@@ -270,8 +271,7 @@ this.contextinfo = context;
     	            alertDialog.show();
     					
     				}
-    				//else if(!MyListFragment.currentspinner.equals("New List") && !MyListFragment.currentspinner.equals("Sample List"))
-    				else	
+    				else
     				{
     					
     					
@@ -286,13 +286,10 @@ this.contextinfo = context;
 						 ListOrganizerActivity.listvalues.add(listinput);
     				    final ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(ListOrganizerActivity.this,
     			    	        android.R.layout.simple_list_item_1, ListOrganizerActivity.listvalues);
-    				    //adapter3.add(listinput);
     				    adapter3.notifyDataSetChanged();
     				    
     					detailfragment.setListAdapter(adapter3);
-    					
-    					//ListOrganizerActivity.values=ConvertArrayListtoArray(values);
-    					
+
     		
     	
     				}

@@ -1,8 +1,8 @@
-package com.example.android.rssfeedlist;
+package com.example.android.todolist;
 
 
-import com.example.android.rssfeedlist.R;
-import com.example.android.rssfeedlist.MyListFragment.OnItemSelectedListener;
+import com.example.android.todolist.R;
+import com.example.android.todolist.MyListFragment.OnItemSelectedListener;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListFragment;

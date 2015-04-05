@@ -1,11 +1,11 @@
-package com.example.android.rssfeedlist;
+package com.example.android.todolist;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
-import com.example.android.rssfeedlist.R;
+import com.example.android.todolist.R;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.content.Context;

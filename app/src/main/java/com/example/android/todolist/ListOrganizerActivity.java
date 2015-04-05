@@ -1,4 +1,4 @@
-package com.example.android.rssfeedlist;
+package com.example.android.todolist;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +35,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.rssfeedlist.DetailFragment.detailFragmentSelectedListener;
+import com.example.android.todolist.DetailFragment.detailFragmentSelectedListener;
 
 /**
  * 

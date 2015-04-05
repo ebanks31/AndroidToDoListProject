@@ -1,4 +1,4 @@
-package com.example.android.rssfeedlist;
+package com.example.android.todolist;
 
 import java.util.Date;
 
