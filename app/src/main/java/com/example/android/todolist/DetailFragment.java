@@ -1,7 +1,5 @@
 package com.example.android.todolist;
 
-
-import com.example.android.todolist.R;
 import com.example.android.todolist.MyListFragment.OnItemSelectedListener;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -45,7 +43,7 @@ public class DetailFragment extends ListFragment  {
 	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 	        android.R.layout.simple_list_item_1, values);
 	    setListAdapter(adapter);
-	    listener.detailFragmentSelected(values,adapter);
+	    listener.detailFragmentSelected(values, adapter);
 	  }
 
 	  /* (non-Javadoc)
@@ -93,7 +91,7 @@ public class DetailFragment extends ListFragment  {
             // Setting Positive "Yes" Button
             alertDialog.setPositiveButton("YES",
                     new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,int which) {
+                        public void onClick(DialogInterface dialog, int which) {
                         	
             // Write your code here to execute after dialog
             String listinput = input.getText().toString();
@@ -102,7 +100,7 @@ public class DetailFragment extends ListFragment  {
 			Boolean invalidcharactersfound = ListOrganizerActivity.checkInvalidCharacters(listinput);
 			
 			//Checks if edittext is empty,space, or null. Not a valid list item.
-			if(listinput.equals("") || listinput.equals(" ") || input==null || invalidcharactersfound==true)
+			if (listinput.equals("") || listinput.equals(" ") || input == null || invalidcharactersfound == true)
 			{
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
@@ -112,12 +110,9 @@ public class DetailFragment extends ListFragment  {
             // Setting Dialog Message
             alertDialog.setMessage("Please Enter a valid list name");
 			}
-			else
-			{
-				
-				
-		try
-		{
+			else {
+
+		try {
 		  //Add to Spinner
 		 Spinner spinner =  (Spinner)getView().findViewById(R.id.spinner1);
 		 ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
@@ -128,23 +123,18 @@ public class DetailFragment extends ListFragment  {
 		 
 			}
 			
-      	catch(ArrayIndexOutOfBoundsException ex)
+      	catch (ArrayIndexOutOfBoundsException ex)
       	{
       		System.out.println("Array Index Out Of Bounds Exception has occurred" + ex.getMessage());
       		Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred",ex);                  //Log error for Array Out of Bounds Exception
       	}
-      	catch(NullPointerException ex)
+      	catch (NullPointerException ex)
       	{
       		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
       		Log.e("Null", "Null Pointer Exception Error",ex);                  //Log error for Null Pointer Exception
       	
 		}
-		 
-		 
-		
-		
 		 }
-		 
                         }
                         });
             // Setting Negative "NO" Button
@@ -181,18 +171,18 @@ public void onCreateContextMenu(ContextMenu menu, View v,
 		
     menu.setHeaderTitle("Context Menu");  
     String[] menuItems = getResources().getStringArray(R.array.country_arrays);
-    for (int i = 0; i<menuItems.length; i++) {
+    for (int i = 0; i < menuItems.length; i++) {
       menu.add(Menu.NONE, i, i, menuItems[i]);
     }
     
 		}
 	  	
-  	catch(ArrayIndexOutOfBoundsException ex)
+  	catch (ArrayIndexOutOfBoundsException ex)
   	{
   		System.out.println("Array Index Out Of Bounds Exception has occurred" + ex.getMessage());
   		Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred",ex);                  //Log error for Array Out of Bounds Exception
   	}
-  	catch(NullPointerException ex)
+  	catch (NullPointerException ex)
   	{
   		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
   		Log.e("Null", "Null Pointer Exception Error",ex);                  //Log error for Null Pointer Exception
@@ -208,7 +198,7 @@ public void onCreateContextMenu(ContextMenu menu, View v,
 	     *
 	     */
 	    public interface detailFragmentSelectedListener {
-	        public void detailFragmentSelected(String[] values,ArrayAdapter<String> adapter);
+	        void detailFragmentSelected(String[] values,ArrayAdapter<String> adapter);
 	    }
 	  	
 } 

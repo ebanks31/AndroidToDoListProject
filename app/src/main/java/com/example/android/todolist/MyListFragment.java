@@ -31,15 +31,16 @@ import android.widget.AdapterView.OnItemSelectedListener;
  * @author Eric
  *
  */
-public class MyListFragment extends ListFragment implements OnItemSelectedListener{
+public class MyListFragment extends ListFragment implements OnItemSelectedListener {
   
   public OnItemSelectedListener listener;
 	
   static OnItemSelectedListener staticlistener;
   AdapterView<ListAdapter> spinner1;
   public static Spinner listspinner;
-  Context context;
   public static String currentspinner;
+  Context context;
+
   
   /* (non-Javadoc)
  * @see android.app.ListFragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
@@ -53,7 +54,7 @@ public class MyListFragment extends ListFragment implements OnItemSelectedListen
 
     View view = inflater.inflate(R.layout.fragment_rsslist_overview,
         container, false);
-   listspinner = (Spinner)view.findViewById(R.id.spinner1);
+    listspinner = (Spinner)view.findViewById(R.id.spinner1);
     spinner1 = (AdapterView<ListAdapter>) view.findViewById(R.id.spinner1);
     ArrayList<String> list = new ArrayList<String>();
     list.add("Sample List");
@@ -73,7 +74,7 @@ public class MyListFragment extends ListFragment implements OnItemSelectedListen
  	       android.R.layout.simple_list_item_1, list);  
     listspinner.setAdapter(dataAdapter);
  
-    addListenerOnSpinnerItemSelection(listspinner,dataAdapter,list);
+    addListenerOnSpinnerItemSelection(listspinner, dataAdapter, list);
 
     
     return view;
@@ -101,19 +102,19 @@ public ArrayList<String> getSpinnerTitles(final List<ListItem> itemlist)
 	  
   	  try
 	  {
-	  for(ListItem listitem:itemlist)
+	  for (ListItem listitem:itemlist)
 	  {
 		  list.add(listitem.getTitle());
 		  
 	  }
 	    return list;
 	  }
-	catch(ArrayIndexOutOfBoundsException ex)
+	catch (ArrayIndexOutOfBoundsException ex)
   	{
   		System.out.println("Array Index Out Of Bounds Exception has occurred" + ex.getMessage());
   		Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred",ex);                  //Log error for Array Out of Bounds Exception
   	}
-  	catch(NullPointerException ex)
+  	catch (NullPointerException ex)
   	{
   		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
   		Log.e("Null", "Null Pointer Exception Error",ex);                  //Log error for Null Pointer Exception
@@ -130,23 +131,21 @@ public ArrayList<String> getSpinnerTitles(final List<ListItem> itemlist)
  * @param list ArrayList of String that contains a list of spinner items
  * @return ArrayList of String containing spinner items with duplicates removed
  */
-public ArrayList<String> removeDuplicates(ArrayList<String> list)
-  {
-	list= new ArrayList<String>();
-	try
-	{
+public ArrayList<String> removeDuplicates(ArrayList<String> list) {
+	list = new ArrayList<String>();
+	try{
 	  HashSet<String> hs = new HashSet<String>();
 	  hs.addAll(list);
 	  list.clear();
 	  list.addAll(hs);
 	}
 	
-  	catch(ArrayIndexOutOfBoundsException ex)
+  	catch (ArrayIndexOutOfBoundsException ex)
   	{
   		System.out.println("Array Index Out Of Bounds Exception has occurred" + ex.getMessage());
   		Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred",ex);                  //Log error for Array Out of Bounds Exception
   	}
-  	catch(NullPointerException ex)
+  	catch (NullPointerException ex)
   	{
   		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
   		Log.e("Null", "Null Pointer Exception Error",ex);                  //Log error for Null Pointer Exception
@@ -184,12 +183,12 @@ public void addListenerOnSpinnerItemSelection(Spinner listspinner,ArrayAdapter<S
   	catch(ArrayIndexOutOfBoundsException ex)
   	{
   		System.out.println("Array Index Out Of Bounds Exception has occurred" + ex.getMessage());
-  		Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred",ex);                  //Log error for Array Out of Bounds Exception
+  		Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred", ex);                  //Log error for Array Out of Bounds Exception
   	}
   	catch(NullPointerException ex)
   	{
   		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
-  		Log.e("Null", "Null Pointer Exception Error",ex);                  //Log error for Null Pointer Exception
+  		Log.e("Null", "Null Pointer Exception Error", ex);                  //Log error for Null Pointer Exception
   	
 	}
 }
@@ -223,11 +222,11 @@ public void addListenerOnSpinnerItemSelection(Spinner listspinner,ArrayAdapter<S
 @Override
   public void onActivityCreated(Bundle savedInstanceState) {
       super.onActivityCreated(savedInstanceState);
-      Activity activity=getActivity();
+      Activity activity = getActivity();
       if (activity instanceof OnItemSelectedListener) {
           listener = (OnItemSelectedListener) activity;
           setListener(listener);
-          context=activity;
+          contex t= activity;
         } else {
           throw new ClassCastException(activity.toString()
               + " must implement MyListFragment.OnItemSelectedListener");
@@ -251,7 +250,7 @@ public void onCreateContextMenu(ContextMenu menu, View v,
 	{
 		
     String[] menuItems = getResources().getStringArray(R.array.country_arrays);
-    for (int i = 0; i<menuItems.length; i++) {
+    for (int i = 0; i < menuItems.length; i++) {
       menu.add(Menu.NONE, i, i, menuItems[i]);
     
 	}
@@ -279,8 +278,8 @@ public void onCreateContextMenu(ContextMenu menu, View v,
 	     * @param position Position of spinner item
 	     */
 	    public void onRssItemSelected(int position);
-	      public void sampleFragmentList(int position);
-		  public void clearFragmentList(int position);
+	       void sampleFragmentList(int position);
+		   void clearFragmentList(int position);
 		public void setOnItemSelectedListener(
 				android.widget.AdapterView.OnItemSelectedListener onItemSelectedListener);
 		public void updateList(ArrayList<String> values);

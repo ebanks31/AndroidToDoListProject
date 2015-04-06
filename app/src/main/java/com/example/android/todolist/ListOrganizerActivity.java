@@ -123,8 +123,7 @@ this.contextinfo = context;
     }
 	
 	
-   	public static Date getCurrentDate()
-	{
+   	public static Date getCurrentDate() {
    	Calendar calobj = Calendar.getInstance();
 	Date date = calobj.getTime();
 	return date;
@@ -220,15 +219,14 @@ this.contextinfo = context;
      * 
      * @param item Menu item that is clicked
      */
-    public void AddItemToList(MenuItem item)
-    {
+    public void AddItemToList(MenuItem item) {
     	CustomOnItemSelectedListener customlistener = new CustomOnItemSelectedListener();
     	final AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-   	 Spinner spinner = (Spinner)findViewById(R.id.spinner1);
-   	 int valToSet = (int) spinner.getSelectedItemId();
-   	 final int index = (info!=null) ? info.position : valToSet;
+   	    Spinner spinner = (Spinner)findViewById(R.id.spinner1);
+   	    int valToSet = (int) spinner.getSelectedItemId();
+   	    final int index = (info!=null) ? info.position : valToSet;
    	 
-   	 final DetailFragment detailfragment = (DetailFragment)
+   	    final DetailFragment detailfragment = (DetailFragment)
 			    getFragmentManager().findFragmentById(R.id.detailFragment);
 	 
     			AlertDialog.Builder  alertDialog = new AlertDialog.Builder(this);
@@ -333,7 +331,7 @@ this.contextinfo = context;
 	              .findFragmentById(R.id.detailFragment);
 	      int listid = (int) detailfragment.getSelectedItemId();
 	     
-	     if(v.getId()== R.id.spinner1)
+	     if (v.getId()== R.id.spinner1)
 	     {
     			AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
     			String[] menuItems = getResources().getStringArray(R.array.contextmenuitems);
