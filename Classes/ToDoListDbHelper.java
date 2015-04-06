@@ -23,7 +23,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "FeedReader.db";
-	private static final String SQL_CREATE_ENTRIES = null;
+	//private static final String SQL_CREATE_ENTRIES = null;
 	private static final String SQL_DELETE_ENTRIES = null;
 
  
@@ -61,12 +61,12 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
 				+ KEY_DATE + " TEXT)";
         db.execSQL(CREATE_LISTORGANIZER_TABLE);
     }
-  	catch(SQLException ex)
+  	catch (SQLException ex)
   	{
   		System.out.println("SQL Exception has occurred" + ex.getMessage());
   		Log.e("IO", "IO Exception Error",ex);                  //Log error for IO Exception
   	}
-  	catch(NullPointerException ex)
+  	catch (NullPointerException ex)
   	{
   		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
   		Log.e("NULL", "NullPointerException Error",ex);         //Log error for Null Pointer Exception
@@ -111,19 +111,19 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         db.insert(TABLE_LISTORGANIZER, null, values);
        
     	}
-      	catch(SQLException ex)
+      	catch (SQLException ex)
       	{
       		System.out.println("SQL Exception has occurred" + ex.getMessage());
       		Log.e("IO", "IO Exception Error",ex);                  //Log error for IO Exception
       	}
-      	catch(NullPointerException ex)
+      	catch (NullPointerException ex)
       	{
       		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
       		Log.e("NULL", "NullPointerException Error",ex);         //Log error for Null Pointer Exception
       	}
       	finally
       	{
-      		if(db!=null)
+      		if (db!=null)
       		{
               db.close();
       		}
@@ -167,12 +167,12 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         // return listitem list
         return listitemList;
     }
-      	catch(SQLException ex)
+      	catch (SQLException ex)
       	{
       		System.out.println("SQL Exception has occurred" + ex.getMessage());
       		Log.e("IO", "IO Exception Error",ex);                  //Log error for IO Exception
       	}
-      	catch(NullPointerException ex)
+      	catch (NullPointerException ex)
       	{
       		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
       		Log.e("NULL", "NullPointerException Error",ex);         //Log error for Null Pointer Exception
@@ -219,12 +219,12 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         // return contact list
         return contactList;
     }
-  	catch(SQLException ex)
+  	catch (SQLException ex)
   	{
   		System.out.println("SQL Exception has occurred" + ex.getMessage());
   		Log.e("IO", "IO Exception Error",ex);                  //Log error for IO Exception
   	}
-  	catch(NullPointerException ex)
+  	catch (NullPointerException ex)
   	{
   		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
   		Log.e("NULL", "NullPointerException Error",ex);         //Log error for Null Pointer Exception
@@ -273,7 +273,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
       	}
       	finally
       	{
-      		if(db!=null)
+      		if (db != null)
       		{
               db.close();
       		}
@@ -281,7 +281,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         return null;
     }
 	
-		    /**
+     /**
      * 
      * Getting All List String Item By Title passed in parameter. Gets all ListItem from database by title.
      * 
@@ -295,7 +295,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     	try
     	{
         // Select All Query
-       String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE +" = ?" + "ORDER BY" + KEY_DATE +"ASC";
+        String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE +" = ?" + "ORDER BY" + KEY_DATE +"ASC";
         db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery,  new String[] {spinnertitle});
  		ArrayList<String> list = new ArrayList<String>();
@@ -309,19 +309,19 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         // return listitem list
         return list;
     	}
-      	catch(SQLException ex)
+      	catch (SQLException ex)
       	{
       		System.out.println("SQL Exception has occurred" + ex.getMessage());
       		Log.e("IO", "IO Exception Error",ex);                  //Log error for IO Exception
       	}
-      	catch(NullPointerException ex)
+      	catch (NullPointerException ex)
       	{
       		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
       		Log.e("NULL", "NullPointerException Error",ex);         //Log error for Null Pointer Exception
       	}
       	finally
       	{
-      		if(db!=null)
+      		if(db != null)
       		{
               db.close();
       		}
@@ -330,7 +330,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     }
 	
 	
-			    /**
+	/**
      * 
      * Getting All List String Item By Title passed in parameter. Gets all ListItem from database by title.
      * 
@@ -370,7 +370,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
       	}
       	finally
       	{
-      		if(db!=null)
+      		if (db != null)
       		{
               db.close();
       		}
@@ -412,7 +412,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
       	}
       	finally
       	{
-      		if(db!=null)
+      		if(db != null)
       		{
               db.close();
       		}
@@ -443,19 +443,19 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         return db.update(TABLE_LISTORGANIZER, values, KEY_TITLE + " = ?",
                 new String[] { title});
     	}
-      	catch(SQLException ex)
+      	catch (SQLException ex)
       	{
       		System.out.println("SQL Exception has occurred" + ex.getMessage());
       		Log.e("IO", "IO Exception Error",ex);                  //Log error for IO Exception
       	}
-      	catch(NullPointerException ex)
+      	catch (NullPointerException ex)
       	{
       		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
       		Log.e("NULL", "NullPointerException Error",ex);         //Log error for Null Pointer Exception
       	}
       	finally
       	{
-      		if(db!=null)
+      		if (db != null)
       		{
               db.close();
       		}
@@ -491,7 +491,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
   	}
   	finally
   	{
-  		if(db!=null)
+  		if(db != null)
   		{
           db.close();
   		}
@@ -506,7 +506,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
      */
     public void deleteSpinnerTitle(String spinnertitle) {
        
-    	SQLiteDatabase db=null;
+    	SQLiteDatabase db = null;
     try
     	{
     	
@@ -514,19 +514,19 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
       db.delete(TABLE_LISTORGANIZER, KEY_TITLE + " = ?",
               new String[] { spinnertitle });
 	}
-  	catch(SQLException ex)
+  	catch (SQLException ex)
   	{
   		System.out.println("SQL Exception has occurred" + ex.getMessage());
   		Log.e("IO", "IO Exception Error",ex);                  //Log error for IO Exception
   	}
-  	catch(NullPointerException ex)
+  	catch (NullPointerException ex)
   	{
   		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
   		Log.e("NULL", "NullPointerException Error",ex);         //Log error for Null Pointer Exception
   	}
 	finally
 	{
-  		if(db!=null)
+  		if (db != null)
   		{
         db.close();
   		}
@@ -540,26 +540,26 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
      * 
      */
     public void deleteListItemByTitle(ListItem listitem) {
-    	SQLiteDatabase db=null;
+    	SQLiteDatabase db = null;
     	try{
     		
         db = this.getWritableDatabase();
         db.delete(TABLE_LISTORGANIZER, KEY_TITLE + " = ?",
                 new String[] { String.valueOf(listitem.getTitle()) });
     	}
-      	catch(SQLException ex)
+      	catch (SQLException ex)
       	{
       		System.out.println("SQL Exception has occurred" + ex.getMessage());
       		Log.e("IO", "IO Exception Error",ex);                  //Log error for IO Exception
       	}
-      	catch(NullPointerException ex)
+      	catch (NullPointerException ex)
       	{
       		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
       		Log.e("NULL", "NullPointerException Error",ex);         //Log error for Null Pointer Exception
       	}
     	finally
     	{
-      		if(db!=null)
+      		if(db != null)
       		{
             db.close();
       		}
