@@ -13,7 +13,7 @@ import java.util.Date;
 public class ListItem {
 
 	private String title;
-	private String listitem;
+	private String listItem;
 	private int id;
 	private Date date;
 	
@@ -21,8 +21,7 @@ public class ListItem {
 	/**
 	 * Default Constructor for List Item Class
 	 */
-	public ListItem()
-	{
+	public ListItem() {
 		
 	}
 	
@@ -32,10 +31,9 @@ public class ListItem {
 	 * @param title title from the spinner
 	 * @param listitem list item from the list that is associated to spinner
 	 */
-	public ListItem(String title, String listitem)
-	{
+	public ListItem(String title, String listItem) {
 		this.title = title;
-		this.listitem = listitem;
+		this.listItem = listItem;
 	}
 	
 		/**
@@ -45,10 +43,9 @@ public class ListItem {
 	 * @param listitem list item from the list that is associated to spinner
 	 * @param date current date list was modified for title
 	 */
-	public ListItem(String title, String listitem, Date date)
-	{
+	public ListItem(String title, String listItem, Date date) {
 		this.title = title;
-		this.listitem = listitem;
+		this.listItem = listItem;
 		this.date = date;
 	}
 	
@@ -66,7 +63,7 @@ public class ListItem {
 	 * @return Item from the associated to the title
 	 */
 	public String getListItem() {
-		return listitem;
+		return listItem;
 	}
 
 
@@ -94,14 +91,16 @@ public class ListItem {
 	 * @param date date that will be set
 	 */
 	public void setDate(Date date) {
-		this.date=date;
+		this.date = date;
 	}
+
+
 	/**
 	 * Set unique ID for each List Item
 	 * @param id unique ID for each List Item
 	 */
 	public void setID(int id) {
-		this.id=id;
+		this.id = id;
 	}
 
 	/**
@@ -117,10 +116,10 @@ public class ListItem {
 	/**
 	 * set List Item from the associated to the title.
 	 * 
-	 * @param listitem List Item from the associated to the title
+	 * @param listItem List Item from the associated to the title
 	 */
-	public void setListItem(String listitem) {
-		this.listitem = listitem;
+	public void setListItem(String listItem) {
+		this.listItem = listItem;
 		
 	}
 

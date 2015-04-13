@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28">
+        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\classes-955fbb9d71be8c46ff13220bbc2ed11d6df35740.jar" />
+    </item>
+    <item
+        jar="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\libs\acra-4.5.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="44a5eb946e0d83eed4a0128d877ca1fd8168b83a">
+        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\acra-4.5.0-e42502c43ca46cf42020e576138b6ebcf5f7a5ca.jar" />
+    </item>
+    <item
+        jar="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\libs\Parse-1.7.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="87c45f9f66da531a65f065ee32f603c7e6db1528">
+        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\Parse-1.7.1-ba2b781a4381e11f42edcad7ad82eeb9eccddeb5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\libs\bolts-android-1.1.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e61e3dfc57eaa5c97f9e7061db5608fc7d02d39e">
+        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.3-6331dccc8e26f79f89ba8497417017630227e844.jar" />
+    </item>
+    <item
+        jar="C:\Users\Eric\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-bb07e878048679bbd2a50c587bc3582d3942d2f8.jar" />
+    </item>
+
+</items>

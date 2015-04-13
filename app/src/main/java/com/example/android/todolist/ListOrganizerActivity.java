@@ -46,9 +46,9 @@ import com.example.android.todolist.DetailFragment.detailFragmentSelectedListene
  */
 public class ListOrganizerActivity extends Activity implements detailFragmentSelectedListener,MyListFragment.OnItemSelectedListener{
 	TextView context;
-	private Context contextinfo;
-	public static ArrayList<String> listvalues;
-	public static ArrayAdapter<String> listadapter;
+	private Context contextInfo;
+	public static ArrayList<String> listValues;
+	public static ArrayAdapter<String> listAdapter;
 	private ShareActionProvider mShareActionProvider;
 	
     /* (non-Javadoc)
@@ -60,8 +60,8 @@ public class ListOrganizerActivity extends Activity implements detailFragmentSel
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rssfeed);
-        Context contextapp =getApplicationContext();
-        contextinfo=contextapp;
+        Context contextApp = getApplicationContext();
+        contextInfo = contextApp;
         context = (TextView) findViewById(R.id.contextmenu);
         Spinner spinner = (Spinner)findViewById(R.id.spinner1);
 	   // READ FROM DATABASE AND POPULATE VIEWS. ALSO POPULATE LIST TITLES in database. CREATE DATABASE LAYOUT(List of spinner title names, list of item in list fragments)
@@ -70,14 +70,14 @@ public class ListOrganizerActivity extends Activity implements detailFragmentSel
         ToDoListDbHelper db = new ToDoListDbHelper(this);
         registerForContextMenu(spinner);
        
-       MyListFragment listfragment = (MyListFragment) getFragmentManager()
+       MyListFragment listFragment = (MyListFragment) getFragmentManager()
     	          .findFragmentById(R.id.listfragment);
-       registerForContextMenu(listfragment.getListView());
-       DetailFragment detailfragment = (DetailFragment) getFragmentManager()
+       registerForContextMenu(listFragment.getListView());
+       DetailFragment detailFragment = (DetailFragment) getFragmentManager()
     	          .findFragmentById(R.id.detailFragment);
-       registerForContextMenu(detailfragment.getListView());
+       registerForContextMenu(detailFragment.getListView());
        
-       List<ListItem> contacts = db.getAllListItems();
+       //List<ListItem> contacts = db.getAllListItems();
        
     }
 
@@ -89,7 +89,7 @@ public class ListOrganizerActivity extends Activity implements detailFragmentSel
      * @return Context from the RssFeedActivity
      */
     public Context getContext() {
-return contextinfo;
+return contextInfo;
 }
 
 /**
@@ -99,7 +99,7 @@ return contextinfo;
  * @param context Context from the RssFeedActivity
  */
 public void setContext(Context context) {
-this.contextinfo = context;
+this.contextInfo = context;
 }
 
 
@@ -127,7 +127,6 @@ this.contextinfo = context;
    	Calendar calobj = Calendar.getInstance();
 	Date date = calobj.getTime();
 	return date;
-	//System.out.println(df.format(calobj.getTime()));
 	}
 	
 	
@@ -226,7 +225,7 @@ this.contextinfo = context;
    	    int valToSet = (int) spinner.getSelectedItemId();
    	    final int index = (info!=null) ? info.position : valToSet;
    	 
-   	    final DetailFragment detailfragment = (DetailFragment)
+   	    final DetailFragment detailFragment = (DetailFragment)
 			    getFragmentManager().findFragmentById(R.id.detailFragment);
 	 
     			AlertDialog.Builder  alertDialog = new AlertDialog.Builder(this);
@@ -250,13 +249,13 @@ this.contextinfo = context;
     	                        public void onClick(DialogInterface dialog,int which) {
     	                            // Write your code here to execute after dialog
 
-    	        String listinput = input.getText().toString();
+    	        String listInput = input.getText().toString();
     	        
-    	        Boolean whitespacefound = ListOrganizerActivity.checkWhiteSpaces(listinput);
+    	        Boolean whiteSpaceFound = ListOrganizerActivity.checkWhiteSpaces(listInput);
     	        
-    	        Boolean invalidcharactersfound = ListOrganizerActivity.checkInvalidCharacters(listinput);
+    	        Boolean invalidCharactersFound = ListOrganizerActivity.checkInvalidCharacters(listInput);
     				//Checks if edittext is empty,space, or null. Not a valid list item.
-    				if(listinput.equals("") || listinput==null || whitespacefound==true ||invalidcharactersfound==true)
+    				if (listInput.equals("") || listInput == null || whiteSpaceFound == true ||invalidCharactersFound == true)
     				{
     					
     					 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ListOrganizerActivity.this);
@@ -269,24 +268,20 @@ this.contextinfo = context;
     	            alertDialog.show();
     					
     				}
-    				else
-    				{
-    					
-    					
-    				
+    				else {
     					CustomOnItemSelectedListener a = new CustomOnItemSelectedListener();
     					ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
     					
 						Date date = ListOrganizerActivity.getCurrentDate();
 
-    					db.addListitem(new ListItem(MyListFragment.currentspinner, listinput,date));  
+    					db.addListitem(new ListItem(MyListFragment.currentSpinner, listInput, date));
 						 
-						 ListOrganizerActivity.listvalues.add(listinput);
-    				    final ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(ListOrganizerActivity.this,
-    			    	        android.R.layout.simple_list_item_1, ListOrganizerActivity.listvalues);
-    				    adapter3.notifyDataSetChanged();
+						 ListOrganizerActivity.listValues.add(listInput);
+    				    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
+    			    	        android.R.layout.simple_list_item_1, ListOrganizerActivity.listValues);
+    				    adapter.notifyDataSetChanged();
     				    
-    					detailfragment.setListAdapter(adapter3);
+    					detailFragment.setListAdapter(adapter);
 
     		
     	
@@ -294,7 +289,7 @@ this.contextinfo = context;
     	                        }
     	                        });
     					
-    			      setPositiveAlertOptionNO(alertDialog);
+    			        setPositiveAlertOptionNO(alertDialog);
     		            alertDialog.show();
     	  
     }
@@ -302,16 +297,16 @@ this.contextinfo = context;
     /**
      * Removes Duplicates from ArrayList of strings
      * 
-     * @param stringlist Array List of string containing spinner titles
+     * @param stringList Array List of string containing spinner titles
      * @return  ArrayList of strings with duplicates removed
      */
-    public ArrayList<String> removeDuplicates(ArrayList<String> stringlist)
+    public ArrayList<String> removeDuplicates(ArrayList<String> stringList)
     {
   	  HashSet hs = new HashSet();
-  	  hs.addAll(stringlist);
-  	  stringlist.clear();
-  	  stringlist.addAll(hs);
-  	  return stringlist;
+  	  hs.addAll(stringList);
+      stringList.clear();
+      stringList.addAll(hs);
+  	  return stringList;
     }
 
     
@@ -327,23 +322,23 @@ this.contextinfo = context;
 		
 	    menu.setHeaderTitle("Context Menu Options");  
 	    
-	      DetailFragment detailfragment = (DetailFragment) getFragmentManager()
+	      DetailFragment detailFragment = (DetailFragment) getFragmentManager()
 	              .findFragmentById(R.id.detailFragment);
-	      int listid = (int) detailfragment.getSelectedItemId();
+	      int listId = (int) detailFragment.getSelectedItemId();
 	     
 	     if (v.getId()== R.id.spinner1)
 	     {
     			AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
     			String[] menuItems = getResources().getStringArray(R.array.contextmenuitems);
-    			for (int i = 0; i<menuItems.length; i++) {
+    			for (int i = 0; i < menuItems.length; i++) {
       				menu.add(Menu.NONE, i, i, menuItems[i]);
     			}
 	     }
-    			else if(v==detailfragment.getListView())
+    			else if (v == detailFragment.getListView())
     			{
-      	      			String[] menuItems1 = getResources().getStringArray(R.array.contextmenuitems);
-      	      			for (int i = 0; i<menuItems1.length; i++) {
-      	        				menu.add(Menu.NONE, i, i, menuItems1[i]);
+      	      			String[] menuItemsContext = getResources().getStringArray(R.array.contextmenuitems);
+      	      			for (int i = 0; i < menuItemsContext.length; i++) {
+      	        				menu.add(Menu.NONE, i, i, menuItemsContext[i]);
       	      			}
     			}
       					
@@ -363,13 +358,13 @@ public boolean onContextItemSelected(MenuItem item) {
 	 Spinner spinner = (Spinner)findViewById(R.id.spinner1);
 	 int valToSet = (int) spinner.getSelectedItemId();
 	 
-	 final DetailFragment detailfragment = (DetailFragment)
+	 final DetailFragment detailFragment = (DetailFragment)
 			    getFragmentManager().findFragmentById(R.id.detailFragment);
 	 
-	 final ListFragment listfragment = (ListFragment)
+	 final ListFragment listFragment = (ListFragment)
 			    getFragmentManager().findFragmentById(R.id.listfragment);
 	 
-		ArrayAdapter<String> adapter =ListOrganizerActivity.listadapter;
+		ArrayAdapter<String> adapter =ListOrganizerActivity.listAdapter;
 		
 		//ArrayList<String> lst = new ArrayList<String>();
 		//lst.addAll(Arrays.asList(ListOrganizerActivity.listvalues));
@@ -377,9 +372,9 @@ public boolean onContextItemSelected(MenuItem item) {
 	//    final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
     	//        android.R.layout.simple_list_item_1, lst);
 	 
-	 final int index = (info!=null) ? info.position : valToSet;
+	 final int index = (info != null) ? info.position : valToSet;
 
-	 long idposition = info.id;
+	 long idPosition = info.id;
 	 
   int menuItemIndex = item.getItemId();
   //get id another way if spinner is selected. Register the right menu.
@@ -388,16 +383,16 @@ public boolean onContextItemSelected(MenuItem item) {
   final String menuItemName = menuItems[menuItemIndex];
   //  String listItemName = Countries[info.position];
   //int index = info.position;
-  ListAdapter listadapter= detailfragment.getListAdapter();
-  long listselectedid = listadapter.getItemId(index);
-  final String currentitem=(String) listadapter.getItem(index);
+  ListAdapter listAdapter= detailFragment.getListAdapter();
+  long listSelectedId = listAdapter.getItemId(index);
+  final String currentItem=(String) listAdapter.getItem(index);
   
-  long spinnerposition =  MyListFragment.listspinner.getSelectedItemId();
+  long spinnerPosition =  MyListFragment.listSpinner.getSelectedItemId();
   
   
   int parentId = ((View) info.targetView.getParent()).getId();
   
-  if(menuItemName.equals("Add") && listselectedid==index)
+  if (menuItemName.equals("Add") && listSelectedId == index)
   //if(menuItemName.equals("Add") && parentId==R.id.detailFragment)
   {
 		AlertDialog.Builder  alertDialog = new AlertDialog.Builder(this);
@@ -421,13 +416,13 @@ public boolean onContextItemSelected(MenuItem item) {
                         public void onClick(DialogInterface dialog,int which) {
                             // Write your code here to execute after dialog
 
-        String listinput = input.getText().toString();
+        String listInput = input.getText().toString();
 
-        Boolean whitespacefound = ListOrganizerActivity.checkWhiteSpaces(listinput);
+        Boolean whiteSpaceFound = ListOrganizerActivity.checkWhiteSpaces(listInput);
         
-        Boolean invalidcharactersfound = ListOrganizerActivity.checkInvalidCharacters(listinput);
+        Boolean invalidCharactersFound = ListOrganizerActivity.checkInvalidCharacters(listInput);
 			//Checks Invalid characters. Checks if edittext is empty,space, or null. Not a valid list item.
-			if(listinput.equals("") || listinput==null || whitespacefound==true ||invalidcharactersfound==true)
+			if (listInput.equals("") || listInput == null || whiteSpaceFound == true || invalidCharactersFound == true)
 			{
 				
 				 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ListOrganizerActivity.this);
@@ -447,7 +442,7 @@ public boolean onContextItemSelected(MenuItem item) {
 				ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
 				
 				Date date = ListOrganizerActivity.getCurrentDate();
-				db.addListitem(new ListItem(MyListFragment.currentspinner, listinput,date));  
+				db.addListitem(new ListItem(MyListFragment.currentSpinner, listInput,date));
 				
 				/*
 				if(!MyListFragment.currentspinner.equals("New List") && !MyListFragment.currentspinner.equals("Sample List"))
@@ -460,15 +455,11 @@ public boolean onContextItemSelected(MenuItem item) {
 				lst3.add(index+1,listinput);
 				ArrayList<String> lst4 =db.getAllListStringItemsByTitle(MyListFragment.currentspinner);
 				*/
-				ListOrganizerActivity.listvalues.add(index+1,listinput);
-			    final ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(ListOrganizerActivity.this,
-		    	        android.R.layout.simple_list_item_1, ListOrganizerActivity.listvalues);
-			   // adapter3.remove(listinput);
-			   // adapter3.insert(listinput,index+1);
-			    adapter3.notifyDataSetChanged();
-				detailfragment.setListAdapter(adapter3);
-				
-				//ListOrganizerActivity.values=ConvertArrayListtoArray(lst3);
+				ListOrganizerActivity.listValues.add(index+1,listInput);
+			    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
+		    	        android.R.layout.simple_list_item_1, ListOrganizerActivity.listValues);;
+                adapter.notifyDataSetChanged();
+				detailFragment.setListAdapter(adapter);
 				 
 			}
                         }
@@ -479,7 +470,7 @@ public boolean onContextItemSelected(MenuItem item) {
 
 	            alertDialog.show();
   }
- else if(menuItemName.equals("Edit") && listselectedid==index)
+ else if (menuItemName.equals("Edit") && listSelectedId == index)
     //else if(menuItemName.equals("Edit") && parentId==R.id.detailFragment)
   {
 	   
@@ -504,14 +495,14 @@ public boolean onContextItemSelected(MenuItem item) {
                         public void onClick(DialogInterface dialog,int which) {
                             // Write your code here to execute after dialog
 
-        String listinput = input.getText().toString();
+        String listInput = input.getText().toString();
 			//Checks if edittext is empty,space, or null. Not a valid list item.
-        Boolean whitespacefound = ListOrganizerActivity.checkWhiteSpaces(listinput);
+        Boolean whiteSpaceFound = ListOrganizerActivity.checkWhiteSpaces(listInput);
         
-        Boolean invalidcharactersfound = ListOrganizerActivity.checkInvalidCharacters(listinput);
+        Boolean invalidCharactersFound = ListOrganizerActivity.checkInvalidCharacters(listInput);
         
 			//Checks if edittext is empty,space, or null. Not a valid list item.
-			if(listinput.equals("") || listinput==null || whitespacefound==true ||invalidcharactersfound==true)
+			if (listInput.equals("") || listInput == null || whiteSpaceFound == true || invalidCharactersFound == true)
 			{
 				
 				 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ListOrganizerActivity.this);
@@ -528,21 +519,21 @@ public boolean onContextItemSelected(MenuItem item) {
 			else
 			{
 		  //Add to Spinner
-				String key = ((TextView) info.targetView).getText().toString();
+				   String key = ((TextView) info.targetView).getText().toString();
 			       ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
 					
 					Date date = ListOrganizerActivity.getCurrentDate();
-					if(!MyListFragment.currentspinner.equals("New List") && !MyListFragment.currentspinner.equals("Sample List"))
+					if (!MyListFragment.currentSpinner.equals("New List") && !MyListFragment.currentSpinner.equals("Sample List"))
 					{
-					db.updateListItem(new ListItem(MyListFragment.currentspinner, listinput),date);  
+					db.updateListItem(new ListItem(MyListFragment.currentSpinner, listInput), date);
 					}
 
-				ListOrganizerActivity.listvalues.add(index+1,listinput);
-				ListOrganizerActivity.listvalues.remove(index);
-			    final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(ListOrganizerActivity.this,
-		    	android.R.layout.simple_list_item_1, ListOrganizerActivity.listvalues);
-				adapter1.notifyDataSetChanged();
-				detailfragment.setListAdapter(adapter1);
+				ListOrganizerActivity.listValues.add(index+1, listInput);
+				ListOrganizerActivity.listValues.remove(index);
+			    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
+		    	android.R.layout.simple_list_item_1, ListOrganizerActivity.listValues);
+                adapter.notifyDataSetChanged();
+				detailFragment.setListAdapter(adapter);
 			
 			}
                         }
@@ -554,8 +545,7 @@ public boolean onContextItemSelected(MenuItem item) {
 	            alertDialog.show();
 		      }
 		           
-   else if(menuItemName.equals("Delete") && listselectedid==index)
-  //else if(menuItemName.equals("Delete") && parentId==R.id.detailFragment)
+   else if (menuItemName.equals("Delete") && listSelectedId == index)
   {
 		 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ListOrganizerActivity.this);
          // Setting Dialog Title
@@ -570,15 +560,15 @@ public boolean onContextItemSelected(MenuItem item) {
                  		String key = ((TextView) info.targetView).getText().toString();
                 		ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
 
-                		db.deleteListItem(new ListItem(MyListFragment.currentspinner, key));  
+                		db.deleteListItem(new ListItem(MyListFragment.currentSpinner, key));
 						
-						ListOrganizerActivity.listvalues.remove(index);
-        				ArrayList<String> lst4 =db.getAllListStringItemsByTitle(MyListFragment.currentspinner);
-        			    final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(ListOrganizerActivity.this,
-        		    	        android.R.layout.simple_list_item_1, ListOrganizerActivity.listvalues);
+						ListOrganizerActivity.listValues.remove(index);
+        				//ArrayList<String> lst4 =db.getAllListStringItemsByTitle(MyListFragment.currentspinner);
+        			    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
+        		    	        android.R.layout.simple_list_item_1, ListOrganizerActivity.listValues);
 
-                	  adapter2.notifyDataSetChanged();
-                	  detailfragment.setListAdapter(adapter2);
+                	  adapter.notifyDataSetChanged();
+                      detailFragment.setListAdapter(adapter);
                 	 
                 	  
   
@@ -590,7 +580,7 @@ public boolean onContextItemSelected(MenuItem item) {
          alertDialog.show();
 
   }
-  else if(menuItemName.equals("Edit") && spinnerposition==idposition)
+  else if (menuItemName.equals("Edit") && spinnerPosition == idPosition)
   //else if(menuItemName.equals("Edit") && parentId==R.id.spinner1)
   {
   			
@@ -617,14 +607,14 @@ public boolean onContextItemSelected(MenuItem item) {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int which) {
                             // Write your code here to execute after dialog
-                        	String listinput = input.getText().toString();
-							//Checks if edittext is empty,space, or null. Not a valid list item.
-                	        Boolean whitespacefound = ListOrganizerActivity.checkWhiteSpaces(listinput);
+                        	String listInput = input.getText().toString();
+							//Checks if editText is empty,space, or null. Not a valid list item.
+                	        Boolean whiteSpaceFound = ListOrganizerActivity.checkWhiteSpaces(listInput);
                 	        
-                	        Boolean invalidcharactersfound = ListOrganizerActivity.checkInvalidCharacters(listinput);
-                				//Checks if edittext is empty,space, or null. Not a valid list item.
-                				if(listinput.equals("") || listinput==null || whitespacefound==true ||invalidcharactersfound==true)
-                				{
+                	        Boolean invalidCharactersFound = ListOrganizerActivity.checkInvalidCharacters(listInput);
+                				//Checks if editText is empty,space, or null. Not a valid list item.
+             if (listInput.equals("") || listInput == null || whiteSpaceFound == true || invalidCharactersFound == true)
+             {
 				AlertDialog.Builder alertDialog = new AlertDialog.Builder(ListOrganizerActivity.this);
             // Setting Dialog Title
             alertDialog.setTitle("PASSWORD");
@@ -652,30 +642,17 @@ public boolean onContextItemSelected(MenuItem item) {
 		 
 		 
 		 		  //Add to Spinner
-				String key = ((TextView) info.targetView).getText().toString();
+				   String key = ((TextView) info.targetView).getText().toString();
 			       ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
 
-					if(!MyListFragment.currentspinner.equals("New List") && !MyListFragment.currentspinner.equals("Sample List"))
+					if (!MyListFragment.currentSpinner.equals("New List") && !MyListFragment.currentSpinner.equals("Sample List"))
 					{
-					db.updateSpinnerTitle(key);  
+					    db.updateSpinnerTitle(key);
 					}
-					
-				//ArrayList<String> lst = new ArrayList<String>();
-				//lst.addAll(Arrays.asList(ListOrganizerActivity.listvalues));
-				
-				//lst3.add(index+1,listinput);
-			//	lst3.remove(index);
-		   // ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
- 	       //android.R.layout.simple_list_item_1, lst3);  
 
-			     ArrayAdapter<String> adapter1 = (ArrayAdapter<String>) MyListFragment.listspinner.getAdapter();
-				    //adapter1.insert(listinput,index+1);
-				    //adapter1.remove(listinput);
-				   // adapter1.remove((String) key);
-			     adapter1.notifyDataSetChanged();
-				  	MyListFragment.listspinner.setAdapter(adapter1);
-				
-				//ListOrganizerActivity.values=updateArray(ListOrganizerActivity.values,currentitem,listinput);
+			        ArrayAdapter<String> adapter = (ArrayAdapter<String>) MyListFragment.listSpinner.getAdapter();
+                    adapter.notifyDataSetChanged();
+				  	MyListFragment.listSpinner.setAdapter(adapter);
 		 }
 		 
                     }});
@@ -689,43 +666,42 @@ public boolean onContextItemSelected(MenuItem item) {
             alertDialog.show();
             }
   
-  else if(menuItemName.equals("Delete") && spinnerposition==idposition)
-  //else if(menuItemName.equals("Delete") && parentId==R.id.spinner1)
-  {
+            else if (menuItemName.equals("Delete") && spinnerPosition == idPosition)
+            {
 		 		  //Add to Spinner
-				String key = ((TextView) info.targetView).getText().toString();
+				   String key = ((TextView) info.targetView).getText().toString();
 			       ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
 
-					if(!MyListFragment.currentspinner.equals("New List") && !MyListFragment.currentspinner.equals("Sample List"))
+					if (!MyListFragment.currentSpinner.equals("New List") && !MyListFragment.currentSpinner.equals("Sample List"))
 					{
 					db.deleteSpinnerTitle(key);  
 					}
 					
 
-			     ArrayAdapter<String> adapter2 = (ArrayAdapter<String>) MyListFragment.listspinner.getAdapter();
-			     adapter2.remove((String) key);
-			     adapter2.notifyDataSetChanged();
-				    MyListFragment.listspinner.setAdapter(adapter2);
-  }
-  else //menu item = Share
-  {
+			     ArrayAdapter<String> deleteadapter = (ArrayAdapter<String>) MyListFragment.listSpinner.getAdapter();
+                 deleteadapter.remove((String) key);
+                 deleteadapter.notifyDataSetChanged();
+				 MyListFragment.listSpinner.setAdapter(deleteadapter);
+         }
+        else //menu item = Share
+         {
   
-  }
-                   return true;
- }
+         }
+           return true;
+    }
 
 
 /**
  * This method checks for whitespaces given a string
  * 
  * 
- * @param listinput string that will be checked for whitespaces.
+ * @param listInput string that will be checked for whitespaces.
  * @return true if string can invalid character, false it if doesn't contain whitespaces.
  */
-public static Boolean checkWhiteSpaces(String listinput)
+public static Boolean checkWhiteSpaces(String listInput)
 {
 		Pattern pattern = Pattern.compile("\\s");
-		Matcher matcher = pattern.matcher(listinput);
+		Matcher matcher = pattern.matcher(listInput);
 		boolean found = matcher.find();
 		return found;
 }
@@ -738,13 +714,13 @@ public static Boolean checkWhiteSpaces(String listinput)
  * This method checks for invalid character given a string
  * 
  * 
- * @param listinput string that will be checked for invalid characters.
+ * @param listInput string that will be checked for invalid characters.
  * @return true if string can invalid character, false it if doesn't contain invalid characters.
  */
-public static Boolean checkInvalidCharacters(String listinput)
+public static Boolean checkInvalidCharacters(String listInput)
 {
 		Pattern pattern = Pattern.compile("^\\w\\.@-");
-		Matcher matcher = pattern.matcher(listinput);
+		Matcher matcher = pattern.matcher(listInput);
 		boolean found = matcher.find();
 		return found;
 }
@@ -757,24 +733,25 @@ public static Boolean checkInvalidCharacters(String listinput)
  * If string is found, string is replaced by string that is mentioned in parameter.
  * 
  * @param input String that will be replaced
- * @param replacestring String that replace string mentioned in parameter 
- * @param stringvalues String array of list items
+ * @param replaceString String that replace string mentioned in parameter
+ * @param stringValues String array of list items
  * @return String array with replaced value
  */
-public String[] replaceString(String input,String replacestring,String[] stringvalues)
+public String[] replaceString(String input, String replaceString, String[] stringValues)
 {
-	String [] resultarray = new String[stringvalues.length];
-	for(int i=0;i<stringvalues.length;i++)
+	String [] resultArray = new String[stringValues.length];
+
+	for (int i = 0; i < stringValues.length; i++)
 	{
-		resultarray[i]=stringvalues[i];
-		if(stringvalues[i].equals(input))
-		{
-			resultarray[i]=input;
+        resultArray[i] = stringValues[i];
+
+		if (stringValues[i].equals(input)) {
+            resultArray[i] = input;
 		}
 		
 	}
 	
-	return resultarray;
+	return resultArray;
 	
 }
 
@@ -793,19 +770,16 @@ public void onRssItemSelected(int position) {
 @Override
 public void sampleFragmentList(int position) {
 
-    DetailFragment detailfragment = (DetailFragment) getFragmentManager()
+    DetailFragment detailFragment = (DetailFragment) getFragmentManager()
             .findFragmentById(R.id.detailFragment);
-        if (detailfragment != null && detailfragment.isInLayout()) {
+        if (detailFragment != null && detailFragment.isInLayout()) {
        	    String[] values = new String[] { "Android1", "iPhone", "WindowsMobile",
     	        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
     	        "Linux", "OS/2" };
     	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
     	        android.R.layout.simple_list_item_1, values);
-    	    detailfragment.setListAdapter(adapter);
-       } else {
-
-
-        }
+            detailFragment.setListAdapter(adapter);
+       }
  
 }
 
@@ -817,12 +791,12 @@ public void sampleFragmentList(int position) {
 @Override
 public void clearFragmentList(int position) {
 
-    DetailFragment detailfragment = (DetailFragment) getFragmentManager()
+    DetailFragment detailFragment = (DetailFragment) getFragmentManager()
             .findFragmentById(R.id.detailFragment);
         MyListFragment listfragment = (MyListFragment) getFragmentManager()
             .findFragmentById(R.id.listfragment);
         
-        if (detailfragment != null && detailfragment.isInLayout()) {
+        if (detailFragment != null && detailFragment.isInLayout()) {
        	    String[] values = new String[] { "Android22222222", "iPhone", "WindowsMobile",
     	        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
     	        "Linux", "OS/2" };
@@ -832,12 +806,8 @@ public void clearFragmentList(int position) {
     	        android.R.layout.simple_list_item_1, lst1);
 
     	    adapter.notifyDataSetChanged();
-    	    detailfragment.setListAdapter(adapter);
-       } else {
-
-
-        }
- 
+    	    detailFragment.setListAdapter(adapter);
+       }
 }
 
 
@@ -845,26 +815,26 @@ public void clearFragmentList(int position) {
  * 
  * Update array list and swap current item with new item.
  * 
- * @param stringarray String array of list items. 
- * @param currentitem Current list item
- * @param newitem New item that will replace current list item
+ * @param stringArray String array of list items.
+ * @param currentItem Current list item
+ * @param newItem New item that will replace current list item
  * @return String array containing new list item swap with thte current list item
  */
-public String[] updateArray(String[] stringarray, String currentitem,String newitem)
+public String[] updateArray(String[] stringArray, String currentItem, String newItem)
 {
-	String [] finalarray = new String[stringarray.length];
+	String [] finalArray = new String[stringArray.length];
 	
-	for (int i=0;i<stringarray.length-1;i++)
+	for (int i = 0; i < stringArray.length-1; i++)
 	{
-		finalarray[i]=stringarray[i];
-		if(stringarray[i].equals(currentitem))
-		{
-			finalarray[i]=newitem;
+        finalArray[i] = stringArray[i];
+
+		if (stringArray[i].equals(currentItem)) {
+            finalArray[i] = newItem;
 		}
 		
 	}
 
-return finalarray;
+return finalArray;
 	
 }
 
@@ -873,43 +843,39 @@ return finalarray;
  * 
  * Converts ArrayList of String to StringArray
  * 
- * @param stringarraylist ArrayList that is entered
+ * @param stringArrayList ArrayList that is entered
  * @return Array that is converted from Array List of Strings
  */
-public String[] ConvertArrayListtoArray(ArrayList<String> stringarraylist)
-{
-
-	String[] finalarray = new String[stringarraylist.size()];
-	finalarray = stringarraylist.toArray(finalarray);
-    return finalarray;
-	
+public String[] ConvertArrayListtoArray(ArrayList<String> stringArrayList) {
+	String[] finalArray = new String[stringArrayList.size()];
+    finalArray = stringArrayList.toArray(finalArray);
+    return finalArray;
 }
 
 /**
  * 
  * Delete a specified item in ArrayList if item is found
  * 
- * @param stringarraylist ArrayList of string containing list items 
- * @param currentitem Contains current list item
+ * @param stringArrayList ArrayList of string containing list items
+ * @param currentItem Contains current list item
  * @return  String array with list item deleted from parameter
  */
-public String[] deleteItemFromArray(ArrayList<String> stringarraylist, String currentitem)
+public String[] deleteItemFromArray(ArrayList<String> stringArrayList, String currentItem)
 {
-	ArrayList<String> finallist = new ArrayList<String>();
+	ArrayList<String> finalList = new ArrayList<String>();
 	
-	for (int i=0;i<stringarraylist.size()-1;i++)
+	for (int i=0; i < stringArrayList.size()-1; i++)
 	{
 		
-		if(!stringarraylist.get(i).equals(currentitem))
-		{
-			finallist.add(stringarraylist.get(i));
+		if (!stringArrayList.get(i).equals(currentItem)) {
+            finalList.add(stringArrayList.get(i));
 		}
 		
 	}
 
-	String[] finalarray = new String[finallist.size()];
-	finalarray = finallist.toArray(finalarray);
-return finalarray;
+	String[] finalArray = new String[finalList.size()];
+    finalArray = finalList.toArray(finalArray);
+    return finalArray;
 	
 }
 
@@ -921,7 +887,6 @@ return finalarray;
 @Override
 public void setOnItemSelectedListener(
 		OnItemSelectedListener onItemSelectedListener) {
-	// TODO Auto-generated method stub
 	
 }
 
@@ -932,9 +897,7 @@ public void setOnItemSelectedListener(
  */
 @Override
 public void detailFragmentSelected(String[] values, ArrayAdapter<String> adapter) {
-	// TODO Auto-generated method stub
-	//ListOrganizerActivity.listvalues=values;
-	ListOrganizerActivity.listadapter=adapter;
+	ListOrganizerActivity.listAdapter = adapter;
 }
 
 /* (non-Javadoc)
@@ -945,17 +908,14 @@ public void detailFragmentSelected(String[] values, ArrayAdapter<String> adapter
 @Override
 public void updateList(ArrayList<String> values) {
 	// TODO Auto-generated method stub
-    DetailFragment detailfragment = (DetailFragment) getFragmentManager()
+    DetailFragment detailFragment = (DetailFragment) getFragmentManager()
             .findFragmentById(R.id.detailFragment);
-        if (detailfragment != null && detailfragment.isInLayout()) {
+        if (detailFragment != null && detailFragment.isInLayout()) {
     	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
     	        android.R.layout.simple_list_item_1, values);
-    	    detailfragment.setListAdapter(adapter);
-			ListOrganizerActivity.listvalues=values;
-       } else {
-
-
-        }
+            detailFragment.setListAdapter(adapter);
+			ListOrganizerActivity.listValues = values;
+       }
 }
 
 /**
@@ -994,7 +954,6 @@ public void setPositiveAlertOptionOK(AlertDialog.Builder alertDialog)
                 }
             });
 }
-
 
 } 
     

@@ -12,6 +12,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -27,9 +28,9 @@ import android.widget.Spinner;
 public class CustomOnItemSelectedListener extends MyListFragment implements OnItemSelectedListener {
  
 	static Context context;
-	static Spinner spinnertitles;
+	static Spinner spinnerTitles;
 	static ArrayAdapter<String> spinnerAdapter;
-	ArrayList<String> spinnerlist;
+	ArrayList<String> spinnerList;
 	private OnItemSelectedListener listener;
   
 	/**
@@ -37,17 +38,17 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	 * Sets intial values that are needed for the CustomOnItemSelectedListener
 	 * 
 	 * @param context set the context from the Main Activity class
-	 * @param listspinner Current Spinner from the MyListFragment Class
+	 * @param listSpinner Current Spinner from the MyListFragment Class
 	 * @param dataAdapter Adapter that is associated to the spinner
-	 * @param spinnerlist List of spinner items that are located int he spinner
+	 * @param spinnerList List of spinner items that are located int he spinner
 	 */
-	public CustomOnItemSelectedListener(Context context, Spinner listspinner,
-			ArrayAdapter<String> dataAdapter, ArrayList<String> spinnerlist) {
+	public CustomOnItemSelectedListener(Context context, Spinner listSpinner,
+			ArrayAdapter<String> dataAdapter, ArrayList<String> spinnerList) {
 		// TODO Auto-generated constructor stub
-    	CustomOnItemSelectedListener.spinnertitles = listspinner;
+    	CustomOnItemSelectedListener.spinnerTitles = listSpinner;
     	CustomOnItemSelectedListener.context = context;
     	CustomOnItemSelectedListener.spinnerAdapter = dataAdapter;
-    	this.spinnerlist = spinnerlist;
+    	this.spinnerList = spinnerList;
 	}
 
 
@@ -60,35 +61,35 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	
 
 	//Handler for when New List is selected in the spinner drop down menu.
-	static Handler newlisthandler = new Handler() {
+	static Handler newListHandler = new Handler() {
 		  @Override
 		  public void handleMessage(Message msg) {
 				Bundle bundle = msg.getData();
-				String listinput = bundle.getString("myKey");
-				 spinnerAdapter.add(listinput);
+				String listInput = bundle.getString("myKey");
+				 spinnerAdapter.add(listInput);
 				 spinnerAdapter.notifyDataSetChanged();
-				 spinnertitles.setAdapter(spinnerAdapter); 
+                 spinnerTitles.setAdapter(spinnerAdapter);
 
-				 int spinnerPosition = spinnerAdapter.getPosition(listinput);
+				 int spinnerPosition = spinnerAdapter.getPosition(listInput);
 
 				 //set the selected spinner item according to value
-				 spinnertitles.setSelection(spinnerPosition);
-				 MyListFragment.currentspinner = listinput;
-				 MyListFragment.staticlistener.clearFragmentList(1);
+                 spinnerTitles.setSelection(spinnerPosition);
+				 MyListFragment.currentSpinner = listInput;
+				 MyListFragment.staticListener.clearFragmentList(1);
 		     }
 		 };
 		 
 		 
     //Handler for when "User created title" is selected in the spinner drop down menu	
-	static Handler userinputhandler = new Handler() {
+	static Handler userInputHandler = new Handler() {
 		  @Override
 		  public void handleMessage(Message msg) {
 				Bundle bundle = msg.getData();
-				String listinput = bundle.getString("mysecondKey");
+				String listInput = bundle.getString("mysecondKey");
 			    ToDoListDbHelper db = new ToDoListDbHelper(context);
-				List<ListItem> itemlistbytitle = db.getAllListItemsByTitle(listinput);
-				ArrayList<String> values = getListItems(itemlistbytitle);
-				MyListFragment.staticlistener.updateList(values);
+				List<ListItem> itemListByTitle = db.getAllListItemsByTitle(listInput);
+				ArrayList<String> values = getListItems(itemListByTitle);
+				MyListFragment.staticListener.updateList(values);
 				 
 		     }
 		 };
@@ -101,10 +102,10 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	 */
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
             long id) {
-         final String itemselected = parent.getItemAtPosition(pos).toString();
+         final String itemSelected = parent.getItemAtPosition(pos).toString();
          
-         MyListFragment.currentspinner = itemselected;
-		 if (itemselected.equals("New List"))
+         MyListFragment.currentSpinner = itemSelected;
+		 if (itemSelected.equals("New List"))
 		 {
 			 AlertDialog.Builder alertDialog = null;
 
@@ -123,7 +124,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
   			input.setLayoutParams(lp);
   			alertDialog.setView(input); 
 
-		   String listinput = input.getText().toString();
+		   String listInput = input.getText().toString();
 		    
 
             // Setting Positive "Yes" Button
@@ -132,9 +133,9 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
                         public void onClick(DialogInterface dialog,int which) {
                             // Write your code here to execute after dialog
 
-             final String listinput = input.getText().toString();
+             final String listInput = input.getText().toString();
 			//Checks if edittext is empty,space, or null. Not a valid list item.
-			if (listinput.equals("") || listinput.equals(" ") || input == null) {
+			if (listInput.equals("") || listInput.equals(" ") || input == null) {
 				 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
             // Setting Dialog Title
             alertDialog.setTitle("Invalid Name");
@@ -148,22 +149,23 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 			else
 			{
 			
-		 if (!checkDuplicates(spinnerlist,listinput)) //check duplicate spinner items{
+		 if (!checkDuplicates(spinnerList, listInput)) //check duplicate spinner items
+		 {
 			 try {
 
 			Runnable runnable = new Runnable() { //Run in separate thread
 		        public void run() {     	
 			 
-		        	//Use Handler(newlisthandler) to update User Interface from another thread.
-	            	Message msg = newlisthandler.obtainMessage();
+		        	//Use Handler(newListHandler) to update User Interface from another thread.
+	            	Message msg = newListHandler.obtainMessage();
 	    			Bundle bundle = new Bundle();
-	    			bundle.putString("myKey", listinput);
+	    			bundle.putString("myKey", listInput);
 	                msg.setData(bundle);
-	                newlisthandler.sendMessage(msg);
+	                newListHandler.sendMessage(msg);
 		        }
 		      };
-		      Thread mythread = new Thread(runnable);
-		      mythread.start();
+		      Thread myThread = new Thread(runnable);
+              myThread.start();
 		 
 			 }
 	      	catch (ArrayIndexOutOfBoundsException ex)
@@ -176,7 +178,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	      	}
 		 }
 		 else {
-			 	//S   pinner item is a duplicated
+			 	//Spinner item is a duplicated
 			 	AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 	            // Setting Dialog Title
 	            alertDialog.setTitle("Duplicate item");
@@ -199,9 +201,9 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 			alertDialog1.show();
         }
 		 
-			else if (itemselected.equals("Sample List"))
+			else if (itemSelected.equals("Sample List"))
 			{
-				MyListFragment.staticlistener.sampleFragmentList(1);
+				MyListFragment.staticListener.sampleFragmentList(1);
 		
 			}
 			else
@@ -215,11 +217,11 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 		        public void run() {     	
 			 
 		        	//Use Handler(userinputhandler) to update User Interface from another thread.
-	            	Message msg = userinputhandler.obtainMessage();
+	            	Message msg = userInputHandler.obtainMessage();
 	    			Bundle bundle = new Bundle();
-	    			bundle.putString("mysecondKey", MyListFragment.currentspinner);
+	    			bundle.putString("mysecondKey", MyListFragment.currentSpinner);
 	                msg.setData(bundle);
-	                userinputhandler.sendMessage(msg);
+	                userInputHandler.sendMessage(msg);
 	                 
 		        }
 		      };
@@ -247,51 +249,53 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	 * 
 	 * Gets List Items by Spinner Title
 	 * 
-	 * @param itemlistbytitle List of ListItems
+	 * @param itemListByTitle List of ListItems
 	 * @return ArrayList of String containing list items by spinner title.
 	 */
-	public static ArrayList<String> getListItems(final List<ListItem> itemlistbytitle)
+	public static ArrayList<String> getListItems(final List<ListItem> itemListByTitle)
 	{
 		
-		final ArrayList<String> finallist = new ArrayList<String>();
+		final ArrayList<String> finalList = new ArrayList<String>();
 		
 		Runnable runnable = new Runnable() { //Run in separate thread
 	        public void run() {    
-		for (ListItem listitem:itemlistbytitle)
+		for (ListItem listitem: itemListByTitle)
 		{
-			finallist.add(listitem.getListItem());
+            finalList.add(listitem.getListItem());
 		}
 	        }
 		};
 		
-    	Thread mythread = new Thread(runnable);
-    	mythread.start();
-		return finallist;
+    	Thread myThread = new Thread(runnable);
+        myThread.start();
+		return finalList;
 	}
 	
 	/**
 	 * 
 	 * Get List Item Objects by spinner title
 	 * 
-	 * @param itemlist List of List Item Objects
+	 * @param itemList List of List Item Objects
 	 * @param title selected Spinner title
 	 * @return List ArrayList of string containing List Items by spinner title
 	 */
-	public ArrayList<String> getListTitleFromListItems(final List<ListItem> itemlist, final String title)
+	public ArrayList<String> getListTitleFromListItems(final List<ListItem> itemList, final String title)
 	{
-		final ArrayList<String> finallist = new ArrayList<String>();
+		final ArrayList<String> finalList = new ArrayList<String>();
+
 		Runnable runnable = new Runnable() { //Run in separate thread
 	        public void run() {     	
 		
 	
-		for (ListItem listitem:itemlist) {
+		for (ListItem listItem: itemList) {
 
-            String currenttitle = listitem.getTitle();
-			if (currenttitle!=null)
+            String currentTitle = listItem.getTitle();
+
+            if (currentTitle != null)
             {
-			if (currenttitle.equals(title))
+			if (currentTitle.equals(title))
             {
-			finallist.add(listitem.getListItem());
+                finalList.add(listItem.getListItem());
 			}
 			}
 		}
@@ -300,39 +304,39 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	        
 	       }
     	};
-    	Thread mythread = new Thread(runnable);
-    	mythread.start();
+    	Thread myThread = new Thread(runnable);
+        myThread.start();
     	
-		return finallist;
+		return finalList;
 	}
 	
 	/**
 	 * 
 	 * Get List of title from List of List Item Objects
 	 * 
-	 * @param itemlistbytitle List of List Item Objects
+	 * @param itemListByTitle List of List Item Objects
 	 * @return ArrayList of string containing spinner titles.
 	 */
-	public ArrayList<String> getListTitles(final List<ListItem> itemlistbytitle)
+	public ArrayList<String> getListTitles(final List<ListItem> itemListByTitle)
 	{
-		final ArrayList<String> finallist = new ArrayList<String>();
+		final ArrayList<String> finalList = new ArrayList<String>();
 	
     	Runnable runnable = new Runnable() { //Run in separate thread
 	        public void run() {     	
 		
-		for (ListItem listitem:itemlistbytitle)
+		for (ListItem listItem: itemListByTitle)
 		{
-			finallist.add(listitem.getTitle());
+            finalList.add(listItem.getTitle());
 		}
 		
 	       
 	        }};
 	        
 	        
-	        Thread mythread = new Thread(runnable);
-	    	mythread.start();
+	        Thread myThread = new Thread(runnable);
+            myThread.start();
 	        
-			return finallist;
+			return finalList;
 		
 	}
 		 
@@ -340,15 +344,15 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	 * 
 	 * Check for duplicates in an ArrayList of String
 	 * 
-	 * @param arraylist ArrayList of String containing spinner titles
+	 * @param arrayList ArrayList of String containing spinner titles
 	 * @param input spinner title
 	 * @return ArrayList of String containing spinner titles with duplicates removed
 	 */
-	public boolean checkDuplicates(ArrayList<String> arraylist,String input)
+	public boolean checkDuplicates(ArrayList<String> arrayList, String input)
 	{
-		for (String listitem: arraylist)
+		for (String listItem: arrayList)
 		{
-			if (listitem.equals(input))
+			if (listItem.equals(input))
 			{
 				return true;
 			}
@@ -410,7 +414,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
      *
      */
     public interface OnItemSelectedListener {
-	     void onRssItemSelected(int position);
+	      void onRssItemSelected(int position);
 	      void sampleFragmentList(int position);
 	    }
 }

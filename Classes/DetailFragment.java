@@ -94,13 +94,13 @@ public class DetailFragment extends ListFragment  {
                         public void onClick(DialogInterface dialog, int which) {
                         	
             // Write your code here to execute after dialog
-            String listinput = input.getText().toString();
+            String listInput = input.getText().toString();
                         	
 			//Check for invalid characters	
-			Boolean invalidcharactersfound = ListOrganizerActivity.checkInvalidCharacters(listinput);
+			Boolean invalidCharactersFound = ListOrganizerActivity.checkInvalidCharacters(listInput);
 			
 			//Checks if edittext is empty,space, or null. Not a valid list item.
-			if (listinput.equals("") || listinput.equals(" ") || input == null || invalidcharactersfound == true)
+			if (listInput.equals("") || listInput.equals(" ") || input == null || invalidCharactersFound == true)
 			{
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
@@ -163,33 +163,33 @@ public class DetailFragment extends ListFragment  {
 	  	 * 
 	  	 */
 	  	@Override
-public void onCreateContextMenu(ContextMenu menu, View v,
-    ContextMenuInfo menuInfo) {
+    public void onCreateContextMenu(ContextMenu menu, View v,
+        ContextMenuInfo menuInfo) {
 		
-	try
-	{
+	    try
+	    {
 		
-    menu.setHeaderTitle("Context Menu");  
-    String[] menuItems = getResources().getStringArray(R.array.country_arrays);
-    for (int i = 0; i < menuItems.length; i++) {
-      menu.add(Menu.NONE, i, i, menuItems[i]);
-    }
+        menu.setHeaderTitle("Context Menu");
+        String[] menuItems = getResources().getStringArray(R.array.country_arrays);
+        for (int i = 0; i < menuItems.length; i++) {
+         menu.add(Menu.NONE, i, i, menuItems[i]);
+        }
     
-		}
+		    }
 	  	
-  	catch (ArrayIndexOutOfBoundsException ex)
-  	{
-  		System.out.println("Array Index Out Of Bounds Exception has occurred" + ex.getMessage());
-  		Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred",ex);                  //Log error for Array Out of Bounds Exception
-  	}
-  	catch (NullPointerException ex)
-  	{
-  		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
-  		Log.e("Null", "Null Pointer Exception Error",ex);                  //Log error for Null Pointer Exception
+  	    catch (ArrayIndexOutOfBoundsException ex)
+  	    {
+  		    System.out.println("Array Index Out Of Bounds Exception has occurred" + ex.getMessage());
+  		    Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred",ex);                  //Log error for Array Out of Bounds Exception
+  	    }
+  	    catch (NullPointerException ex)
+  	    {
+  		    System.out.println("NullPointer Exception has occurred" + ex.getMessage());
+  		    Log.e("Null", "Null Pointer Exception Error",ex);                  //Log error for Null Pointer Exception
   	
-	}
+	    }
   
-}
+    }
 
 	    // Container Activity must implement this interface
 	    /**
