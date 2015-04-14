@@ -31,10 +31,12 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     private static final String TABLE_LISTORGANIZER = "listorganizer";
  
     // List Organizer Table Columns names
-    private static final String KEY_ID = "id";
+    private static final String KEY_ID = "_id";
     private static final String KEY_TITLE = "title";
     private static final String KEY_LIST_ITEM = "list_item";
     private static final String KEY_DATE = "date";
+    private static final String KEY_POSITION = "position";
+
 	
     /**
      * Overloaded Constructed of FeedReaderDbHelper Class. Initialized context and database.
@@ -58,7 +60,8 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY, " 
         		+ KEY_TITLE + " TEXT,"
                 + KEY_LIST_ITEM + " TEXT,"
-				+ KEY_DATE + " TEXT)";
+				+ KEY_DATE + " TEXT,"
+                + KEY_POSITION + " INTEGER)";
         db.execSQL(CREATE_LISTORGANIZER_TABLE);
     }
   	catch (SQLException ex)
@@ -106,7 +109,8 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         values.put(KEY_TITLE, listItem.getTitle()); // Get Title from list item
         values.put(KEY_LIST_ITEM, listItem.getListItem()); // List Item
    		values.put(KEY_DATE, listItem.getDate().toString()); // get date from list item.
-        
+        values.put(KEY_POSITION, listItem.getPosition()); // Contact Phone
+
 		// Inserting Row
         db.insert(TABLE_LISTORGANIZER, null, values);
        
@@ -159,6 +163,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
                 listItem.setID(Integer.parseInt(cursor.getString(0)));
                 listItem.setTitle(cursor.getString(1));
                 listItem.setListItem(cursor.getString(2));
+                listItem.setPosition(Integer.parseInt(cursor.getString(4)));
                 // Adding listitem to list
                 listItemList.add(listItem);
             } while (cursor.moveToNext());
@@ -236,7 +241,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
      * 
      * Getting All List String Item By Title passed in parameter. Gets all ListItem from database by title.
      * 
-     * @param spinnertitle spinner title
+     * @param spinnerTitle spinner title
      * @return ListItem By Title passed in parameter
      */
     public ArrayList<String> getAllListStringItemsByTitle(String spinnerTitle) {
@@ -246,7 +251,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     	try
     	{
         // Select All Query
-       String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE +" = ?";
+       String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ?";
         db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery,  new String[] {spinnerTitle});
  		ArrayList<String> list = new ArrayList<String>();
@@ -260,12 +265,12 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         // return listitem list
         return list;
     }
-      	catch(SQLException ex)
+      	catch (SQLException ex)
       	{
       		System.out.println("SQL Exception has occurred" + ex.getMessage());
       		Log.e("IO", "IO Exception Error",ex);                  //Log error for IO Exception
       	}
-      	catch(NullPointerException ex)
+      	catch (NullPointerException ex)
       	{
       		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
       		Log.e("NULL", "NullPointerException Error",ex);         //Log error for Null Pointer Exception
@@ -343,8 +348,11 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     	try
     	{
         // Select All Query
-       String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE +" = ?" + "ORDER BY" + KEY_TITLE +"ASC";
-        db = this.getWritableDatabase();
+
+            String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE +" = ?" + "ORDER BY" + KEY_TITLE +"ASC";
+       //     String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE +" = ? AND "+KEY_CATEGORY + " = ? ORDER BY "+ KEY_POSITION;
+
+            db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery,  new String[] {spinnerTitle});
  		ArrayList<String> list = new ArrayList<String>();
         // looping through all rows and adding to list
@@ -376,6 +384,79 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
       	}
         return null;
     }
+
+
+    /**
+     *
+     * Getting All List Items from database
+     * @return List of List Items from Database
+     *
+     */
+    public List<ListItem> getAllListItemsBySpinnerTitle(String spinnerTitle) {
+        List<ListItem> contactList = new ArrayList<ListItem>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ? ORDER BY " + KEY_POSITION;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery,  new String[] {spinnerTitle});
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                ListItem contact = new ListItem();
+                String id = cursor.getString(0);
+                String name =  cursor.getString(1);
+                String phonenumber = cursor.getString(2);
+
+                contact.setPosition(Integer.parseInt(cursor.getString(4)));
+                contact.setID(Integer.parseInt(cursor.getString(0)));
+                contact.setTitle(cursor.getString(1));
+                contact.setListItem(cursor.getString(2));
+                // Adding contact to list
+                contactList.add(contact);
+            } while (cursor.moveToNext());
+        }
+
+        // return contact list
+        return contactList;
+    }
+
+    /**
+     *
+     * Updating single listitem on database
+     *
+     * @param listitem listitem that will be updated
+     * @return  the number of rows updated
+     */
+    public int updateListItemAdd(ListItem listItem) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_POSITION, listItem.getPosition()+1);
+
+        // updating row
+        return db.update(TABLE_LISTORGANIZER, values, KEY_TITLE + " = ? AND " + KEY_POSITION+ "  = ?",
+                new String[] {String.valueOf(listItem.getTitle()), String.valueOf(listItem.getPosition())});
+    }
+
+    /**
+     *
+     * Updating single listitem on database
+     *
+     * @param listItem listitem that will be updated
+     * @return  the number of rows updated
+     */
+    public void updateListItemAdd1(ListItem listItem, int index) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<ListItem> listItemList = getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+
+        for (int i = index + 1; i < listItemList.size(); i++)
+        {
+            updateListItemAdd(listItemList.get(i));
+        }
+
+
+    }
+
     /**
      * 
      * Updating single listItem on database
@@ -396,8 +477,12 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
  		values.put(KEY_DATE, date.toString());
 		
         // updating row
-        return db.update(TABLE_LISTORGANIZER, values, KEY_TITLE + " = ?",
-                new String[] { String.valueOf(listItem.getTitle()) });
+        //return db.update(TABLE_LISTORGANIZER, values, KEY_TITLE + " = ?",
+         //       new String[] { String.valueOf(listItem.getTitle()) });
+
+            // updating row
+            return db.update(TABLE_LISTORGANIZER, values, KEY_TITLE + " = ? AND " + KEY_POSITION + " = ?",
+                    new String[] {String.valueOf(listItem.getTitle()), String.valueOf(listItem.getPosition())});
     	}
       	catch (SQLException ex)
       	{
@@ -440,7 +525,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         
         // updating row
         return db.update(TABLE_LISTORGANIZER, values, KEY_TITLE + " = ?",
-                new String[] { spinnerTitle});
+                new String[] {spinnerTitle});
     	}
       	catch (SQLException ex)
       	{
@@ -463,7 +548,72 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
 		return 0;
         
     }
-    
+
+    /**
+     *
+     * Getting All List String Item By Title passed in parameter. Gets all ListItem from database by title.
+     *
+     * @param spinnerTitle spinner title
+     * @return ListItem By Title passed in parameter
+     */
+    public ArrayList<String> AndPosition(String spinnerTitle) {
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ? AND " + KEY_POSITION + " = ?";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery,  new String[] {spinnerTitle});
+        ArrayList<String> list = new ArrayList();
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(cursor.getString(2));
+            } while (cursor.moveToNext());
+        }
+
+        // return contact list
+        return list;
+    }
+
+
+    /**
+     *
+     * Updating single listitem on database
+     *
+     * @param listitem listitem that will be updated
+     * @return  the number of rows updated
+     */
+    public int updateListItemDelete(ListItem listItem) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_POSITION, listItem.getPosition()-1);
+
+        // updating row
+        return db.update(TABLE_LISTORGANIZER, values, KEY_TITLE + " = ? AND " + KEY_POSITION + "  = ?",
+                new String[] {String.valueOf(listItem.getTitle()), String.valueOf(listItem.getPosition())});
+    }
+
+    /**
+     *
+     * Updating single listitem on database
+     *
+     * @param listitem listitem that will be updated
+     * @return  the number of rows updated
+     */
+    public void updateListItemDelete1(ListItem listItem) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<ListItem> listItemList = getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+
+        int position = listItem.getPosition();
+
+        for (int i= position; i < listItemList.size(); i++)
+        {
+            updateListItemDelete(listItemList.get(i));
+        }
+
+
+    }
+
+
     /**
      * 
      * Deleting single list item based on title and list item
@@ -475,9 +625,10 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     SQLiteDatabase db = null;
     try{
       db = this.getWritableDatabase();
-      db.delete(TABLE_LISTORGANIZER, KEY_TITLE + " = ?" + " AND "+ KEY_LIST_ITEM + " = ?",
-              new String[] { String.valueOf(listItem.getTitle()),String.valueOf(listItem.getListItem()) });
-    	}
+        db.delete(TABLE_LISTORGANIZER, KEY_TITLE + " = ?" + " AND " + KEY_LIST_ITEM + " = ? AND " + KEY_POSITION + " = ?",
+                new String[] {String.valueOf(listItem.getTitle()), String.valueOf(listItem.getListItem()), String.valueOf(listItem.getPosition())});
+
+    }
 
   	catch (SQLException ex)
   	{

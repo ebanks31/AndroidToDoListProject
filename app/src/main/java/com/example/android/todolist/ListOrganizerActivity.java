@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.ShareActionProvider;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -219,78 +220,138 @@ this.contextInfo = context;
      * @param item Menu item that is clicked
      */
     public void AddItemToList(MenuItem item) {
-    	CustomOnItemSelectedListener customlistener = new CustomOnItemSelectedListener();
-    	final AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-   	    Spinner spinner = (Spinner)findViewById(R.id.spinner1);
-   	    int valToSet = (int) spinner.getSelectedItemId();
-   	    final int index = (info!=null) ? info.position : valToSet;
-   	 
-   	    final DetailFragment detailFragment = (DetailFragment)
-			    getFragmentManager().findFragmentById(R.id.detailFragment);
-	 
-    			AlertDialog.Builder  alertDialog = new AlertDialog.Builder(this);
+        CustomOnItemSelectedListener customlistener = new CustomOnItemSelectedListener();
+        final AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+        Spinner spinner = (Spinner)findViewById(R.id.spinner1);
+        int valToSet = (int) spinner.getSelectedItemId();
+        final int index = (info!=null) ? info.position : valToSet;
 
-    	        // Setting Dialog Title
-    	        alertDialog.setTitle("List item");
+        final DetailFragment detailfragment = (DetailFragment)
+                getFragmentManager().findFragmentById(R.id.detailFragment);
 
-    	        // Setting Dialog Message
-    	        alertDialog.setMessage("Change your list item");
-    	         final EditText input = new EditText(this);  
-    				LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-    	        LinearLayout.LayoutParams.MATCH_PARENT,
-    	        LinearLayout.LayoutParams.MATCH_PARENT);
-    				input.setLayoutParams(lp);
-    				alertDialog.setView(input); 
+        AlertDialog.Builder  alertDialog = new AlertDialog.Builder(this);
 
-    				 // Setting Positive "Yes" Button
-    	            
-    			      alertDialog.setNegativeButton("YES",
-    	                    new DialogInterface.OnClickListener() {
-    	                        public void onClick(DialogInterface dialog,int which) {
-    	                            // Write your code here to execute after dialog
+        // Setting Dialog Title
+        alertDialog.setTitle("List item");
 
-    	        String listInput = input.getText().toString();
-    	        
-    	        Boolean whiteSpaceFound = ListOrganizerActivity.checkWhiteSpaces(listInput);
-    	        
-    	        Boolean invalidCharactersFound = ListOrganizerActivity.checkInvalidCharacters(listInput);
-    				//Checks if edittext is empty,space, or null. Not a valid list item.
-    				if (listInput.equals("") || listInput == null || whiteSpaceFound == true ||invalidCharactersFound == true)
-    				{
-    					
-    					 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ListOrganizerActivity.this);
-    	            // Setting Dialog Title
-    	            alertDialog.setTitle("Invalid Name");
+        // Setting Dialog Message
+        alertDialog.setMessage("Change your list item");
+        final EditText input = new EditText(this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(lp);
+        alertDialog.setView(input);
 
-    	            // Setting Dialog Message
-    	            alertDialog.setMessage("Please Enter a valid list name");
-    	            setPositiveAlertOptionOK(alertDialog);
-    	            alertDialog.show();
-    					
-    				}
-    				else {
-    					CustomOnItemSelectedListener a = new CustomOnItemSelectedListener();
-    					ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
-    					
-						Date date = ListOrganizerActivity.getCurrentDate();
+        // Setting Positive "Yes" Button
 
-    					db.addListitem(new ListItem(MyListFragment.currentSpinner, listInput, date));
-						 
-						 ListOrganizerActivity.listValues.add(listInput);
-    				    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
-    			    	        android.R.layout.simple_list_item_1, ListOrganizerActivity.listValues);
-    				    adapter.notifyDataSetChanged();
-    				    
-    					detailFragment.setListAdapter(adapter);
+        alertDialog.setNegativeButton("YES",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int which) {
+                        // Write your code here to execute after dialog
 
-    		
-    	
-    				}
-    	                        }
-    	                        });
-    					
-    			        setPositiveAlertOptionNO(alertDialog);
-    		            alertDialog.show();
+                        String listInput = input.getText().toString();
+                        Boolean whiteSpaceFound = ListOrganizerActivity.checkWhiteSpaces(listInput);
+                        Boolean invalidCharactersFound = ListOrganizerActivity.checkInvalidCharacters(listInput);
+
+                        //Checks Invalid characters. Checks if edittext is empty,space, or null. Not a valid list item.
+                        if (listInput.equals("") || listInput == null || whiteSpaceFound == true || invalidCharactersFound==true)
+                        {
+
+                            AlertDialog.Builder alertDialog = new AlertDialog.Builder(ListOrganizerActivity.this);
+                            // Setting Dialog Title
+                            alertDialog.setTitle("Invalid Name");
+
+                            // Setting Dialog Message
+                            alertDialog.setMessage("Please Enter a valid list name");
+                            setPositiveAlertOptionOK(alertDialog);
+                            alertDialog.show();
+
+                        }
+                        //else if(!MyListFragment.currentspinner.equals("New List") && !MyListFragment.currentspinner.equals("Sample List"))
+                        else
+                        {
+
+                            CustomOnItemSelectedListener a = new CustomOnItemSelectedListener();
+                            ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
+
+                            Date date = ListOrganizerActivity.getCurrentDate();
+                            // List<ListItem> itemlistbytitle = db.getAllListItems();
+                            //ArrayList<String> values =a.getListTitleFromListItems(itemlistbytitle,MyListFragment.currentspinner);
+                            List<ListItem> list = db.getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+
+
+                            for (ListItem listItem:list)
+                            {
+                                Log.d("Title", String.valueOf(listItem.getTitle()));
+                                Log.d("ListItem", String.valueOf(listItem.getListItem()));
+                                Log.d("Position", String.valueOf(listItem.getPosition()));
+
+                            }
+
+
+                            if (ListOrganizerActivity.listValues != null || ListOrganizerActivity.listValues.size()>0)
+                            {
+                                db.addListitem(new ListItem(MyListFragment.currentSpinner, listInput, date, ListOrganizerActivity.listValues.size()+1));
+                                ListOrganizerActivity.listValues.add(ListOrganizerActivity.listValues.size(), listInput);
+                            }
+                            else
+                            {
+                                db.addListitem(new ListItem(MyListFragment.currentSpinner, listInput, date,1));
+                                ListOrganizerActivity.listValues.add(0, listInput);
+
+                            }
+
+
+                            List<ListItem> logList = db.getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+
+                            for (ListItem listItem:logList)
+                            {
+                                Log.d("Title", String.valueOf(listItem.getTitle()));
+                                Log.d("ListItem", String.valueOf(listItem.getListItem()));
+                                Log.d("Position", String.valueOf(listItem.getPosition()));
+
+                            }
+
+    					/*
+    					if(!MyListFragment.currentspinner.equals("New List") && !MyListFragment.currentspinner.equals("Sample List"))
+    					{
+    					db.addContact(new ListItem(MyListFragment.currentspinner, listinput));
+    					}*/
+						/*
+    					 List<ListItem> itemlistbytitle1 = db.getAllListItems();
+    					 ArrayList<String> values1 =a.getListTitleFromListItems(itemlistbytitle1,MyListFragment.currentspinner);
+
+    					// ArrayList<String> finaltitlelist = removeDuplicates(values);
+    					 values1.removeAll(Collections.singleton(null));
+
+    					 int position =values1.indexOf(listinput);
+
+    					 if(position>=0)
+    					 {
+    					 Collections.swap(values1, position, values1.size()-1);
+    					 }
+
+    					 ListOrganizerActivity.listvalues.add(listinput);
+    					 /*
+    		   				    final ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(ListOrganizerActivity.this,
+    			    	        android.R.layout.simple_list_item_1, values);
+    				    //adapter3.add(listinput);
+    				    adapter3.notifyDataSetChanged();
+
+    					detailfragment.setListAdapter(adapter3);*/
+                            updateList(ListOrganizerActivity.listValues);
+
+                            //ListOrganizerActivity.listvalues=ConvertArrayListtoArray(values1);
+
+
+
+                        }
+                    }
+                });
+
+        setPositiveAlertOptionNO(alertDialog);
+        alertDialog.show();
     	  
     }
     
@@ -364,7 +425,7 @@ public boolean onContextItemSelected(MenuItem item) {
 	 final ListFragment listFragment = (ListFragment)
 			    getFragmentManager().findFragmentById(R.id.listfragment);
 	 
-		ArrayAdapter<String> adapter =ListOrganizerActivity.listAdapter;
+		ArrayAdapter<String> adapter = ListOrganizerActivity.listAdapter;
 		
 		//ArrayList<String> lst = new ArrayList<String>();
 		//lst.addAll(Arrays.asList(ListOrganizerActivity.listvalues));
@@ -383,9 +444,9 @@ public boolean onContextItemSelected(MenuItem item) {
   final String menuItemName = menuItems[menuItemIndex];
   //  String listItemName = Countries[info.position];
   //int index = info.position;
-  ListAdapter listAdapter= detailFragment.getListAdapter();
+  ListAdapter listAdapter = detailFragment.getListAdapter();
   long listSelectedId = listAdapter.getItemId(index);
-  final String currentItem=(String) listAdapter.getItem(index);
+  final String currentItem = (String) listAdapter.getItem(index);
   
   long spinnerPosition =  MyListFragment.listSpinner.getSelectedItemId();
   
@@ -413,7 +474,7 @@ public boolean onContextItemSelected(MenuItem item) {
             
 		      alertDialog.setNegativeButton("YES",
                     new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,int which) {
+                        public void onClick(DialogInterface dialog, int which) {
                             // Write your code here to execute after dialog
 
         String listInput = input.getText().toString();
@@ -440,9 +501,12 @@ public boolean onContextItemSelected(MenuItem item) {
 		  //Add to Spinner
 	
 				ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
-				
-				Date date = ListOrganizerActivity.getCurrentDate();
-				db.addListitem(new ListItem(MyListFragment.currentSpinner, listInput,date));
+                Date date = ListOrganizerActivity.getCurrentDate();
+                db.updateListItemAdd1(new ListItem(MyListFragment.currentSpinner, listInput, date, index), index);
+
+
+                db.addListitem(new ListItem(MyListFragment.currentSpinner, listInput, date, index + 2));
+
 				
 				/*
 				if(!MyListFragment.currentspinner.equals("New List") && !MyListFragment.currentspinner.equals("Sample List"))
@@ -457,7 +521,7 @@ public boolean onContextItemSelected(MenuItem item) {
 				*/
 				ListOrganizerActivity.listValues.add(index+1,listInput);
 			    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
-		    	        android.R.layout.simple_list_item_1, ListOrganizerActivity.listValues);;
+		    	        android.R.layout.simple_list_item_1, ListOrganizerActivity.listValues);
                 adapter.notifyDataSetChanged();
 				detailFragment.setListAdapter(adapter);
 				 
@@ -492,7 +556,7 @@ public boolean onContextItemSelected(MenuItem item) {
             
 		      alertDialog.setNegativeButton("YES",
                     new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,int which) {
+                        public void onClick(DialogInterface dialog, int which) {
                             // Write your code here to execute after dialog
 
         String listInput = input.getText().toString();
@@ -519,21 +583,73 @@ public boolean onContextItemSelected(MenuItem item) {
 			else
 			{
 		  //Add to Spinner
+
+                ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
+
+                Date date = ListOrganizerActivity.getCurrentDate();
+                ArrayList<String> lst4 = db.getAllListStringItemsByTitle(MyListFragment.currentSpinner);
+
+                updateList(lst4);
+
 				   String key = ((TextView) info.targetView).getText().toString();
-			       ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
-					
-					Date date = ListOrganizerActivity.getCurrentDate();
+
 					if (!MyListFragment.currentSpinner.equals("New List") && !MyListFragment.currentSpinner.equals("Sample List"))
 					{
-					db.updateListItem(new ListItem(MyListFragment.currentSpinner, listInput), date);
+					//db.updateListItem(new ListItem(MyListFragment.currentSpinner, listInput), date);
+                        int position = lst4.size();
+
+                        List<ListItem> list = db.getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+
+                        for (ListItem listItem:list)
+                        {
+                            Log.d("Title", String.valueOf(listItem.getTitle()));
+                            Log.d("ListItem", String.valueOf(listItem.getListItem()));
+                            Log.d("Position", String.valueOf(listItem.getPosition()));
+
+                        }
+
+                        System.out.println("Index " + index);
+                        db.updateListItem(new ListItem(MyListFragment.currentSpinner, listInput, date, index + 1), date);
+
+
+                        List<ListItem> currentList = db.getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+
+                        for (ListItem listitem:currentList)
+                        {
+                            Log.d("Title", String.valueOf(listitem.getTitle()));
+                            Log.d("ListItem", String.valueOf(listitem.getListItem()));
+                            Log.d("Position", String.valueOf(listitem.getPosition()));
+
+                        }
 					}
 
+                ArrayList<String> finalList = db.getAllListStringItemsByTitle(MyListFragment.currentSpinner);
+
+                List<ListItem> currentList = db.getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+
+                for (ListItem listitem:currentList)
+                {
+                    Log.d("Title", String.valueOf(listitem.getTitle()));
+                    Log.d("ListItem", String.valueOf(listitem.getListItem()));
+                    Log.d("Position", String.valueOf(listitem.getPosition()));
+
+                }
+                // final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(ListOrganizerActivity.this,
+                //     android.R.layout.simple_list_item_1, lst4);
+
+
+                // adapter1.insert(listinput,index+1);
+                // adapter1.remove(listinput);
+
+                updateList(finalList);
+
+                /*
 				ListOrganizerActivity.listValues.add(index+1, listInput);
 				ListOrganizerActivity.listValues.remove(index);
 			    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
 		    	android.R.layout.simple_list_item_1, ListOrganizerActivity.listValues);
                 adapter.notifyDataSetChanged();
-				detailFragment.setListAdapter(adapter);
+				detailFragment.setListAdapter(adapter);*/
 			
 			}
                         }
@@ -560,6 +676,12 @@ public boolean onContextItemSelected(MenuItem item) {
                  		String key = ((TextView) info.targetView).getText().toString();
                 		ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
 
+                         ArrayList<String> listListItems = db.getAllListStringItemsByTitle(MyListFragment.currentSpinner);
+                         Date date = ListOrganizerActivity.getCurrentDate();
+           /*              ArrayList<String> lst5 =db.getAllListStringItemsByTitle(MyListFragment.currentSpinner);
+                         Date date = ListOrganizerActivity.getCurrentDate();
+                         updateList(lst5);
+
                 		db.deleteListItem(new ListItem(MyListFragment.currentSpinner, key));
 						
 						ListOrganizerActivity.listValues.remove(index);
@@ -569,9 +691,91 @@ public boolean onContextItemSelected(MenuItem item) {
 
                 	  adapter.notifyDataSetChanged();
                       detailFragment.setListAdapter(adapter);
-                	 
-                	  
-  
+                	 */
+
+                         int position = index;
+
+                         List<ListItem> list = db.getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+                         ArrayList<Integer> positionList = new ArrayList<Integer>();
+
+                         for (int i = 0; i < list.size(); i++)
+                         {
+                             Log.d("Position", String.valueOf(list.get(i).getPosition()));
+                             Log.d("ListItem", String.valueOf(list.get(i).getListItem()));
+                             Log.d("Title", String.valueOf(list.get(i).getTitle()));
+                             positionList.add(list.get(i).getPosition());
+                         }
+
+                         for (int i = 0; i < positionList.size(); i++)
+                         {
+
+                             db.deleteListItem(new ListItem(MyListFragment.currentSpinner, listListItems.get(i), date, positionList.get(i)));
+                             ListOrganizerActivity.listValues.remove((positionList.get(i) - 1) - i );
+                         }
+
+
+
+
+                         List<ListItem> list1 = db.getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+
+                         for (ListItem listitem:list1)
+                         {
+                             Log.d("Title", String.valueOf(listitem.getTitle()));
+                             Log.d("ListItem", String.valueOf(listitem.getListItem()));
+                             Log.d("Position", String.valueOf(listitem.getPosition()));
+
+                         }
+
+                         for (int i = 0;i < list1.size(); i++)
+                         {
+
+                             //SORT BY POSITION
+                             db.updateListItem(new ListItem(MyListFragment.currentSpinner, list1.get(i).getListItem(), date, i + 1), date);
+                         }
+
+                         List<ListItem> list2 = db.getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+
+                         for (ListItem listitem:list2)
+                         {
+                             Log.d("Title", String.valueOf(listitem.getTitle()));
+                             Log.d("ListItem", String.valueOf(listitem.getListItem()));
+                             Log.d("Position", String.valueOf(listitem.getPosition()));
+
+                         }
+                		/*
+                		if(!MyListFragment.currentspinner.equals("New List") && !MyListFragment.currentspinner.equals("Sample List"))
+                		{
+                		db.deleteContact(new ListItem(MyListFragment.currentspinner, key));
+                		}*/
+                		/*
+                	  ListAdapter listadapter1= detailfragment.getListAdapter();
+                		//ArrayList<String> lst1 = new ArrayList<String>();
+                		//lst1.addAll(Arrays.asList(ListOrganizerActivity.listvalues));
+                	    //final ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(ListOrganizerActivity.this,
+                    	   //     android.R.layout.simple_list_item_1, lst1);
+
+        				ArrayList<String> lst4 =db.getAllListStringItemsByTitle(MyListFragment.currentspinner);
+        			    final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(ListOrganizerActivity.this,
+        		    	        android.R.layout.simple_list_item_1, lst4);
+                	  final String currentitem1=(String) listadapter1.getItem(index);
+
+                	  for(int i=index;i<lst4.size();i++)
+                	  {
+                		  db.updateListItem1(new ListItem(MyListFragment.currentspinner, lst5.get(index),index));
+                	  }
+
+                	  */
+                         updateList(ListOrganizerActivity.listValues);
+                	  /*
+                	  //adapter2.remove((String) currentitem1);
+                	  adapter2.notifyDataSetChanged();
+                	  detailfragment.setListAdapter(adapter2);*/
+
+
+                         //z  ListOrganizerActivity.values=deleteItemFromArray(lst1,currentitem1);}}
+                         //  ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                         //       android.R.layout.simple_list_item_1, values);
+                         //    setListAdapter(adapter);
                     	 
                      }
                  });
@@ -902,7 +1106,7 @@ public void detailFragmentSelected(String[] values, ArrayAdapter<String> adapter
 
 /* (non-Javadoc)
  * @see com.example.android.rssfeed.MyListFragment.OnItemSelectedListener#updateList(java.util.ArrayList)
- * 
+ *
  * Updates Detail Fragment given a ArrayList of Strings
  */
 @Override

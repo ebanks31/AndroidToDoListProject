@@ -16,8 +16,8 @@ public class ListItem {
 	private String listItem;
 	private int id;
 	private Date date;
-	
-	
+    private int position;
+    int value;
 	/**
 	 * Default Constructor for List Item Class
 	 */
@@ -35,21 +35,36 @@ public class ListItem {
 		this.title = title;
 		this.listItem = listItem;
 	}
-	
+
+    public ListItem(String listItem, int value){
+        this.listItem = listItem;
+        this.value = value;
+    }
 		/**
 	 * Overloaded Constructor for List Item. Initalizes a List Item with a title and listitem
 	 * 
 	 * @param title title from the spinner
 	 * @param listitem list item from the list that is associated to spinner
 	 * @param date current date list was modified for title
+     * @param position current position
 	 */
-	public ListItem(String title, String listItem, Date date) {
+	public ListItem(String title, String listItem, Date date, int position) {
 		this.title = title;
 		this.listItem = listItem;
 		this.date = date;
+        this.position = position;
 	}
-	
-	/**
+
+    /**
+     * Gets the title of the spinner
+     * @return title of the spnner
+     */
+    public int getPosition() {
+        return position;
+    }
+
+
+    /**
 	 * Gets the title of the spinner
 	 * @return title of the spnner
 	 */
@@ -94,7 +109,16 @@ public class ListItem {
 		this.date = date;
 	}
 
-
+    /**
+     * Set date
+     * @param date date that will be set
+     */
+    public void setPosition(int position) {
+        this.position = position;
+    }
+    /**
+     *
+     */
 	/**
 	 * Set unique ID for each List Item
 	 * @param id unique ID for each List Item
