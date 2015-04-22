@@ -40,20 +40,21 @@ public class MyListFragment extends ListFragment implements OnItemSelectedListen
   AdapterView<ListAdapter> spinnerAdapter;
   public static Spinner listSpinner;
   public static String currentSpinner;
+  public static int previousSpinnerPosition;
   Context context;
 
   
   /* (non-Javadoc)
- * @see android.app.ListFragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
- * 
- * Sets the initial values in the spinner.
- */
-@SuppressWarnings("unchecked")
-@Override
+  * @see android.app.ListFragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
+  *
+  * Sets the initial values in the spinner.
+  */
+  @SuppressWarnings("unchecked")
+  @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
-View view = inflater.inflate(R.layout.fragment_rsslist_overview,
+    View view = inflater.inflate(R.layout.fragment_rsslist_overview,
             container, false);
     listSpinner = (Spinner)view.findViewById(R.id.spinner1);
     spinnerAdapter = (AdapterView<ListAdapter>) view.findViewById(R.id.spinner1);
@@ -70,9 +71,9 @@ View view = inflater.inflate(R.layout.fragment_rsslist_overview,
     SpinnerItem newListSpinnerItem = new SpinnerItem(newList, 2);
     db.addSpinneritem(sampleListSpinnerItem);
     db.addSpinneritem(newListSpinnerItem);
+    previousSpinnerPosition = 1;
 
-
-/*
+    /*
     List<ListItem> contacts = db.getAllListItems();
     ArrayList<String> spinnerList = getSpinnerTitles(contacts);
     ArrayList<String> finalSpinnerList = removeDuplicates(spinnerList);
@@ -83,6 +84,7 @@ View view = inflater.inflate(R.layout.fragment_rsslist_overview,
 
     ArrayList<SpinnerItem> stringList1 = db.getAllSpinnerTitle();
     */
+
     ArrayList<String> stringList = db.getAllSpinnerTitleListString();
 
     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
@@ -100,7 +102,7 @@ View view = inflater.inflate(R.layout.fragment_rsslist_overview,
    * Get OnItemSelectedListener Listener
    * @return OnItemSelectedListener Listener
    */
-public OnItemSelectedListener getListener()
+  public OnItemSelectedListener getListener()
   {
 	  return listener;
   }
@@ -108,10 +110,10 @@ public OnItemSelectedListener getListener()
   /**
    * Gets the spinner titles from List of ListItem objects.
    * 
- * @param itemList List of Listitem objects containing title and list item
- * @return ArrayList of string containing spinner titles
- */
-public ArrayList<String> getSpinnerTitles(final List<ListItem> itemList)
+   * @param itemList List of Listitem objects containing title and list item
+   * @return ArrayList of string containing spinner titles
+  */
+  public ArrayList<String> getSpinnerTitles(final List<ListItem> itemList)
   {
       ArrayList<String> list = new ArrayList<String>();
 	  
@@ -146,7 +148,7 @@ public ArrayList<String> getSpinnerTitles(final List<ListItem> itemList)
  * @param list ArrayList of String that contains a list of spinner items
  * @return ArrayList of String containing spinner items with duplicates removed
  */
-public ArrayList<String> removeDuplicates(ArrayList<String> list) {
+  public ArrayList<String> removeDuplicates(ArrayList<String> list) {
 	list = new ArrayList<String>();
 	try{
 	  HashSet<String> hs = new HashSet<String>();
@@ -174,7 +176,7 @@ public ArrayList<String> removeDuplicates(ArrayList<String> list) {
    * 
    * @param listener OnitemSelected Listener for the spinner
    */
-public void setListener(OnItemSelectedListener listener)
+   public void setListener(OnItemSelectedListener listener)
   {
 	 this.listener = listener;
   }
@@ -184,11 +186,11 @@ public void setListener(OnItemSelectedListener listener)
   /**
    * Sets a custom OnItemSelectedListener to the spinner  
    * 
- * @param listSpinner Spinner of ListFragment
- * @param dataAdapter dataAdapter that is connected to the spinner
- * @param list List of spinner titles in the spinner.
- */
-public void addListenerOnSpinnerItemSelection(Spinner listSpinner, ArrayAdapter<String> dataAdapter, ArrayList<String> list){
+   * @param listSpinner Spinner of ListFragment
+   * @param dataAdapter dataAdapter that is connected to the spinner
+   * @param list List of spinner titles in the spinner.
+   */
+   public void addListenerOnSpinnerItemSelection(Spinner listSpinner, ArrayAdapter<String> dataAdapter, ArrayList<String> list){
 	 
 	try
 	{
@@ -258,7 +260,7 @@ public void addListenerOnSpinnerItemSelection(Spinner listSpinner, ArrayAdapter<
 	 * 
 	 */
 	@Override
-public void onCreateContextMenu(ContextMenu menu, View v,
+    public void onCreateContextMenu(ContextMenu menu, View v,
     ContextMenuInfo menuInfo) {
 	
 	try

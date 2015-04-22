@@ -676,9 +676,11 @@ public boolean onContextItemSelected(MenuItem item) {
                  		String key = ((TextView) info.targetView).getText().toString();
                 		ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
 
-                         ArrayList<String> listListItems = db.getAllListStringItemsByTitle(MyListFragment.currentSpinner);
+                         ArrayList<String> listItems = db.getAllListStringItemsByTitle(MyListFragment.currentSpinner);
                          Date date = ListOrganizerActivity.getCurrentDate();
-           /*              ArrayList<String> lst5 =db.getAllListStringItemsByTitle(MyListFragment.currentSpinner);
+
+                       /*
+                        ArrayList<String> lst5 =db.getAllListStringItemsByTitle(MyListFragment.currentSpinner);
                          Date date = ListOrganizerActivity.getCurrentDate();
                          updateList(lst5);
 
@@ -709,7 +711,7 @@ public boolean onContextItemSelected(MenuItem item) {
                          for (int i = 0; i < positionList.size(); i++)
                          {
 
-                             db.deleteListItem(new ListItem(MyListFragment.currentSpinner, listListItems.get(i), date, positionList.get(i)));
+                             db.deleteListItem(new ListItem(MyListFragment.currentSpinner, listItems.get(i), date, positionList.get(i)));
                              ListOrganizerActivity.listValues.remove((positionList.get(i) - 1) - i );
                          }
 
