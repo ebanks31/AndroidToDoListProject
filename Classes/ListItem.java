@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 
  * This class initializes a ListItem with a title and list item string.
- * The class can also set and get: title, list item, and id.
+ * This class can also set and get: title, list item, and id.
  * 
  * @author Eric
  *
@@ -26,7 +26,7 @@ public class ListItem {
 	}
 	
 	/**
-	 * Overloaded Constructor for List Item. Initalizes a List Item with a title and listitem
+	 * Overloaded Constructor for List Item. Initializes a List Item with a title and listitem
 	 * 
 	 * @param title title from the spinner
 	 * @param listitem list item from the list that is associated to spinner
