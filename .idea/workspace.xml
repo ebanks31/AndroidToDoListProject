@@ -18,19 +18,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a61a4a9-1cc9-4d24-9efd-4575616fd665" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/SpinnerItem.java" />
       <change type="DELETED" beforePath="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\src\main\java\com\example\android\rssfeedlist\CopyOfFeedReaderDbHelper.java" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\src\main\java\com\example\android\rssfeedlist\FeedEntry.java" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\src\main\java\com\example\android\rssfeedlist\FeedReaderDbHelper.java" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\src\main\java\com\example\android\rssfeedlist\Item.java" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\src\main\java\com\example\android\rssfeedlist\LocalSender.java" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\src\main\java\com\example\android\rssfeedlist\MainApp.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/CustomOnItemSelectedListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/CustomOnItemSelectedListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/MyListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/MyListFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ToDoListDbHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ToDoListDbHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ListOrganizerContextWOCheck.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1675,7 +1668,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1698,7 +1691,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32490012" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288948" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37222221" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37222221" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17910448" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
