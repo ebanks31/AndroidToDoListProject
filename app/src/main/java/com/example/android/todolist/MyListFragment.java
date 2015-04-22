@@ -42,8 +42,16 @@ public class MyListFragment extends ListFragment implements OnItemSelectedListen
   public static String currentSpinner;
   public static int previousSpinnerPosition;
   Context context;
+  private ToDoListUtility todolistutility;
 
-  
+  /**
+  * Default Constructor for MyListFragment Fragment. Initialized variables needed for this fragment.
+  */
+  public MyListFragment()
+  {
+      todolistutility = new ToDoListUtility();
+  }
+
   /* (non-Javadoc)
   * @see android.app.ListFragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
   *
@@ -73,18 +81,6 @@ public class MyListFragment extends ListFragment implements OnItemSelectedListen
     db.addSpinneritem(newListSpinnerItem);
     previousSpinnerPosition = 1;
 
-    /*
-    List<ListItem> contacts = db.getAllListItems();
-    ArrayList<String> spinnerList = getSpinnerTitles(contacts);
-    ArrayList<String> finalSpinnerList = removeDuplicates(spinnerList);
-    
-    list.addAll(finalSpinnerList);
-    list.removeAll(Collections.singleton(null));
-
-
-    ArrayList<SpinnerItem> stringList1 = db.getAllSpinnerTitle();
-    */
-
     ArrayList<String> stringList = db.getAllSpinnerTitleListString();
 
     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
@@ -106,70 +102,8 @@ public class MyListFragment extends ListFragment implements OnItemSelectedListen
   {
 	  return listener;
   }
-  
-  /**
-   * Gets the spinner titles from List of ListItem objects.
-   * 
-   * @param itemList List of Listitem objects containing title and list item
-   * @return ArrayList of string containing spinner titles
-  */
-  public ArrayList<String> getSpinnerTitles(final List<ListItem> itemList)
-  {
-      ArrayList<String> list = new ArrayList<String>();
-	  
-  	  try
-	  {
-	  for (ListItem listItem: itemList)
-	  {
-		  list.add(listItem.getTitle());
-		  
-	  }
-	    return list;
-	  }
-	catch (ArrayIndexOutOfBoundsException ex)
-  	{
-  		System.out.println("Array Index Out Of Bounds Exception has occurred" + ex.getMessage());
-  		Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred", ex);                  //Log error for Array Out of Bounds Exception
-  	}
-  	catch (NullPointerException ex)
-  	{
-  		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
-  		Log.e("Null", "Null Pointer Exception Error", ex);                  //Log error for Null Pointer Exception
-  	
-	}
-	  return null;
-  }
-  
 
 
-  /**
-   * Removes duplicates from an ArrayList of strings.
-   * 
- * @param list ArrayList of String that contains a list of spinner items
- * @return ArrayList of String containing spinner items with duplicates removed
- */
-  public ArrayList<String> removeDuplicates(ArrayList<String> list) {
-	list = new ArrayList<String>();
-	try{
-	  HashSet<String> hs = new HashSet<String>();
-	  hs.addAll(list);
-	  list.clear();
-	  list.addAll(hs);
-	}
-	
-  	catch (ArrayIndexOutOfBoundsException ex)
-  	{
-  		System.out.println("Array Index Out Of Bounds Exception has occurred" + ex.getMessage());
-  		Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred",ex);                  //Log error for Array Out of Bounds Exception
-  	}
-  	catch (NullPointerException ex)
-  	{
-  		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
-  		Log.e("Null", "Null Pointer Exception Error",ex);                  //Log error for Null Pointer Exception
-  	
-	}
-	  return list;
-  }
 
   /**
    * Set OnitemSelected Listener for the spinner

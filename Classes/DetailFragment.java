@@ -28,6 +28,15 @@ import android.widget.Spinner;
 public class DetailFragment extends ListFragment  {
 
 	detailFragmentSelectedListener listener;
+    private ToDoListUtility todolistutility;
+
+    /**
+     * Default Constructor for Detail Fragment. Initialized variables needed for this fragment.
+     */
+    public  DetailFragment()
+    {
+        todolistutility = new ToDoListUtility();
+    }
 	
 	  /* (non-Javadoc)
 	 * @see android.app.Fragment#onActivityCreated(android.os.Bundle)
@@ -97,10 +106,10 @@ public class DetailFragment extends ListFragment  {
             String listInput = input.getText().toString();
                         	
 			//Check for invalid characters	
-			Boolean invalidCharactersFound = ListOrganizerActivity.checkInvalidCharacters(listInput);
+			Boolean validCharactersFound = todolistutility.checkValidCharacters ( listInput );
 			
 			//Checks if edittext is empty,space, or null. Not a valid list item.
-			if (listInput.equals("") || listInput.equals(" ") || input == null || invalidCharactersFound == true)
+			if (listInput.equals("") || listInput.equals(" ") || validCharactersFound == false)
 			{
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 

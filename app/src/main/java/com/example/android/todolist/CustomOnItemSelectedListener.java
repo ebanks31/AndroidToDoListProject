@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+
 /**
  * 
  * This class is a Custom OnItemSelectedListener for the spinner. 
@@ -32,6 +33,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	static ArrayAdapter<String> spinnerAdapter;
 	ArrayList<String> spinnerList;
 	private OnItemSelectedListener listener;
+    private ToDoListUtility todolistutility;
   
 	/**
 	 * Overload constructor of CustomOnItemSelectedListener class. 
@@ -48,6 +50,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
     	CustomOnItemSelectedListener.spinnerTitles = listSpinner;
     	CustomOnItemSelectedListener.context = context;
     	CustomOnItemSelectedListener.spinnerAdapter = dataAdapter;
+        todolistutility = new ToDoListUtility();
     	this.spinnerList = spinnerList;
 	}
 
@@ -96,7 +99,8 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 				String listInput = bundle.getString("mysecondKey");
 			    ToDoListDbHelper db = new ToDoListDbHelper(context);
 				List<ListItem> itemListByTitle = db.getAllListItemsByTitle(listInput);
-				ArrayList<String> values = getListItems(itemListByTitle);
+              ToDoListUtility todolistutilityHandler = new ToDoListUtility();
+				ArrayList<String> values = todolistutilityHandler.getListItems(itemListByTitle);
 				MyListFragment.staticListener.updateList(values);
 
 				 
@@ -140,12 +144,15 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
             // Setting Positive "Yes" Button
             alertDialog.setNegativeButton("YES",
                     new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog,int which) {
+                        public void onClick(DialogInterface dialog, int which) {
                             // Write your code here to execute after dialog
 
              final String listInput = input.getText().toString();
+
+             Boolean validcharacter = todolistutility.checkValidCharacters(listInput);
+
 			//Checks if edit text is empty,space, or null. Not a valid list item.
-			if (listInput.equals("") || listInput.equals(" ")) {
+			if (listInput.equals("") || validcharacter == false) {
 				 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
             // Setting Dialog Title
             alertDialog.setTitle("Invalid Name");
@@ -154,7 +161,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
             alertDialog.setMessage("Please Enter a valid list name");
             setPositiveAlertOptionOK(alertDialog);
             alertDialog.show();
-            updateSpinnerWithPreviousTitle();
+            updateSpinnerWithPreviousTitle ();
 
 
             }
@@ -162,7 +169,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 			else
 			{
 			
-		 if (!checkDuplicates(spinnerList, listInput)) //check duplicate spinner items
+		 if (!todolistutility.checkDuplicates(spinnerList, listInput)) //check duplicate spinner items
 		 {
 			 try {
 
@@ -258,125 +265,8 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 			}
 				}
 	}
-    
-		
-	/**
-	 * 
-	 * Gets List Items by Spinner Title
-	 * 
-	 * @param itemListByTitle List of ListItems
-	 * @return ArrayList of String containing list items by spinner title.
-	 */
-	public static ArrayList<String> getListItems(final List<ListItem> itemListByTitle)
-	{
-		
-		final ArrayList<String> finalList = new ArrayList<String>();
-		
-		Runnable runnable = new Runnable() { //Run in separate thread
-	        public void run() {    
-		for (ListItem listitem: itemListByTitle)
-		{
-            finalList.add(listitem.getListItem());
-		}
-	        }
-		};
-		
-    	Thread myThread = new Thread(runnable);
-        myThread.start();
-		return finalList;
-	}
-	
-	/**
-	 * 
-	 * Get List Item Objects by spinner title
-	 * 
-	 * @param itemList List of List Item Objects
-	 * @param title selected Spinner title
-	 * @return List ArrayList of string containing List Items by spinner title
-	 */
-	public ArrayList<String> getListTitleFromListItems(final List<ListItem> itemList, final String title)
-	{
-		final ArrayList<String> finalList = new ArrayList<String>();
 
-		Runnable runnable = new Runnable() { //Run in separate thread
-	        public void run() {     	
-		
-	
-		for (ListItem listItem: itemList) {
 
-            String currentTitle = listItem.getTitle();
-
-            if (currentTitle != null)
-            {
-			if (currentTitle.equals(title))
-            {
-                finalList.add(listItem.getListItem());
-			}
-			}
-		}
-	        
-	        
-	        
-	       }
-    	};
-    	Thread myThread = new Thread(runnable);
-        myThread.start();
-    	
-		return finalList;
-	}
-	
-	/**
-	 * 
-	 * Get List of title from List of List Item Objects
-	 * 
-	 * @param itemListByTitle List of List Item Objects
-	 * @return ArrayList of string containing spinner titles.
-	 */
-	public ArrayList<String> getListTitles(final List<ListItem> itemListByTitle)
-	{
-		final ArrayList<String> finalList = new ArrayList<String>();
-	
-    	Runnable runnable = new Runnable() { //Run in separate thread
-	        public void run() {     	
-		
-		for (ListItem listItem: itemListByTitle)
-		{
-            finalList.add(listItem.getTitle());
-		}
-		
-	       
-	        }};
-	        
-	        
-	        Thread myThread = new Thread(runnable);
-            myThread.start();
-	        
-			return finalList;
-		
-	}
-		 
-	/**
-	 * 
-	 * Check for duplicates in an ArrayList of String
-	 * 
-	 * @param arrayList ArrayList of String containing spinner titles
-	 * @param input spinner title
-	 * @return ArrayList of String containing spinner titles with duplicates removed
-	 */
-	public boolean checkDuplicates(ArrayList<String> arrayList, String input)
-	{
-		for (String listItem: arrayList)
-		{
-			if (listItem.equals(input))
-			{
-				return true;
-			}
-		}
-		return false;
-		
-	}
-    
- 
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
