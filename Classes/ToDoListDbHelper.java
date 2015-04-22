@@ -340,6 +340,46 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         return null;
     }
 
+
+    /**
+     *
+     * Getting All Spinner by postion passed in by the parameter.
+     *
+     * @return position position in list of Spinner title
+     */
+    public String getAllSpinnerTitleByPosition(int position) {
+
+        try
+        {
+            // Select All Query
+            String selectQuery = "SELECT DISTINCT * FROM " + TABLE_SPINNERITEMS + " WHERE " + KEY_POSITION_SPINNER + " = ?";
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery,   new String[] {String.valueOf(position)});
+            String title="";
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    title =  cursor.getString(1);
+                } while (cursor.moveToNext());
+            }
+
+            // return contact list
+            return title;
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("SQL Exception has occurred" + ex.getMessage());
+            Log.e("IO", "IO Exception Error", ex);                  //Log error for IO Exception
+        }
+        catch (NullPointerException ex)
+        {
+            System.out.println("NullPointer Exception has occurred" + ex.getMessage());
+            Log.e("NULL", "NullPointerException Error", ex);         //Log error for Null Pointer Exception
+        }
+
+        return null;
+    }
+
     /**
      * 
      * Getting All ListItem By Title passed in parameter. Gets all ListItem from database.

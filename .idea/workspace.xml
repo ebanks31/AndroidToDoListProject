@@ -24,12 +24,11 @@
       <change type="DELETED" beforePath="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\src\main\java\com\example\android\rssfeedlist\Item.java" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\src\main\java\com\example\android\rssfeedlist\LocalSender.java" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\src\main\java\com\example\android\rssfeedlist\MainApp.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/CustomOnItemSelectedListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/CustomOnItemSelectedListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListOrganizerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListOrganizerActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/MyListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/MyListFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ToDoListDbHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ToDoListDbHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/CustomOnItemSelectedListener.java" afterPath="$PROJECT_DIR$/Classes/CustomOnItemSelectedListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ListItem.java" afterPath="$PROJECT_DIR$/Classes/ListItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ListOrganizerActivity.java" afterPath="$PROJECT_DIR$/Classes/ListOrganizerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/MyListFragment.java" afterPath="$PROJECT_DIR$/Classes/MyListFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/ToDoListDbHelper.java" afterPath="$PROJECT_DIR$/Classes/ToDoListDbHelper.java" />
     </list>
     <ignored path="ListOrganizerContextWOCheck.iws" />
     <ignored path=".idea/workspace.xml" />

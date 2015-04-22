@@ -78,11 +78,12 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 
               ToDoListDbHelper db = new ToDoListDbHelper(context);
               ArrayList<SpinnerItem> stringList1 = db.getAllSpinnerTitle();
-
-              SpinnerItem newListSpinnerItem = new SpinnerItem(listInput, stringList1.size()+1);
-
+              int position = stringList1.size()+1;
+              SpinnerItem newListSpinnerItem = new SpinnerItem(listInput, position);
               db.addSpinneritem(newListSpinnerItem);
-				 MyListFragment.staticListener.clearFragmentList(1);
+
+              previousSpinnerPosition = position;
+			  MyListFragment.staticListener.clearFragmentList(1);
 		     }
 		 };
 		 
@@ -113,6 +114,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
          final String itemSelected = parent.getItemAtPosition(pos).toString();
          
          MyListFragment.currentSpinner = itemSelected;
+
 		 if (itemSelected.equals("New List"))
 		 {
 			 AlertDialog.Builder alertDialog = null;
@@ -142,8 +144,8 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
                             // Write your code here to execute after dialog
 
              final String listInput = input.getText().toString();
-			//Checks if edittext is empty,space, or null. Not a valid list item.
-			if (listInput.equals("") || listInput.equals(" ") || input == null) {
+			//Checks if edit text is empty,space, or null. Not a valid list item.
+			if (listInput.equals("") || listInput.equals(" ")) {
 				 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
             // Setting Dialog Title
             alertDialog.setTitle("Invalid Name");
@@ -152,7 +154,10 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
             alertDialog.setMessage("Please Enter a valid list name");
             setPositiveAlertOptionOK(alertDialog);
             alertDialog.show();
-				}
+            updateSpinnerWithPreviousTitle();
+
+
+            }
 
 			else
 			{
@@ -211,7 +216,9 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 		 
 			else if (itemSelected.equals("Sample List"))
 			{
+                // Communicate this fragment to the main activity
 				MyListFragment.staticListener.sampleFragmentList(1);
+                previousSpinnerPosition = 1;
 		
 			}
 			else
@@ -224,7 +231,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 			Runnable runnable = new Runnable() { //Run in separate thread
 		        public void run() {     	
 			 
-		        	//Use Handler(userinputhandler) to update User Interface from another thread.
+		        	// Use Handler(userinputhandler) to update User Interface from another thread.
 	            	Message msg = userInputHandler.obtainMessage();
 	    			Bundle bundle = new Bundle();
 	    			bundle.putString("mysecondKey", MyListFragment.currentSpinner);
@@ -391,11 +398,25 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
                      */
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to execute after dialog
+                        updateSpinnerWithPreviousTitle();
                         dialog.cancel();
                     }
                 });
     }
-    
+
+    /**
+     * This method updates the spinner title to the previous selected Spinner Title.
+     */
+    public void updateSpinnerWithPreviousTitle()
+    {
+        ToDoListDbHelper db = new ToDoListDbHelper(context);
+        String previousSpinner = db.getAllSpinnerTitleByPosition(MyListFragment.previousSpinnerPosition);
+        spinnerTitles.setSelection(MyListFragment.previousSpinnerPosition);
+        MyListFragment.currentSpinner = previousSpinner;
+
+        spinnerAdapter.notifyDataSetChanged();
+        spinnerTitles.setAdapter(spinnerAdapter);
+    }
     /**
      * Set Positive Alert Button with String OK
      * 
@@ -408,6 +429,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to execute after dialog
+
                         dialog.cancel();
                     }
                 });
