@@ -72,7 +72,7 @@ View view = inflater.inflate(R.layout.fragment_rsslist_overview,
     db.addSpinneritem(newListSpinnerItem);
 
 
-
+/*
     List<ListItem> contacts = db.getAllListItems();
     ArrayList<String> spinnerList = getSpinnerTitles(contacts);
     ArrayList<String> finalSpinnerList = removeDuplicates(spinnerList);
@@ -82,6 +82,7 @@ View view = inflater.inflate(R.layout.fragment_rsslist_overview,
 
 
     ArrayList<SpinnerItem> stringList1 = db.getAllSpinnerTitle();
+    */
     ArrayList<String> stringList = db.getAllSpinnerTitleListString();
 
     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),

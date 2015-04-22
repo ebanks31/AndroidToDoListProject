@@ -44,7 +44,7 @@ public class ListItem {
 	 * Overloaded Constructor for List Item. Initalizes a List Item with a title and listitem
 	 * 
 	 * @param title title from the spinner
-	 * @param listitem list item from the list that is associated to spinner
+	 * @param listItem list item from the list that is associated to spinner
 	 * @param date current date list was modified for title
      * @param position current position
 	 */
@@ -63,6 +63,13 @@ public class ListItem {
         return position;
     }
 
+    /**
+     * Set position
+     * @param position position that will be set
+     */
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     /**
 	 * Gets the title of the spinner
@@ -72,7 +79,16 @@ public class ListItem {
 		return title;
 	}
 
-	/**
+    /**
+     * Sets the title of the spinner
+     * @param title title of the spinner
+     */
+    public void setTitle(String title) {
+        this.title = title;
+
+    }
+
+    /**
 	 * get List Item from the associated to the title.
 	 * 
 	 * @return Item from the associated to the title
@@ -81,8 +97,15 @@ public class ListItem {
 		return listItem;
 	}
 
+    /**
+     * set List Item from the associated to the title.
+     *
+     * @param listItem List Item from the associated to the title
+     */
+    public void setListItem(String listItem) {
+        this.listItem = listItem;
 
-
+    }
 
 	/**
 	 * Get unique ID for each List Item
@@ -92,7 +115,17 @@ public class ListItem {
 		return id;
 	}
 
-	/**
+    /**
+     * Set unique ID for each List Item
+     * @param id unique ID for each List Item
+     */
+    public void setID(int id) {
+        this.id = id;
+    }
+
+
+
+    /**
 	 * Gets the date
 	 * @return date returns date
 	 */
@@ -109,42 +142,5 @@ public class ListItem {
 		this.date = date;
 	}
 
-    /**
-     * Set date
-     * @param date date that will be set
-     */
-    public void setPosition(int position) {
-        this.position = position;
-    }
-    /**
-     *
-     */
-	/**
-	 * Set unique ID for each List Item
-	 * @param id unique ID for each List Item
-	 */
-	public void setID(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * Sets the title of the spinner
-	 * @param title title of the spinner
-	 */
-	public void setTitle(String title) {
-		this.title = title;
-		
-	}
-
-	
-	/**
-	 * set List Item from the associated to the title.
-	 * 
-	 * @param listItem List Item from the associated to the title
-	 */
-	public void setListItem(String listItem) {
-		this.listItem = listItem;
-		
-	}
 
 }
