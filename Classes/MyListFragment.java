@@ -34,8 +34,9 @@ import android.widget.AdapterView.OnItemSelectedListener;
 public class MyListFragment extends ListFragment implements OnItemSelectedListener {
   
   public OnItemSelectedListener listener;
-	
-  static OnItemSelectedListener staticListener;
+
+  public static OnItemSelectedListener staticListener;
+  public static ArrayList<String> spinnerlist;
   AdapterView<ListAdapter> spinnerAdapter;
   public static Spinner listSpinner;
   public static String currentSpinner;
@@ -52,29 +53,42 @@ public class MyListFragment extends ListFragment implements OnItemSelectedListen
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
-    View view = inflater.inflate(R.layout.fragment_rsslist_overview,
-        container, false);
+View view = inflater.inflate(R.layout.fragment_rsslist_overview,
+            container, false);
     listSpinner = (Spinner)view.findViewById(R.id.spinner1);
     spinnerAdapter = (AdapterView<ListAdapter>) view.findViewById(R.id.spinner1);
+
+    ToDoListDbHelper db = new ToDoListDbHelper(getActivity());
+
     ArrayList<String> list = new ArrayList<String>();
-    list.add("Sample List");
-    list.add("New List");
-    
-    
-	ToDoListDbHelper db = new ToDoListDbHelper(getActivity());
+    String sampleList = "Sample List";
+    String newList = "New List";
+
+    list.add(sampleList);
+    list.add(newList);
+    SpinnerItem sampleListSpinnerItem = new SpinnerItem(sampleList, 1);
+    SpinnerItem newListSpinnerItem = new SpinnerItem(newList, 2);
+    db.addSpinneritem(sampleListSpinnerItem);
+    db.addSpinneritem(newListSpinnerItem);
+
+
+
     List<ListItem> contacts = db.getAllListItems();
     ArrayList<String> spinnerList = getSpinnerTitles(contacts);
     ArrayList<String> finalSpinnerList = removeDuplicates(spinnerList);
     
     list.addAll(finalSpinnerList);
     list.removeAll(Collections.singleton(null));
-    
-    
+
+
+    ArrayList<SpinnerItem> stringList1 = db.getAllSpinnerTitle();
+    ArrayList<String> stringList = db.getAllSpinnerTitleListString();
+
     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
- 	       android.R.layout.simple_list_item_1, list);  
+ 	       android.R.layout.simple_list_item_1, stringList);
     listSpinner.setAdapter(dataAdapter);
  
-    addListenerOnSpinnerItemSelection(listSpinner, dataAdapter, list);
+    addListenerOnSpinnerItemSelection(listSpinner, dataAdapter, stringList);
 
     
     return view;

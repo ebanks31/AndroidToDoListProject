@@ -60,7 +60,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	}
 	
 
-	//Handler for when New List is selected in the spinner drop down menu.
+	// Handler for when New List is selected in the spinner drop down menu.
 	static Handler newListHandler = new Handler() {
 		  @Override
 		  public void handleMessage(Message msg) {
@@ -75,12 +75,19 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 				 //set the selected spinner item according to value
                  spinnerTitles.setSelection(spinnerPosition);
 				 MyListFragment.currentSpinner = listInput;
+
+              ToDoListDbHelper db = new ToDoListDbHelper(context);
+              ArrayList<SpinnerItem> stringList1 = db.getAllSpinnerTitle();
+
+              SpinnerItem newListSpinnerItem = new SpinnerItem(listInput, stringList1.size()+1);
+
+              db.addSpinneritem(newListSpinnerItem);
 				 MyListFragment.staticListener.clearFragmentList(1);
 		     }
 		 };
 		 
 		 
-    //Handler for when "User created title" is selected in the spinner drop down menu	
+    // Handler for when "User created title" is selected in the spinner drop down menu
 	static Handler userInputHandler = new Handler() {
 		  @Override
 		  public void handleMessage(Message msg) {
@@ -90,6 +97,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 				List<ListItem> itemListByTitle = db.getAllListItemsByTitle(listInput);
 				ArrayList<String> values = getListItems(itemListByTitle);
 				MyListFragment.staticListener.updateList(values);
+
 				 
 		     }
 		 };
@@ -124,7 +132,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
   			input.setLayoutParams(lp);
   			alertDialog.setView(input); 
 
-		   String listInput = input.getText().toString();
+		    String listInput = input.getText().toString();
 		    
 
             // Setting Positive "Yes" Button

@@ -27,17 +27,26 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
 	private static final String SQL_DELETE_ENTRIES = null;
 
  
-    // List Organizer table name
+    // List Organizer table name (Constants)
     private static final String TABLE_LISTORGANIZER = "listorganizer";
  
-    // List Organizer Table Columns names
+    // List Organizer Table Columns names (Constants)
     private static final String KEY_ID = "_id";
     private static final String KEY_TITLE = "title";
     private static final String KEY_LIST_ITEM = "list_item";
     private static final String KEY_DATE = "date";
     private static final String KEY_POSITION = "position";
 
-	
+
+    // List Organizer table name (Constants)
+    private static final String TABLE_SPINNERITEMS= "spinneritem";
+
+    // List Organizer Table Columns names (Constants)
+    private static final String KEY_SPINNER_ID = "_id";
+    private static final String KEY_TITLE_SPINNER = "title";
+    private static final String KEY_POSITION_SPINNER = "position";
+
+
     /**
      * Overloaded Constructed of FeedReaderDbHelper Class. Initialized context and database.
      * 
@@ -56,13 +65,21 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     
     try
     {
+
+
         String CREATE_LISTORGANIZER_TABLE = "CREATE TABLE " + TABLE_LISTORGANIZER + "("
-                + KEY_ID + " INTEGER PRIMARY KEY, " 
-        		+ KEY_TITLE + " TEXT,"
+                + KEY_ID + " INTEGER PRIMARY KEY, "
+                + KEY_TITLE + " TEXT,"
                 + KEY_LIST_ITEM + " TEXT,"
-				+ KEY_DATE + " TEXT,"
+                + KEY_DATE + " TEXT,"
                 + KEY_POSITION + " INTEGER)";
         db.execSQL(CREATE_LISTORGANIZER_TABLE);
+
+        String CREATE_SPINNERITEMS_TABLE = "CREATE TABLE " + TABLE_SPINNERITEMS + "("
+                + KEY_SPINNER_ID + " INTEGER PRIMARY KEY, "
+                + KEY_TITLE_SPINNER + " TEXT UNIQUE,"
+                + KEY_POSITION_SPINNER + " TEXT)";
+        db.execSQL(CREATE_SPINNERITEMS_TABLE);
     }
   	catch (SQLException ex)
   	{
@@ -95,6 +112,44 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
+
+    /**
+     * Adds List Item object to database. Passed the title and listitem from ListItem Object.
+     *
+     * @param spinnerItem List Item Object
+     */
+    public void addSpinneritem(SpinnerItem spinnerItem) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        try
+        {
+            ContentValues values = new ContentValues();
+            values.put(KEY_TITLE, spinnerItem.getTitle()); // Get Title from list item
+            values.put(KEY_POSITION, spinnerItem.getPosition()); // Contact Phone
+
+            // Inserting Row
+            db.insert(TABLE_SPINNERITEMS, null, values);
+
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("SQL Exception has occurred" + ex.getMessage());
+            Log.e("IO", "IO Exception Error", ex);                  //Log error for IO Exception
+        }
+        catch (NullPointerException ex)
+        {
+            System.out.println("NullPointer Exception has occurred" + ex.getMessage());
+            Log.e("NULL", "NullPointerException Error", ex);         //Log error for Null Pointer Exception
+        }
+        finally
+        {
+            if (db != null)
+            {
+                db.close();
+            }
+        }
+    }
+
     /**
      * Adds List Item object to database. Passed the title and listitem from ListItem Object.
      * 
@@ -118,12 +173,12 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
       	catch (SQLException ex)
       	{
       		System.out.println("SQL Exception has occurred" + ex.getMessage());
-      		Log.e("IO", "IO Exception Error",ex);                  //Log error for IO Exception
+      		Log.e("IO", "IO Exception Error", ex);                  //Log error for IO Exception
       	}
       	catch (NullPointerException ex)
       	{
       		System.out.println("NullPointer Exception has occurred" + ex.getMessage());
-      		Log.e("NULL", "NullPointerException Error",ex);         //Log error for Null Pointer Exception
+      		Log.e("NULL", "NullPointerException Error", ex);         //Log error for Null Pointer Exception
       	}
       	finally
       	{
@@ -186,7 +241,105 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         return null;
     }
 
-    
+    /**
+     *
+     * Getting All ListItem By Title passed in parameter. Gets all ListItem from database.
+     *
+     * @return ListItem By Title passed in parameter
+     */
+    public ArrayList<SpinnerItem> getAllSpinnerTitle() {
+
+        try
+        {
+            ArrayList<SpinnerItem> listItemList = new ArrayList<SpinnerItem>();
+            // Select All Query
+            String selectQuery = "SELECT DISTINCT * FROM " + TABLE_SPINNERITEMS;
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery,  null);
+
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    SpinnerItem spinnerItem = new SpinnerItem();
+                    String id = cursor.getString(0);
+                    String title =  cursor.getString(1);
+                    String position = cursor.getString(2);
+
+                //    spinnerItem.setID(Integer.parseInt(cursor.getString(0)));
+                    spinnerItem.setTitle(cursor.getString(1));
+                    spinnerItem.setPosition(Integer.parseInt(cursor.getString(2)));
+
+                    listItemList.add(spinnerItem);
+                } while (cursor.moveToNext());
+            }
+
+            // return contact list
+            return listItemList;
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("SQL Exception has occurred" + ex.getMessage());
+            Log.e("IO", "IO Exception Error", ex);                  //Log error for IO Exception
+        }
+        catch (NullPointerException ex)
+        {
+            System.out.println("NullPointer Exception has occurred" + ex.getMessage());
+            Log.e("NULL", "NullPointerException Error", ex);         //Log error for Null Pointer Exception
+        }
+
+        return null;
+    }
+
+
+    /**
+     *
+     * Getting All ListItem By Title passed in parameter. Gets all ListItem from database.
+     *
+     * @return ListItem By Title passed in parameter
+     */
+    public ArrayList<String> getAllSpinnerTitleListString() {
+
+        try
+        {
+            ArrayList<String> listItemList = new ArrayList<String>();
+            // Select All Query
+            String selectQuery = "SELECT DISTINCT  * FROM " + TABLE_SPINNERITEMS;
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery,  null);
+
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    SpinnerItem spinnerItem = new SpinnerItem();
+                    String id = cursor.getString(0);
+                    String title =  cursor.getString(1);
+                    String position = cursor.getString(2);
+
+                    //    spinnerItem.setID(Integer.parseInt(cursor.getString(0)));
+                    spinnerItem.setTitle(cursor.getString(1));
+                    spinnerItem.setPosition(Integer.parseInt(cursor.getString(2)));
+
+                    listItemList.add(title);
+                } while (cursor.moveToNext());
+            }
+
+            // return contact list
+            return listItemList;
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("SQL Exception has occurred" + ex.getMessage());
+            Log.e("IO", "IO Exception Error", ex);                  //Log error for IO Exception
+        }
+        catch (NullPointerException ex)
+        {
+            System.out.println("NullPointer Exception has occurred" + ex.getMessage());
+            Log.e("NULL", "NullPointerException Error", ex);         //Log error for Null Pointer Exception
+        }
+
+        return null;
+    }
+
     /**
      * 
      * Getting All ListItem By Title passed in parameter. Gets all ListItem from database.
@@ -556,7 +709,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
      * @param spinnerTitle spinner title
      * @return ListItem By Title passed in parameter
      */
-    public ArrayList<String> AndPosition(String spinnerTitle) {
+    public ArrayList<String> spinnerTitleAndPosition(String spinnerTitle) {
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ? AND " + KEY_POSITION + " = ?";
         SQLiteDatabase db = this.getWritableDatabase();
