@@ -170,7 +170,7 @@ public class DetailFragment extends ListFragment  {
 	  	 * 
 	  	 * Adds menus when detail Fragment is long clicked
 	  	 * 
-	  	 */
+
 	  	@Override
     public void onCreateContextMenu(ContextMenu menu, View v,
         ContextMenuInfo menuInfo) {
@@ -198,7 +198,7 @@ public class DetailFragment extends ListFragment  {
   	
 	    }
   
-    }
+    } */
 
 	    // Container Activity must implement this interface
 	    /**

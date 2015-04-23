@@ -15,8 +15,8 @@ public class SpinnerItem {
 
     private String title;
     private int position;
-
     private int id;
+    
 	/**
 	 * Default Constructor for Spinner Item Class
 	 */
