@@ -237,24 +237,6 @@ public class ToDoListUtility {
     }
 
 
-
-    /**
-     * Removes Duplicates from ArrayList of strings
-     *
-     * @param stringList Array List of string containing spinner titles
-     * @return  ArrayList of strings with duplicates removed
-
-    public ArrayList<String> removeDuplicates(ArrayList<String> stringList)
-    {
-        HashSet hs = new HashSet();
-        hs.addAll(stringList);
-        stringList.clear();
-        stringList.addAll(hs);
-        return stringList;
-    }
-     */
-
-
     /**
      * Removes duplicates from an ArrayList of strings.
      *

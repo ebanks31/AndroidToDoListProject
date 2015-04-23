@@ -31,7 +31,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
  * @author Eric
  *
  */
-public class MyListFragment extends ListFragment implements OnItemSelectedListener {
+public class SpinnerFragment extends ListFragment implements OnItemSelectedListener {
   
   public OnItemSelectedListener listener;
 
@@ -45,9 +45,9 @@ public class MyListFragment extends ListFragment implements OnItemSelectedListen
   private ToDoListUtility todolistutility;
 
   /**
-  * Default Constructor for MyListFragment Fragment. Initialized variables needed for this fragment.
+  * Default Constructor for SpinnerFragment Fragment. Initialized variables needed for this fragment.
   */
-  public MyListFragment()
+  public SpinnerFragment ()
   {
       todolistutility = new ToDoListUtility();
   }
@@ -161,7 +161,7 @@ public class MyListFragment extends ListFragment implements OnItemSelectedListen
         context = activity;
       } else {
         throw new ClassCastException(activity.toString()
-            + " must implement MyListFragment.OnItemSelectedListener");
+            + " must implement SpinnerFragment.OnItemSelectedListener");
       }
     }
   
@@ -180,7 +180,7 @@ public class MyListFragment extends ListFragment implements OnItemSelectedListen
           context = activity;
         } else {
           throw new ClassCastException(activity.toString()
-              + " must implement MyListFragment.OnItemSelectedListener");
+              + " must implement SpinnerFragment.OnItemSelectedListener");
         }
 
  
@@ -224,7 +224,7 @@ public class MyListFragment extends ListFragment implements OnItemSelectedListen
     
 	  public interface OnItemSelectedListener {
 	      /**
-	       * Interface for communicating between MyListFragment and Activity
+	       * Interface for communicating between SpinnerFragment and Activity
 	       * 
 	     * @param position Position of spinner item
 	     */

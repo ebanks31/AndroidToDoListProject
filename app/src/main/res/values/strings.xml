@@ -9,12 +9,13 @@
     <string name="Settings">Settings</string>
     <string name="Options">Options</string>
                 
-        <string-array name="settinsmenuitems">
+    <string-array name="settinsmenuitems">
         <item>Settings</item>
         <item>Options</item>
         <item>Delete</item>
         <item>Share</item>
-    </string-array>            
+    </string-array>
+
     <string-array name="country_arrays">
         <item>Malaysia</item>
         <item>United States</item>
@@ -25,8 +26,12 @@
         <item>New Zealand</item>
         <item>India</item>
     </string-array>
-    
-        <string-array name="contextmenuitems">
+
+    <color name="blue">#7f7fd8</color>
+    <color name="darkblue">#006699</color>
+    <color name="lightblue">#C9E8F4</color>
+
+    <string-array name="contextmenuitems">
         <item>Add</item>
         <item>Edit</item>
         <item>Delete</item>
@@ -35,4 +40,5 @@
 
  <string name="action_new">Search</string>
  <string name="action_overflow">Overflow</string>
+
 </resources>

@@ -26,7 +26,7 @@ import android.widget.Spinner;
  * @author Eric
  *
  */
-public class CustomOnItemSelectedListener extends MyListFragment implements OnItemSelectedListener {
+public class CustomOnItemSelectedListener extends SpinnerFragment implements OnItemSelectedListener {
  
 	static Context context;
 	static Spinner spinnerTitles;
@@ -40,7 +40,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 	 * Sets intial values that are needed for the CustomOnItemSelectedListener
 	 * 
 	 * @param context set the context from the Main Activity class
-	 * @param listSpinner Current Spinner from the MyListFragment Class
+	 * @param listSpinner Current Spinner from the SpinnerFragment Class
 	 * @param dataAdapter Adapter that is associated to the spinner
 	 * @param spinnerList List of spinner items that are located int he spinner
 	 */
@@ -77,7 +77,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 
 				 //set the selected spinner item according to value
                  spinnerTitles.setSelection(spinnerPosition);
-				 MyListFragment.currentSpinner = listInput;
+				 SpinnerFragment.currentSpinner = listInput;
 
               ToDoListDbHelper db = new ToDoListDbHelper(context);
               ArrayList<SpinnerItem> stringList1 = db.getAllSpinnerTitle();
@@ -86,7 +86,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
               db.addSpinneritem(newListSpinnerItem);
 
               previousSpinnerPosition = position;
-			  MyListFragment.staticListener.clearFragmentList(1);
+			  SpinnerFragment.staticListener.clearFragmentList(1);
 		     }
 		 };
 		 
@@ -101,14 +101,14 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 				List<ListItem> itemListByTitle = db.getAllListItemsByTitle(listInput);
               ToDoListUtility todolistutilityHandler = new ToDoListUtility();
 				ArrayList<String> values = todolistutilityHandler.getListItems(itemListByTitle);
-				MyListFragment.staticListener.updateList(values);
+				SpinnerFragment.staticListener.updateList(values);
 
 				 
 		     }
 		 };
 		 
 	/* (non-Javadoc)
-	 * @see com.example.android.rssfeed.MyListFragment#onItemSelected(android.widget.AdapterView, android.view.View, int, long)
+	 * @see com.example.android.rssfeed.SpinnerFragment#onItemSelected(android.widget.AdapterView, android.view.View, int, long)
 	 * 
 	 * Method is invoked when a spinner title is selected.
 	 * Invokes action depending on what spinner title is selected.
@@ -117,7 +117,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
             long id) {
          final String itemSelected = parent.getItemAtPosition(pos).toString();
          
-         MyListFragment.currentSpinner = itemSelected;
+         SpinnerFragment.currentSpinner = itemSelected;
 
 		 if (itemSelected.equals("New List"))
 		 {
@@ -224,7 +224,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 			else if (itemSelected.equals("Sample List"))
 			{
                 // Communicate this fragment to the main activity
-				MyListFragment.staticListener.sampleFragmentList(1);
+				SpinnerFragment.staticListener.sampleFragmentList(1);
                 previousSpinnerPosition = 1;
 		
 			}
@@ -241,7 +241,7 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
 		        	// Use Handler(userinputhandler) to update User Interface from another thread.
 	            	Message msg = userInputHandler.obtainMessage();
 	    			Bundle bundle = new Bundle();
-	    			bundle.putString("mysecondKey", MyListFragment.currentSpinner);
+	    			bundle.putString("mysecondKey", SpinnerFragment.currentSpinner);
 	                msg.setData(bundle);
 	                userInputHandler.sendMessage(msg);
 	                 
@@ -300,9 +300,9 @@ public class CustomOnItemSelectedListener extends MyListFragment implements OnIt
     public void updateSpinnerWithPreviousTitle()
     {
         ToDoListDbHelper db = new ToDoListDbHelper(context);
-        String previousSpinner = db.getAllSpinnerTitleByPosition(MyListFragment.previousSpinnerPosition);
-        spinnerTitles.setSelection(MyListFragment.previousSpinnerPosition);
-        MyListFragment.currentSpinner = previousSpinner;
+        String previousSpinner = db.getAllSpinnerTitleByPosition( SpinnerFragment.previousSpinnerPosition);
+        spinnerTitles.setSelection( SpinnerFragment.previousSpinnerPosition);
+        SpinnerFragment.currentSpinner = previousSpinner;
 
         spinnerAdapter.notifyDataSetChanged();
         spinnerTitles.setAdapter(spinnerAdapter);

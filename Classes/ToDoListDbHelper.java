@@ -640,7 +640,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
      */
     public void updateListItemAdd1(ListItem listItem, int index) {
         SQLiteDatabase db = this.getWritableDatabase();
-        List<ListItem> listItemList = getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+        List<ListItem> listItemList = getAllListItemsBySpinnerTitle( SpinnerFragment.currentSpinner);
 
         for (int i = index + 1; i < listItemList.size(); i++)
         {
@@ -794,7 +794,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
      */
     public void updateListItemDelete1(ListItem listItem) {
         SQLiteDatabase db = this.getWritableDatabase();
-        List<ListItem> listItemList = getAllListItemsBySpinnerTitle(MyListFragment.currentSpinner);
+        List<ListItem> listItemList = getAllListItemsBySpinnerTitle( SpinnerFragment.currentSpinner);
 
         int position = listItem.getPosition();
 

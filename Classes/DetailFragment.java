@@ -1,6 +1,6 @@
 package com.example.android.todolist;
 
-import com.example.android.todolist.MyListFragment.OnItemSelectedListener;
+import com.example.android.todolist.SpinnerFragment.OnItemSelectedListener;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListFragment;
@@ -67,7 +67,7 @@ public class DetailFragment extends ListFragment  {
 	        listener = (detailFragmentSelectedListener) activity;
 	      } else {
 	        throw new ClassCastException(activity.toString()
-	            + " must implement MyListFragment.OnItemSelectedListener");
+	            + " must implement SpinnerFragment.OnItemSelectedListener");
 	      }
 	    }
 	  
