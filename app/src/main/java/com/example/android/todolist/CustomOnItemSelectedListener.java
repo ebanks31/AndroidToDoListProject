@@ -97,12 +97,15 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
 		  public void handleMessage(Message msg) {
 				Bundle bundle = msg.getData();
 				String listInput = bundle.getString("mysecondKey");
+                int position = bundle.getInt("position");
+
 			    ToDoListDbHelper db = new ToDoListDbHelper(context);
 				List<ListItem> itemListByTitle = db.getAllListItemsByTitle(listInput);
-              ToDoListUtility todolistutilityHandler = new ToDoListUtility();
+                ToDoListUtility todolistutilityHandler = new ToDoListUtility();
 				ArrayList<String> values = todolistutilityHandler.getListItems(itemListByTitle);
-				SpinnerFragment.staticListener.updateList(values);
+				SpinnerFragment.staticListener.updateListView(values);
 
+                previousSpinnerPosition = position;
 				 
 		     }
 		 };
@@ -113,7 +116,7 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
 	 * Method is invoked when a spinner title is selected.
 	 * Invokes action depending on what spinner title is selected.
 	 */
-	public void onItemSelected(AdapterView<?> parent, View view, int pos,
+	public void onItemSelected(AdapterView<?> parent, View view, final int pos,
             long id) {
          final String itemSelected = parent.getItemAtPosition(pos).toString();
          
@@ -161,7 +164,7 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
             alertDialog.setMessage("Please Enter a valid list name");
             setPositiveAlertOptionOK(alertDialog);
             alertDialog.show();
-            updateSpinnerWithPreviousTitle ();
+            updateSpinnerWithPreviousTitle();
 
 
             }
@@ -242,6 +245,7 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
 	            	Message msg = userInputHandler.obtainMessage();
 	    			Bundle bundle = new Bundle();
 	    			bundle.putString("mysecondKey", SpinnerFragment.currentSpinner);
+                    bundle.putInt ("position", pos);
 	                msg.setData(bundle);
 	                userInputHandler.sendMessage(msg);
 	                 
@@ -249,7 +253,7 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
 		      };
 		      Thread mythread = new Thread(runnable);
 		      mythread.start();
-	
+
 				}
 				
 	      	catch (ArrayIndexOutOfBoundsException ex)
@@ -300,12 +304,13 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
     public void updateSpinnerWithPreviousTitle()
     {
         ToDoListDbHelper db = new ToDoListDbHelper(context);
-        String previousSpinner = db.getAllSpinnerTitleByPosition( SpinnerFragment.previousSpinnerPosition);
-        spinnerTitles.setSelection( SpinnerFragment.previousSpinnerPosition);
+        String previousSpinner = db.getAllSpinnerTitleByPosition(SpinnerFragment.previousSpinnerPosition);
+       // spinnerTitles.setSelection(SpinnerFragment.previousSpinnerPosition);
+        spinnerTitles.setSelection(3);
         SpinnerFragment.currentSpinner = previousSpinner;
-
-        spinnerAdapter.notifyDataSetChanged();
         spinnerTitles.setAdapter(spinnerAdapter);
+        spinnerAdapter.notifyDataSetChanged();
+
     }
     /**
      * Set Positive Alert Button with String OK

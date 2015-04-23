@@ -78,7 +78,6 @@ public class DetailFragment extends ListFragment  {
 	 */
 	@Override
 	  public void onListItemClick(ListView l, View v, int position, long id) {
-	    // do something with the data
 		// Creating alert Dialog with one Button
 			 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
@@ -158,7 +157,7 @@ public class DetailFragment extends ListFragment  {
             // closed
 
             // Showing Alert Message
-            alertDialog.show();
+           // alertDialog.show();
         };
 		 //Load item into fragment. Load ListFragment.
 		 

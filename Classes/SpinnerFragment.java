@@ -49,7 +49,9 @@ public class SpinnerFragment extends ListFragment implements OnItemSelectedListe
   */
   public SpinnerFragment ()
   {
+
       todolistutility = new ToDoListUtility();
+      previousSpinnerPosition = 1;
   }
 
   /* (non-Javadoc)
@@ -73,15 +75,17 @@ public class SpinnerFragment extends ListFragment implements OnItemSelectedListe
     String sampleList = "Sample List";
     String newList = "New List";
 
-    list.add(sampleList);
-    list.add(newList);
-    SpinnerItem sampleListSpinnerItem = new SpinnerItem(sampleList, 1);
-    SpinnerItem newListSpinnerItem = new SpinnerItem(newList, 2);
-    db.addSpinneritem(sampleListSpinnerItem);
-    db.addSpinneritem(newListSpinnerItem);
-    previousSpinnerPosition = 1;
+      ArrayList<String> stringList = db.getAllSpinnerTitleListString();
 
-    ArrayList<String> stringList = db.getAllSpinnerTitleListString();
+    if (!stringList.contains(newList) || !stringList.contains(sampleList)) {
+        list.add(sampleList);
+        list.add(newList);
+        SpinnerItem sampleListSpinnerItem = new SpinnerItem(sampleList, 1);
+        SpinnerItem newListSpinnerItem = new SpinnerItem(newList, 2);
+        db.addSpinneritem(sampleListSpinnerItem);
+        db.addSpinneritem(newListSpinnerItem);
+    }
+
 
     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
  	       android.R.layout.simple_list_item_1, stringList);
@@ -233,7 +237,7 @@ public class SpinnerFragment extends ListFragment implements OnItemSelectedListe
 		   void clearFragmentList(int position);
 		public void setOnItemSelectedListener(
 				android.widget.AdapterView.OnItemSelectedListener onItemSelectedListener);
-		public void updateList(ArrayList<String> values);
+		public void updateListView ( ArrayList< String > values );
 	    }
 
 

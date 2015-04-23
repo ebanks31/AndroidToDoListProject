@@ -72,7 +72,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
                 + KEY_TITLE + " TEXT,"
                 + KEY_LIST_ITEM + " TEXT,"
                 + KEY_DATE + " TEXT,"
-                + KEY_POSITION + " INTEGER)";
+                + KEY_POSITION + " INTEGER UNIQUE)";
         db.execSQL(CREATE_LISTORGANIZER_TABLE);
 
         String CREATE_SPINNERITEMS_TABLE = "CREATE TABLE " + TABLE_SPINNERITEMS + "("
@@ -343,7 +343,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
 
     /**
      *
-     * Getting All Spinner by postion passed in by the parameter.
+     * Getting All Spinner by position passed in by the parameter.
      *
      * @return position position in list of Spinner title
      */
@@ -444,7 +444,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     	try
     	{
         // Select All Query
-       String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ?";
+       String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ? ORDER BY " + KEY_POSITION;
         db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery,  new String[] {spinnerTitle});
  		ArrayList<String> list = new ArrayList<String>();
