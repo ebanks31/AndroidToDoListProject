@@ -343,7 +343,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
 
     /**
      *
-     * Getting All Spinner by postion passed in by the parameter.
+     * Getting All Spinner by position passed in by the parameter.
      *
      * @return position position in list of Spinner title
      */
