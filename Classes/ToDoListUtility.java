@@ -288,4 +288,20 @@ public class ToDoListUtility {
 
     }
 
+
+    /**
+     *
+     * Adds Single Quote to the beginning and end of string
+     *
+     * @param listItemString String from list item
+     * @return String with single quote at beginning and the end of string
+     */
+    public String addSingleQuoteFrontAndBack(String listItemString)
+    {
+        StringBuilder _sb = new StringBuilder(listItemString);
+        _sb.insert(0, "\'");
+        _sb.insert(listItemString.length() + 1, "\'");
+        return _sb.toString();
+    }
+
 }

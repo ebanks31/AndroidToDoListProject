@@ -45,7 +45,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     private static final String KEY_SPINNER_ID = "_id";
     private static final String KEY_TITLE_SPINNER = "title";
     private static final String KEY_POSITION_SPINNER = "position";
-
+    private ToDoListUtility todolistutility;
 
     /**
      * Overloaded Constructed of FeedReaderDbHelper Class. Initialized context and database.
@@ -55,6 +55,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
      */
     public ToDoListDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        todolistutility = new ToDoListUtility();
     }
     /* (non-Javadoc)
      * @see android.database.sqlite.SQLiteOpenHelper#onCreate(android.database.sqlite.SQLiteDatabase)
@@ -818,8 +819,13 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     SQLiteDatabase db = null;
     try{
       db = this.getWritableDatabase();
+        String title = listItem.getTitle();
+        String listItemString = listItem.getListItem();
+        String position = String.valueOf(listItem.getPosition());
+        String finallistItem = todolistutility.addSingleQuoteFrontAndBack(listItemString);
+
         db.delete(TABLE_LISTORGANIZER, KEY_TITLE + " = ?" + " AND " + KEY_LIST_ITEM + " = ? AND " + KEY_POSITION + " = ?",
-                new String[] {String.valueOf(listItem.getTitle()), String.valueOf(listItem.getListItem()), String.valueOf(listItem.getPosition())});
+                new String[] {title, listItemString, position});
 
     }
 
