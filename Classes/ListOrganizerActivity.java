@@ -467,7 +467,7 @@ public boolean onContextItemSelected(MenuItem item) {
 	
 				ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
                 Date date = ListOrganizerActivity.getCurrentDate();
-                db.updateListItemAdd1(new ListItem( SpinnerFragment.currentSpinner, listInput, date, index), index);
+                db.updateListItemAddPosition ( new ListItem ( SpinnerFragment.currentSpinner, listInput, date, index ), index );
 
 
                 db.addListitem(new ListItem( SpinnerFragment.currentSpinner, listInput, date, index + 2));
@@ -685,9 +685,11 @@ public boolean onContextItemSelected(MenuItem item) {
 
                          for (int i = 0;i < list1.size(); i++)
                          {
+                              String listItem = list1.get(i).getListItem();
+                              int listItemPosition = list1.get(i).getPosition ();
 
                              //SORT BY POSITION
-                             db.updateListItem(new ListItem(SpinnerFragment.currentSpinner, list1.get(i).getListItem(), date, i + 1), date);
+                             db.updateListItemPosition(new ListItem(SpinnerFragment.currentSpinner, listItem, date, listItemPosition), date,i + 1);
                          }
 
                          List<ListItem> list2 = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinner);
