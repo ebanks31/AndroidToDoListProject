@@ -39,7 +39,7 @@ public class SpinnerFragment extends ListFragment implements OnItemSelectedListe
   public static ArrayList<String> spinnerlist;
   AdapterView<ListAdapter> spinnerAdapter;
   public static Spinner listSpinner;
-  public static String currentSpinner;
+  public static String currentSpinnerTitle;
   public static int previousSpinnerPosition;
   Context context;
   private ToDoListUtility todolistutility;

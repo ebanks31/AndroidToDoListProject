@@ -44,11 +44,12 @@ import com.example.android.todolist.DetailFragment.detailFragmentSelectedListene
  *
  */
 public class ListOrganizerActivity extends Activity implements detailFragmentSelectedListener,SpinnerFragment.OnItemSelectedListener{
+
 	TextView context;
 	private Context contextInfo;
 	public static ArrayList<String> listValues;
 	public static ArrayAdapter<String> listAdapter;
-	private ShareActionProvider mShareActionProvider;
+	//private ShareActionProvider mShareActionProvider;
     private ToDoListUtility todolistutility;
 
     public  ListOrganizerActivity()
@@ -282,7 +283,7 @@ this.contextInfo = context;
                             Date date = ListOrganizerActivity.getCurrentDate();
                             // List<ListItem> itemlistbytitle = db.getAllListItems();
                             //ArrayList<String> values =a.getListTitleFromListItems(itemlistbytitle,SpinnerFragment.currentspinner);
-                            List<ListItem> list = db.getAllListItemsBySpinnerTitle( SpinnerFragment.currentSpinner);
+                            List<ListItem> list = db.getAllListItemsBySpinnerTitle( SpinnerFragment.currentSpinnerTitle );
 
 
                             for (ListItem listItem:list)
@@ -296,18 +297,18 @@ this.contextInfo = context;
 
                             if (ListOrganizerActivity.listValues != null || ListOrganizerActivity.listValues.size()>0)
                             {
-                                db.addListitem(new ListItem( SpinnerFragment.currentSpinner, listInput, date, ListOrganizerActivity.listValues.size()+1));
+                                db.addListitem(new ListItem( SpinnerFragment.currentSpinnerTitle, listInput, date, ListOrganizerActivity.listValues.size()+1));
                                 ListOrganizerActivity.listValues.add(ListOrganizerActivity.listValues.size(), listInput);
                             }
                             else
                             {
-                                db.addListitem(new ListItem( SpinnerFragment.currentSpinner, listInput, date,1));
+                                db.addListitem(new ListItem( SpinnerFragment.currentSpinnerTitle, listInput, date,1));
                                 ListOrganizerActivity.listValues.add(0, listInput);
 
                             }
 
 
-                            List<ListItem> logList = db.getAllListItemsBySpinnerTitle( SpinnerFragment.currentSpinner);
+                            List<ListItem> logList = db.getAllListItemsBySpinnerTitle( SpinnerFragment.currentSpinnerTitle );
 
                             for (ListItem listItem:logList)
                             {
@@ -467,10 +468,10 @@ public boolean onContextItemSelected(MenuItem item) {
 	
 				ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
                 Date date = ListOrganizerActivity.getCurrentDate();
-                db.updateListItemAddPosition ( new ListItem ( SpinnerFragment.currentSpinner, listInput, date, index ), index );
+                db.updateListItemAddPosition ( new ListItem ( SpinnerFragment.currentSpinnerTitle, listInput, date, index ), index );
 
 
-                db.addListitem(new ListItem( SpinnerFragment.currentSpinner, listInput, date, index + 2));
+                db.addListitem(new ListItem( SpinnerFragment.currentSpinnerTitle, listInput, date, index + 2));
 
 				
 				/*
@@ -553,18 +554,18 @@ public boolean onContextItemSelected(MenuItem item) {
                 ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
 
                 Date date = ListOrganizerActivity.getCurrentDate();
-                ArrayList<String> lst4 = db.getAllListStringItemsByTitle( SpinnerFragment.currentSpinner);
+                ArrayList<String> lst4 = db.getAllListStringItemsByTitle( SpinnerFragment.currentSpinnerTitle );
 
                 updateListView(lst4);
 
 				   String key = ((TextView) info.targetView).getText().toString();
 
-					if (!SpinnerFragment.currentSpinner.equals("New List") && !SpinnerFragment.currentSpinner.equals("Sample List"))
+					if (!SpinnerFragment.currentSpinnerTitle.equals("New List") && !SpinnerFragment.currentSpinnerTitle.equals("Sample List"))
 					{
-					//db.updateListItem(new ListItem(SpinnerFragment.currentSpinner, listInput), date);
+					//db.updateListItem(new ListItem(SpinnerFragment.currentSpinnerTitle, listInput), date);
                         int position = lst4.size();
 
-                        List<ListItem> list = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinner);
+                        List<ListItem> list = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinnerTitle );
 
                         for (ListItem listItem:list)
                         {
@@ -575,10 +576,10 @@ public boolean onContextItemSelected(MenuItem item) {
                         }
 
                         System.out.println("Index " + index);
-                        db.updateListItem(new ListItem(SpinnerFragment.currentSpinner, listInput, date, index + 1), date);
+                        db.updateListItem(new ListItem(SpinnerFragment.currentSpinnerTitle, listInput, date, index + 1), date);
 
 
-                        List<ListItem> currentList = db.getAllListItemsBySpinnerTitle( SpinnerFragment.currentSpinner);
+                        List<ListItem> currentList = db.getAllListItemsBySpinnerTitle( SpinnerFragment.currentSpinnerTitle );
 
                         for (ListItem listitem:currentList)
                         {
@@ -589,9 +590,9 @@ public boolean onContextItemSelected(MenuItem item) {
                         }
 					}
 
-                ArrayList<String> finalList = db.getAllListStringItemsByTitle(SpinnerFragment.currentSpinner);
+                ArrayList<String> finalList = db.getAllListStringItemsByTitle(SpinnerFragment.currentSpinnerTitle );
 
-                List<ListItem> currentList = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinner);
+                List<ListItem> currentList = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinnerTitle );
 
                 for (ListItem listitem:currentList)
                 {
@@ -642,12 +643,12 @@ public boolean onContextItemSelected(MenuItem item) {
                  		String key = ((TextView) info.targetView).getText().toString();
                 		ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
 
-                         ArrayList<String> listItems = db.getAllListStringItemsByTitle(SpinnerFragment.currentSpinner);
+                         ArrayList<String> listItems = db.getAllListStringItemsByTitle(SpinnerFragment.currentSpinnerTitle );
                          Date date = ListOrganizerActivity.getCurrentDate();
 
                          int position = index;
 
-                         List<ListItem> list = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinner);
+                         List<ListItem> list = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinnerTitle );
                          /*
                          ArrayList<Integer> positionList = new ArrayList<Integer>();
 
@@ -662,18 +663,18 @@ public boolean onContextItemSelected(MenuItem item) {
                          for (int i = 0; i < positionList.size(); i++)
                          {
 
-                             db.deleteListItem(new ListItem(SpinnerFragment.currentSpinner, listItems.get(i), date, positionList.get(i)));
+                             db.deleteListItem(new ListItem(SpinnerFragment.currentSpinnerTitle, listItems.get(i), date, positionList.get(i)));
                              ListOrganizerActivity.listValues.remove((positionList.get(i) - 1) - i );
                          }
 */
 
                          //Removing Single Item
-                         db.deleteListItem(new ListItem(SpinnerFragment.currentSpinner, key, date, index + 1));
+                         db.deleteListItem(new ListItem(SpinnerFragment.currentSpinnerTitle, key, date, index + 1));
                          ListOrganizerActivity.listValues.remove(index);
 
 
 
-                         List<ListItem> list1 = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinner);
+                         List<ListItem> list1 = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinnerTitle );
 
                          for (ListItem listitem:list1)
                          {
@@ -689,12 +690,12 @@ public boolean onContextItemSelected(MenuItem item) {
                               int listItemPosition = list1.get(i).getPosition ();
 
                              //SORT BY POSITION
-                             db.updateListItemPosition(new ListItem(SpinnerFragment.currentSpinner, listItem, date, listItemPosition), date,i + 1);
+                             db.updateListItemPosition(new ListItem(SpinnerFragment.currentSpinnerTitle, listItem, date, listItemPosition), date,i + 1);
                          }
 
-                         List<ListItem> list2 = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinner);
+                         List<ListItem> list2 = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinnerTitle );
 
-                         ArrayList<String> updatedListItems = todolistutility.getListTitleFromListItems(list2, SpinnerFragment.currentSpinner);
+                         ArrayList<String> updatedListItems = todolistutility.getListTitleFromListItems(list2, SpinnerFragment.currentSpinnerTitle );
                          for (ListItem listitem:list2)
                          {
                              Log.d("Title", String.valueOf(listitem.getTitle()));
@@ -764,7 +765,7 @@ public boolean onContextItemSelected(MenuItem item) {
 				   String key = ((TextView) info.targetView).getText().toString();
 			       ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
 
-					if (! SpinnerFragment.currentSpinner.equals("New List") && ! SpinnerFragment.currentSpinner.equals("Sample List"))
+					if (! SpinnerFragment.currentSpinnerTitle.equals("New List") && ! SpinnerFragment.currentSpinnerTitle.equals("Sample List"))
 					{
 					    db.updateSpinnerTitle(key);
 					}
@@ -791,7 +792,7 @@ public boolean onContextItemSelected(MenuItem item) {
 				   String key = ((TextView) info.targetView).getText().toString();
 			       ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
 
-					if (! SpinnerFragment.currentSpinner.equals("New List") && ! SpinnerFragment.currentSpinner.equals("Sample List"))
+					if (! SpinnerFragment.currentSpinnerTitle.equals("New List") && ! SpinnerFragment.currentSpinnerTitle.equals("Sample List"))
 					{
 					db.deleteSpinnerTitle(key);  
 					}

@@ -77,7 +77,7 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
 
 				 //set the selected spinner item according to value
                  spinnerTitles.setSelection(spinnerPosition);
-				 SpinnerFragment.currentSpinner = listInput;
+				 SpinnerFragment.currentSpinnerTitle = listInput;
 
               ToDoListDbHelper db = new ToDoListDbHelper(context);
               ArrayList<SpinnerItem> stringList1 = db.getAllSpinnerTitle();
@@ -120,7 +120,7 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
             long id) {
          final String itemSelected = parent.getItemAtPosition(pos).toString();
          
-         SpinnerFragment.currentSpinner = itemSelected;
+         SpinnerFragment.currentSpinnerTitle = itemSelected;
 
 		 if (itemSelected.equals("New List"))
 		 {
@@ -244,7 +244,7 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
 		        	// Use Handler(userinputhandler) to update User Interface from another thread.
 	            	Message msg = userInputHandler.obtainMessage();
 	    			Bundle bundle = new Bundle();
-	    			bundle.putString("mysecondKey", SpinnerFragment.currentSpinner);
+	    			bundle.putString("mysecondKey", SpinnerFragment.currentSpinnerTitle );
                     bundle.putInt ("position", pos);
 	                msg.setData(bundle);
 	                userInputHandler.sendMessage(msg);
@@ -307,7 +307,7 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
         String previousSpinner = db.getAllSpinnerTitleByPosition(SpinnerFragment.previousSpinnerPosition);
        // spinnerTitles.setSelection(SpinnerFragment.previousSpinnerPosition);
         spinnerTitles.setSelection(3);
-        SpinnerFragment.currentSpinner = previousSpinner;
+        SpinnerFragment.currentSpinnerTitle = previousSpinner;
         spinnerTitles.setAdapter(spinnerAdapter);
         spinnerAdapter.notifyDataSetChanged();
 
