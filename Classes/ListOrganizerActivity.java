@@ -150,7 +150,7 @@ this.contextInfo = context;
       case R.id.action_new:
     	     Toast.makeText(this, "Action new selected", Toast.LENGTH_SHORT)
              .show();
-          addItemToListActionBar ( item );
+          addItemToListActionBar(item);
           return true;
       case R.id.action_refresh:
         Toast.makeText(this, "Action refresh selected", Toast.LENGTH_SHORT)
@@ -172,15 +172,19 @@ this.contextInfo = context;
         break;
      case R.id.sort_title:
 		 SortListByTitle(item);
-        Toast.makeText(this, "Action Settings selected", Toast.LENGTH_SHORT)
+        Toast.makeText(this, "Sort Title selected", Toast.LENGTH_SHORT)
             .show();
         break;
 		case R.id.date_modified:
-		SortListByDateModified(item);
-        Toast.makeText(this, "Action Settings selected", Toast.LENGTH_SHORT)
+		sortListByDateModified(item);
+        Toast.makeText(this, "Date Modified selected", Toast.LENGTH_SHORT)
             .show();
         break;
-	
+          case R.id.default_sort:
+              sortListByDateModified(item);
+              Toast.makeText(this, "Default Sort selected", Toast.LENGTH_SHORT)
+                      .show();
+              break;
       default:
         break;
       }
@@ -188,36 +192,99 @@ this.contextInfo = context;
       return true;
     }
 	
-	public void SortListByTitle(MenuItem item)
+	public void sortListByTitle(MenuItem item)
 	{
-		/*
-	    FeedReaderDbHelper db = new FeedReaderDbHelper(this);
-		List<ListItem> alllistitemlist = db.getAllListItemsSortedByTitle();
-	    //Need to get all List Items. Get the list item from titles.
-	 	ArrayList<String> listitemlist = db.getAllListStringItemsSortedByTitle(SpinnerFragment.currentspinner);
 
+        ToDoListDbHelper db = new ToDoListDbHelper(this);
+	//	List<ListItem> alllistitemlist = db.getAllListItemsSortedByTitle();
+	    //Need to get all List Items. Get the list item from titles.
+	 	ArrayList<String> listItemList = db.getAllListStringItemsSortedByTitle(SpinnerFragment.currentSpinnerTitle);
+
+        updateListView(listItemList);
+
+        showAlertDialogPromptSortByTitle(db, listItemList);
+
+        /*
 		final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
     	android.R.layout.simple_list_item_1, listitemlist);
 		SpinnerFragment.listspinner.setAdapter(dataAdapter);
+		*/
 		
 		//UPDATE Database. Update Database Sort Method by Title in DB class. Remove everything by title and insert into table by title.*/
 	
 	}
-    public void SortListByDateModified(MenuItem item)
+    public void sortListByDateModified(MenuItem item)
 		{
-		/*
-	    FeedReaderDbHelper db = new FeedReaderDbHelper(this);
+
+        ToDoListDbHelper db = new ToDoListDbHelper(this);
 		//Need to get all List Items. Get the list item from titles.
-	 	ArrayList<String> listitemlist = db.getAllListStringItemsSortedByDateModified(SpinnerFragment.currentspinner);
+	 	ArrayList<String> listItemList = db.getAllListStringItemsSortedByDateModified(SpinnerFragment.currentSpinnerTitle);
+
+            updateListView(listItemList);
+            showAlertDialogPromptSortByTitle(db, listItemList);
+        /*
 		final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
     	android.R.layout.simple_list_item_1, listitemlist);
 		SpinnerFragment.listspinner.setAdapter(dataAdapter);
-		
+		*/
+
+
 		//UPDATE Database. Update Database Sort Method by Date Modified in DB class.Remove everything by title and insert into table by date modified.
 	
-	*/
+
 	}
-	
+
+    public void showAlertDialogPromptSortByTitle(final ToDoListDbHelper db, final ArrayList<String> listItemList)
+    {
+        AlertDialog.Builder  alertDialog = new AlertDialog.Builder(this);
+
+        // Setting Dialog Title
+        alertDialog.setTitle("Save Sort");
+
+        // Setting Dialog Message
+        alertDialog.setMessage("Do you want to save sort?");
+        /*
+        final EditText input = new EditText(this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(lp);
+        alertDialog.setView(input);
+*/
+        // Setting Positive "Yes" Button
+
+        alertDialog.setNegativeButton("YES",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        List<ListItem> list1 = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinnerTitle );
+
+                        for (ListItem listitem:list1)
+                        {
+                            Log.d("Title", String.valueOf(listitem.getTitle()));
+                            Log.d("ListItem", String.valueOf(listitem.getListItem()));
+                            Log.d("Position", String.valueOf(listitem.getPosition()));
+
+                        }
+
+                        Date date = ListOrganizerActivity.getCurrentDate();
+                        for (int i = 0;i < listItemList.size(); i++)
+                        {
+                            String listItem = listItemList.get(i);
+                           // int listItemPosition = list1.get(i).getPosition();
+
+                            //SORT BY POSITION
+                            db.updateListItemPositionSorted(new ListItem(SpinnerFragment.currentSpinnerTitle, listItem, date, 0), date, i + 1);
+                        }
+
+
+                    }
+                });
+
+        setPositiveAlertOptionNO(alertDialog);
+        alertDialog.show();
+    }
+
 
     /**
      * Called when the Add Button is clicked in Action Bar

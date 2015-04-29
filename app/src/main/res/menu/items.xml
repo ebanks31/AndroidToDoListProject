@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:myapp="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/Settings"
         android:title="@string/Settings"
-        android:showAsAction="ifRoom|withText"
+        myapp:showAsAction="ifRoom|withText"
     />
  
     <item
         android:id="@+id/Options"
         android:title="@string/Options"
-        android:showAsAction="ifRoom|withText"
+        myapp:showAsAction="ifRoom|withText"
     />
  
 
