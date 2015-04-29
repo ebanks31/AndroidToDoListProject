@@ -19,13 +19,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0a61a4a9-1cc9-4d24-9efd-4575616fd665" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\Classes\MyListFragment.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListOrganizerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListOrganizerActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ToDoListDbHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ToDoListDbHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/items.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/items.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/mainmenu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/mainmenu.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ListOrganizerContextWOCheck.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,11 +45,11 @@
       <file leaf-file-name="ListOrganizerActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListOrganizerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50384027" vertical-offset="2664" max-vertical-offset="16337">
-              <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.24270353" vertical-offset="2460" max-vertical-offset="16643">
+              <caret line="195" column="38" selection-start-line="195" selection-start-column="38" selection-end-line="195" selection-end-column="38" />
               <folding>
-                <element signature="e#8468#9718#0" expanded="true" />
-                <element signature="e#9699#9700#0" expanded="true" />
+                <element signature="e#8913#10172#0" expanded="true" />
+                <element signature="e#10153#10154#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1796,13 +1790,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListOrganizerActivity.java</url>
-          <line>727</line>
+          <line>745</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListOrganizerActivity.java</url>
-          <line>719</line>
+          <line>737</line>
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
@@ -1814,13 +1808,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListOrganizerActivity.java</url>
-          <line>519</line>
+          <line>537</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListOrganizerActivity.java</url>
-          <line>516</line>
+          <line>534</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
@@ -1832,7 +1826,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListOrganizerActivity.java</url>
-          <line>738</line>
+          <line>756</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
@@ -1877,8 +1871,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="7492" max-vertical-offset="16201">
           <caret line="378" column="4" selection-start-line="378" selection-start-column="4" selection-end-line="380" selection-end-column="5" />
           <folding>
-            <element signature="e#8468#9718#0" expanded="true" />
-            <element signature="e#9699#9700#0" expanded="true" />
+            <element signature="e#8913#10172#0" expanded="true" />
+            <element signature="e#10153#10154#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2243,11 +2237,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/android/todolist/ListOrganizerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50384027" vertical-offset="2664" max-vertical-offset="16337">
-          <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.24270353" vertical-offset="2460" max-vertical-offset="16643">
+          <caret line="195" column="38" selection-start-line="195" selection-start-column="38" selection-end-line="195" selection-end-column="38" />
           <folding>
-            <element signature="e#8468#9718#0" expanded="true" />
-            <element signature="e#9699#9700#0" expanded="true" />
+            <element signature="e#8913#10172#0" expanded="true" />
+            <element signature="e#10153#10154#0" expanded="true" />
           </folding>
         </state>
       </provider>

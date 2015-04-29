@@ -176,12 +176,12 @@ this.contextInfo = context;
             .show();
         break;
 		case R.id.date_modified:
-		sortListByDateModified(item);
+		sortListByDateModified ( item );
         Toast.makeText(this, "Date Modified selected", Toast.LENGTH_SHORT)
             .show();
         break;
           case R.id.default_sort:
-              sortListByDateModified(item);
+              sortListByDateModified ( item );
               Toast.makeText(this, "Default Sort selected", Toast.LENGTH_SHORT)
                       .show();
               break;
@@ -191,8 +191,13 @@ this.contextInfo = context;
 
       return true;
     }
-	
-	public void sortListByTitle(MenuItem item)
+
+    /**
+     * Sort the List Items by Spinner Title
+     *
+     * @param item MenuItem that is clicked.
+     */
+    public void sortListByTitle(MenuItem item)
 	{
 
         ToDoListDbHelper db = new ToDoListDbHelper(this);
@@ -202,7 +207,7 @@ this.contextInfo = context;
 
         updateListView(listItemList);
 
-        showAlertDialogPromptSortByTitle(db, listItemList);
+        showAlertDialogPromptSortByTitle ( db, listItemList );
 
         /*
 		final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
@@ -213,6 +218,12 @@ this.contextInfo = context;
 		//UPDATE Database. Update Database Sort Method by Title in DB class. Remove everything by title and insert into table by title.*/
 	
 	}
+
+    /**
+     * Sort the List Items by Date Modified
+     *
+     * @param item MenuItem that is clicked.
+     */
     public void sortListByDateModified(MenuItem item)
 		{
 
@@ -221,7 +232,7 @@ this.contextInfo = context;
 	 	ArrayList<String> listItemList = db.getAllListStringItemsSortedByDateModified(SpinnerFragment.currentSpinnerTitle);
 
             updateListView(listItemList);
-            showAlertDialogPromptSortByTitle(db, listItemList);
+            showAlertDialogPromptSortByTitle ( db, listItemList );
         /*
 		final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
     	android.R.layout.simple_list_item_1, listitemlist);
@@ -234,6 +245,13 @@ this.contextInfo = context;
 
 	}
 
+    /**
+     *
+     * Shows Alert Dialog Box with Yes or No Options
+     *
+     * @param db db obect for calling database calls
+     * @param listItemList ArrayList of String for each List Items
+     */
     public void showAlertDialogPromptSortByTitle(final ToDoListDbHelper db, final ArrayList<String> listItemList)
     {
         AlertDialog.Builder  alertDialog = new AlertDialog.Builder(this);
@@ -242,7 +260,7 @@ this.contextInfo = context;
         alertDialog.setTitle("Save Sort");
 
         // Setting Dialog Message
-        alertDialog.setMessage("Do you want to save sort?");
+        alertDialog.setMessage ( "Do you want to save sort?" );
         /*
         final EditText input = new EditText(this);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -270,11 +288,11 @@ this.contextInfo = context;
                         Date date = ListOrganizerActivity.getCurrentDate();
                         for (int i = 0;i < listItemList.size(); i++)
                         {
-                            String listItem = listItemList.get(i);
+                            String listItem = listItemList.get ( i );
                            // int listItemPosition = list1.get(i).getPosition();
 
                             //SORT BY POSITION
-                            db.updateListItemPositionSorted(new ListItem(SpinnerFragment.currentSpinnerTitle, listItem, date, 0), date, i + 1);
+                            db.updateListItemPositionSorted ( new ListItem ( SpinnerFragment.currentSpinnerTitle, listItem, date, 0 ), date, i + 1 );
                         }
 
 
