@@ -4,11 +4,11 @@
     <item android:id="@+id/action_new"
           android:icon="@drawable/ic_action_new"
           android:title="@string/action_new"
-          myapp:showAsAction="ifRoom" />
+          android:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_refresh"
         android:orderInCategory="100"
-        myapp:showAsAction="never"
+        android:showAsAction="never"
         android:icon="@drawable/ic_action_call"
         android:title="Refresh"/>
         
@@ -16,7 +16,7 @@
         android:id="@+id/action_overflow"
         android:orderInCategory="110"
         android:icon="@drawable/ic_action_overflow"
-        myapp:showAsAction="ifRoom"
+        android:showAsAction="ifRoom"
         android:title="@string/action_new"
         myapp:actionProviderClass="android.support.v7.widget.ShareActionProvider"
         />
@@ -24,24 +24,24 @@
     <item
         android:id="@+id/action_settings"
         android:title="Settings"
-        myapp:showAsAction="never"
+        android:showAsAction="never"
         />
             <item
         android:id="@+id/sort_title"
         android:title="Sort by Title"
-        myapp:showAsAction="never"
+        android:showAsAction="never"
         />
    
             <item
         android:id="@+id/date_modified"
         android:title="Sort By Date Modified"
-        myapp:showAsAction="never"
+        android:showAsAction="never"
         />
 
     <item
         android:id="@+id/default_sort"
         android:title="Default Sort"
-        myapp:showAsAction="never"
+        android:showAsAction="never"
         />
     
 </menu> 

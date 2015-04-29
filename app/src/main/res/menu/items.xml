@@ -4,13 +4,13 @@
     <item
         android:id="@+id/Settings"
         android:title="@string/Settings"
-        myapp:showAsAction="ifRoom|withText"
+        android:showAsAction="ifRoom|withText"
     />
  
     <item
         android:id="@+id/Options"
         android:title="@string/Options"
-        myapp:showAsAction="ifRoom|withText"
+        android:showAsAction="ifRoom|withText"
     />
  
 

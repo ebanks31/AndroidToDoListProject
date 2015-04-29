@@ -494,14 +494,14 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     	try
     	{
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ?" + "ORDER BY" + KEY_DATE + "ASC";
+        String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ?" + "ORDER BY " + KEY_DATE + " ASC";
         db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery,  new String[] {spinnerTitle});
  		ArrayList<String> listItemList = new ArrayList<String>();
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                listItemList.add(cursor.getString(1));
+                listItemList.add(cursor.getString(2));
             } while (cursor.moveToNext());
         }
  
@@ -544,7 +544,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
     	{
         // Select All Query
 
-            String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ? " + " ORDER BY" + KEY_TITLE + " ASC";
+            String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ? " + " ORDER BY " + KEY_LIST_ITEM + " ASC";
         //   String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE +" = ? AND "+KEY_CATEGORY + " = ? ORDER BY "+ KEY_POSITION;
 
             db = this.getWritableDatabase();
@@ -553,7 +553,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                listItemList.add(cursor.getString(1));
+                listItemList.add(cursor.getString(2));
             } while (cursor.moveToNext());
         }
  

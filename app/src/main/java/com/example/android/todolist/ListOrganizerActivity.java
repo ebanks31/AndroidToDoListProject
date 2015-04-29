@@ -69,7 +69,7 @@ public class ListOrganizerActivity extends Activity implements detailFragmentSel
         Context contextApp = getApplicationContext();
         contextInfo = contextApp;
         context = (TextView) findViewById(R.id.contextmenu);
-        Spinner spinner = (Spinner)findViewById(R.id.spinner1);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner1);
 	   // READ FROM DATABASE AND POPULATE VIEWS. ALSO POPULATE LIST TITLES in database. CREATE DATABASE LAYOUT(List of spinner title names, list of item in list fragments)
 	   // Think about database structure.
 
@@ -171,7 +171,7 @@ this.contextInfo = context;
             .show();
         break;
      case R.id.sort_title:
-		 SortListByTitle(item);
+		sortListByTitle(item);
         Toast.makeText(this, "Sort Title selected", Toast.LENGTH_SHORT)
             .show();
         break;
@@ -207,7 +207,7 @@ this.contextInfo = context;
 
         updateListView(listItemList);
 
-        showAlertDialogPromptSortByTitle ( db, listItemList );
+        showAlertDialogPromptSortByTitle(db, listItemList );
 
         /*
 		final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
@@ -232,7 +232,7 @@ this.contextInfo = context;
 	 	ArrayList<String> listItemList = db.getAllListStringItemsSortedByDateModified(SpinnerFragment.currentSpinnerTitle);
 
             updateListView(listItemList);
-            showAlertDialogPromptSortByTitle ( db, listItemList );
+            showAlertDialogPromptSortByTitle(db, listItemList );
         /*
 		final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
     	android.R.layout.simple_list_item_1, listitemlist);
@@ -260,7 +260,7 @@ this.contextInfo = context;
         alertDialog.setTitle("Save Sort");
 
         // Setting Dialog Message
-        alertDialog.setMessage ( "Do you want to save sort?" );
+        alertDialog.setMessage("Do you want to save sort?");
         /*
         final EditText input = new EditText(this);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -286,13 +286,13 @@ this.contextInfo = context;
                         }
 
                         Date date = ListOrganizerActivity.getCurrentDate();
-                        for (int i = 0;i < listItemList.size(); i++)
+                        for (int i = 0; i < listItemList.size(); i++)
                         {
-                            String listItem = listItemList.get ( i );
+                            String listItem = listItemList.get (i);
                            // int listItemPosition = list1.get(i).getPosition();
 
                             //SORT BY POSITION
-                            db.updateListItemPositionSorted ( new ListItem ( SpinnerFragment.currentSpinnerTitle, listItem, date, 0 ), date, i + 1 );
+                            db.updateListItemPositionSorted(new ListItem(SpinnerFragment.currentSpinnerTitle, listItem, date, 0), date, i + 1 );
                         }
 
 
@@ -380,14 +380,14 @@ this.contextInfo = context;
                             }
 
 
-                            if (ListOrganizerActivity.listValues != null || ListOrganizerActivity.listValues.size()>0)
+                            if (ListOrganizerActivity.listValues != null || ListOrganizerActivity.listValues.size() > 0)
                             {
-                                db.addListitem(new ListItem( SpinnerFragment.currentSpinnerTitle, listInput, date, ListOrganizerActivity.listValues.size()+1));
+                                db.addListitem(new ListItem( SpinnerFragment.currentSpinnerTitle, listInput, date, ListOrganizerActivity.listValues.size() + 1));
                                 ListOrganizerActivity.listValues.add(ListOrganizerActivity.listValues.size(), listInput);
                             }
                             else
                             {
-                                db.addListitem(new ListItem( SpinnerFragment.currentSpinnerTitle, listInput, date,1));
+                                db.addListitem(new ListItem( SpinnerFragment.currentSpinnerTitle, listInput, date, 1));
                                 ListOrganizerActivity.listValues.add(0, listInput);
 
                             }
@@ -403,7 +403,7 @@ this.contextInfo = context;
 
                             }
 
-                            updateListView ( ListOrganizerActivity.listValues );
+                            updateListView(ListOrganizerActivity.listValues);
 
                         }
                     }

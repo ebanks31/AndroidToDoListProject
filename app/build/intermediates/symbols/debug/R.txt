@@ -262,7 +262,7 @@ int id action_overflow 0x7f080046
 int id action_refresh 0x7f080045
 int id action_settings 0x7f080041
 int id activity_chooser_view_content 0x7f080025
-int id add 0x7f080049
+int id add 0x7f08004a
 int id always 0x7f08000f
 int id beginning 0x7f08000a
 int id checkbox 0x7f08002d
@@ -270,13 +270,14 @@ int id collapseActionView 0x7f080011
 int id contextmenu 0x7f08003e
 int id date_modified 0x7f080048
 int id default_activity_button 0x7f080028
-int id delete 0x7f08004b
+int id default_sort 0x7f080049
+int id delete 0x7f08004c
 int id detailFragment 0x7f08003d
 int id detailsText 0x7f08003f
 int id dialog 0x7f080012
 int id disableHome 0x7f080008
 int id dropdown 0x7f080013
-int id edit 0x7f08004a
+int id edit 0x7f08004b
 int id edit_query 0x7f080030
 int id end 0x7f08000c
 int id expand_activities_button 0x7f080026
@@ -306,7 +307,7 @@ int id search_mag_icon 0x7f080035
 int id search_plate 0x7f080036
 int id search_src_text 0x7f080037
 int id search_voice_btn 0x7f08003b
-int id share 0x7f08004c
+int id share 0x7f08004d
 int id shortcut 0x7f08002e
 int id showCustom 0x7f080007
 int id showHome 0x7f080004

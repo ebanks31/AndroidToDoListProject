@@ -17,6 +17,7 @@
         android:orderInCategory="110"
         android:icon="@drawable/ic_action_overflow"
         android:showAsAction="ifRoom"
+        android:title="@string/action_new"
         myapp:actionProviderClass="android.support.v7.widget.ShareActionProvider"
         />
     
@@ -36,6 +37,11 @@
         android:title="Sort By Date Modified"
         android:showAsAction="never"
         />
-        
+
+    <item
+        android:id="@+id/default_sort"
+        android:title="Default Sort"
+        android:showAsAction="never"
+        />
     
 </menu> <!-- From: file:/C:/Users/Eric/AndroidstudioProjects/ListOrganizerContextWOCheck/app/src/main/res/menu/mainmenu.xml -->

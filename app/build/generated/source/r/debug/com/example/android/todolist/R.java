@@ -845,7 +845,7 @@ containing a value of this type.
         public static final int action_refresh=0x7f080045;
         public static final int action_settings=0x7f080041;
         public static final int activity_chooser_view_content=0x7f080025;
-        public static final int add=0x7f080049;
+        public static final int add=0x7f08004a;
         public static final int always=0x7f08000f;
         public static final int beginning=0x7f08000a;
         public static final int checkbox=0x7f08002d;
@@ -853,13 +853,14 @@ containing a value of this type.
         public static final int contextmenu=0x7f08003e;
         public static final int date_modified=0x7f080048;
         public static final int default_activity_button=0x7f080028;
-        public static final int delete=0x7f08004b;
+        public static final int default_sort=0x7f080049;
+        public static final int delete=0x7f08004c;
         public static final int detailFragment=0x7f08003d;
         public static final int detailsText=0x7f08003f;
         public static final int dialog=0x7f080012;
         public static final int disableHome=0x7f080008;
         public static final int dropdown=0x7f080013;
-        public static final int edit=0x7f08004a;
+        public static final int edit=0x7f08004b;
         public static final int edit_query=0x7f080030;
         public static final int end=0x7f08000c;
         public static final int expand_activities_button=0x7f080026;
@@ -889,7 +890,7 @@ containing a value of this type.
         public static final int search_plate=0x7f080036;
         public static final int search_src_text=0x7f080037;
         public static final int search_voice_btn=0x7f08003b;
-        public static final int share=0x7f08004c;
+        public static final int share=0x7f08004d;
         public static final int shortcut=0x7f08002e;
         public static final int showCustom=0x7f080007;
         public static final int showHome=0x7f080004;

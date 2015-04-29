@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/add"
-        myapp:showAsAction="always"
+        android:showAsAction="always"
         android:title="Add"/>
     <item
         android:id="@+id/edit"
@@ -12,13 +12,13 @@
     <item
         android:id="@+id/delete"
         android:title="Delete"
-        myapp:showAsAction="never"
+        android:showAsAction="never"
         >
     </item>
         <item
         android:id="@+id/share"
         android:title="Share"
-        myapp:showAsAction="never"
+        android:showAsAction="never"
         >
     </item>
     
