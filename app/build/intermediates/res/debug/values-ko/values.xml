@@ -15,4 +15,7 @@
     <string msgid="893419373245838918" name="abc_searchview_description_voice">"음성 검색"</string>
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"공유 대상"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"%s와(과) 공유"</string>
+    <!-- From: file:/C:/Users/Eric/AndroidstudioProjects/ListOrganizerContextWOCheck/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values-ko/values.xml -->
+    <eat-comment/>
+    <string name="messenger_send_button_text">보내기</string>
 </resources>

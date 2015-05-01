@@ -8,7 +8,8 @@
     <string name="country_prompt">Choose a country</string>
     <string name="Settings">Settings</string>
     <string name="Options">Options</string>
-                
+    <string name="facebook_app_id">FaceBook</string>
+
     <string-array name="settinsmenuitems">
         <item>Settings</item>
         <item>Options</item>

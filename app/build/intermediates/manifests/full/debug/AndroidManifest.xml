@@ -27,10 +27,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--
         <activity
-            android:name="com.example.android.todolist.DetailActivity"
+            android:name="com.example.android.todolist.facebook_app_id"
             android:label="@string/title_activity_detail" >
         </activity>
+        -->
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- Facebook MetaData -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider{1051411251554109}"
+            android:exported="true" />
     </application>
 
 </manifest>

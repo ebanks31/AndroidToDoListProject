@@ -15,4 +15,7 @@
     <string msgid="893419373245838918" name="abc_searchview_description_voice">"Puhehaku"</string>
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Jakaminen:"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Jakaminen: %s"</string>
+    <!-- From: file:/C:/Users/Eric/AndroidstudioProjects/ListOrganizerContextWOCheck/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values-fi/values.xml -->
+    <eat-comment/>
+    <string name="messenger_send_button_text">Lähetä</string>
 </resources>

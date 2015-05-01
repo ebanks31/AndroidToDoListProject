@@ -2,6 +2,27 @@
 <items version="2" >
 
     <item
+        jar="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\libs\Parse-1.7.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="87c45f9f66da531a65f065ee32f603c7e6db1528">
+        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\Parse-1.7.1-ba2b781a4381e11f42edcad7ad82eeb9eccddeb5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-7413b81d70551cb5372616009ec02b2d5acccc6a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\classes-52dcb5721ab74cebc4486d6ed8b10dcbf326dbb4.jar" />
+    </item>
+    <item
         jar="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
         jumboMode="false"
         revision="20.0.0"
@@ -16,11 +37,11 @@
         <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\acra-4.5.0-e42502c43ca46cf42020e576138b6ebcf5f7a5ca.jar" />
     </item>
     <item
-        jar="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\libs\Parse-1.7.1.jar"
+        jar="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.0.0\classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="87c45f9f66da531a65f065ee32f603c7e6db1528">
-        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\Parse-1.7.1-ba2b781a4381e11f42edcad7ad82eeb9eccddeb5.jar" />
+        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
+        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\classes-5e6e22dd56bb187744346b7c2d5030893158a728.jar" />
     </item>
     <item
         jar="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\libs\bolts-android-1.1.3.jar"
@@ -30,11 +51,18 @@
         <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.3-6331dccc8e26f79f89ba8497417017630227e844.jar" />
     </item>
     <item
-        jar="C:\Users\Eric\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jar="C:\Users\Eric\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-bb07e878048679bbd2a50c587bc3582d3942d2f8.jar" />
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-5a26b838c67306df4d1660a5f65c0813e4133d34.jar" />
+    </item>
+    <item
+        jar="C:\Users\Eric\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Eric\AndroidstudioProjects\ListOrganizerContextWOCheck\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-300247359fa0172bb0765853c26b427016616e82.jar" />
     </item>
 
 </items>

@@ -15,4 +15,7 @@
     <string msgid="893419373245838918" name="abc_searchview_description_voice">"Penelusuran suara"</string>
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Bagikan dengan"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Bagikan dengan %s"</string>
+    <!-- From: file:/C:/Users/Eric/AndroidstudioProjects/ListOrganizerContextWOCheck/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values-in/values.xml -->
+    <eat-comment/>
+    <string name="messenger_send_button_text">Kirim</string>
 </resources>

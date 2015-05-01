@@ -3,7 +3,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@color/lightblue">
+    android:background="@color/lightblue"
+    android:id="@+id/main_activity">
 
     <fragment
         android:id="@+id/listfragment"

@@ -15,4 +15,7 @@
     <string msgid="893419373245838918" name="abc_searchview_description_voice">"Paghahanap gamit ang boses"</string>
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Ibahagi sa/kay"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Ibahagi sa/kay %s"</string>
+    <!-- From: file:/C:/Users/Eric/AndroidstudioProjects/ListOrganizerContextWOCheck/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values-tl/values.xml -->
+    <eat-comment/>
+    <string name="messenger_send_button_text">Ipadala</string>
 </resources>
