@@ -973,16 +973,16 @@ public boolean onContextItemSelected(MenuItem item) {
         if (ShareDialog.canShow(ShareLinkContent.class)) {
             ToDoListDbHelper db = new ToDoListDbHelper(ListOrganizerActivity.this);
             List<ListItem> listItemList = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinnerTitle);
-            String listItems = "";
+            String listItems = "List Items: ";
 
             ArrayList<String> updatedListItems = todolistutility.getListTitleFromListItems(listItemList, SpinnerFragment.currentSpinnerTitle);
             for (String value : updatedListItems) {
 
-                listItems += value + "\\n";
+                listItems += value + " ";
             }
 
             ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                    .setContentTitle(SpinnerFragment.currentSpinnerTitle)
+                    .setContentTitle("Title of List: " + SpinnerFragment.currentSpinnerTitle)
                     .setContentDescription(listItems)
                     .setContentUrl(Uri.parse("http://developers.facebook.com/android"))
                     .build();
