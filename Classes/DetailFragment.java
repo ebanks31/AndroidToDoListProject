@@ -9,13 +9,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 /**
  * 
@@ -37,7 +43,33 @@ public class DetailFragment extends ListFragment  {
     {
         todolistutility = new ToDoListUtility();
     }
-	
+
+
+
+	/* (non-Javadoc)
+  * @see android.app.ListFragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
+  *
+  * Sets the initial values in the spinner.
+  */
+	@SuppressWarnings("unchecked")
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState) {
+
+		View view = inflater.inflate(R.layout.fragment_rssitem_detail,
+				container, false);
+
+
+		String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
+				"Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+				"Linux", "OS/2" };
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+				android.R.layout.simple_list_item_1, values);
+		setListAdapter(adapter);
+		listener.detailFragmentSelected(values, adapter);
+
+		return view;
+	}
 	  /* (non-Javadoc)
 	 * @see android.app.Fragment#onActivityCreated(android.os.Bundle)
 	 * 
@@ -46,13 +78,15 @@ public class DetailFragment extends ListFragment  {
 	@Override
 	  public void onActivityCreated(Bundle savedInstanceState) {
 	    super.onActivityCreated(savedInstanceState);
+
+		/*
 	    String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
 	        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
 	        "Linux", "OS/2" };
 	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 	        android.R.layout.simple_list_item_1, values);
 	    setListAdapter(adapter);
-	    listener.detailFragmentSelected(values, adapter);
+	    listener.detailFragmentSelected(values, adapter);*/
 	  }
 
 	  /* (non-Javadoc)

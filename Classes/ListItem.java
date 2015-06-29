@@ -30,7 +30,7 @@ public class ListItem {
 	 * 
 	 * @param title title from the spinner
 	 * @param listitem list item from the list that is associated to spinner
-	 */
+
 	public ListItem(String title, String listItem) {
 		this.title = title;
 		this.listItem = listItem;
@@ -41,12 +41,12 @@ public class ListItem {
      * Might not be needed.
      * @param listItem list item from the list that is associated to spinner
      * @param value position of list item
-     */
+
     public ListItem(String listItem, int value){
         this.listItem = listItem;
         this.value = value;
     }
-
+	 */
 
     /**
 	 * Overloaded Constructor for List Item. Initalizes a List Item with a title and listitem
@@ -145,10 +145,10 @@ public class ListItem {
 	/**
 	 * Sets the date
 	 * @param date date that will be set
-	 */
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
+	 */
 
 }
