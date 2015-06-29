@@ -2,8 +2,13 @@
 <resources>
     <!-- From: file:/C:/Users/Eric/AndroidstudioProjects/ListOrganizerContextWOCheck/app/src/main/res/values-v14/styles.xml -->
     <eat-comment/>
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- API 14 theme customizations can go here. -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!-- API 14 theme customizations can go here-->
+        <item name="android:windowBackground">@color/lightblue</item>
+    </style>
+    <style name="AppBaseTheme1" parent="Theme.AppCompat.Light">
+        <!-- API 14 theme customizations can go here-->
+        <item name="android:windowBackground">@color/darkblue</item>
     </style>
     <!-- From: file:/C:/Users/Eric/AndroidstudioProjects/ListOrganizerContextWOCheck/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values-v14/values.xml -->
     <eat-comment/>

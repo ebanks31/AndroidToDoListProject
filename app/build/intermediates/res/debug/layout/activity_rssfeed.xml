@@ -3,23 +3,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@color/lightblue"
     android:id="@+id/main_activity">
+    <!--android:background="@color/lightblue"-->
 
-    <fragment
-        android:id="@+id/listfragment"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="?android:attr/actionBarSize"
-        class="com.example.android.todolist.SpinnerFragment" ></fragment>
 
-    <fragment
-        android:id="@+id/detailFragment"
-        android:layout_width="fill_parent"
-        android:layout_weight="2"
-        android:layout_height="wrap_content"
-        class="com.example.android.todolist.DetailFragment" >
-        <!-- Preview: layout=@layout/details -->
-    </fragment>
 </LinearLayout> <!-- From: file:/C:/Users/Eric/AndroidstudioProjects/ListOrganizerContextWOCheck/app/src/main/res/layout/activity_rssfeed.xml -->

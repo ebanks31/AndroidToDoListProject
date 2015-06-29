@@ -42,4 +42,12 @@
  <string name="action_new">Search</string>
  <string name="action_overflow">Overflow</string>
 
+    <string name="addSpinner">Add Spinner</string>
+    <string name="editSpinner">Edit Spinner</string>
+    <string name="deleteSpinner">Delete Spinner</string>
+
+    <string name="newList">New List</string>
+    <string name="sampleList">Sample List</string>
+    <string name="showTips">Show Tips at Startup?</string>
+
 </resources>

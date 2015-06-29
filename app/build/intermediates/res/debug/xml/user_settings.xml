@@ -10,6 +10,13 @@
      
     <PreferenceCategory android:title="Security Settings" >
         <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefShowTips"
+            android:summary="@string/showTips"
+            android:title="Show Tips at StartUp?" >
+        </CheckBoxPreference>
+
+        <CheckBoxPreference
             android:defaultValue="false"
             android:key="prefLockScreen"
             android:summary="Lock The Screen With Password"
@@ -17,12 +24,12 @@
         </CheckBoxPreference>
 
         <ListPreference
-            android:key="prefUpdateFrequency"
-            android:title="Reminder for Updation"
-            android:summary="Set Update Reminder Frequency"
-            android:entries="@array/updateFrequency"
-            android:entryValues="@array/updateFrequencyValues"
-            android:defaultValue="@array/updateFrequencyValues" />
+            android:key="prefColorChange"
+            android:title="Change Color Theme"
+            android:summary="Set Change Color Theme"
+            android:entries="@array/Change_Color_Theme"
+            android:entryValues="@array/Change_Color_Theme_Values"
+            android:defaultValue="@array/Change_Color_Theme_Values" />
             />
     </PreferenceCategory>
 

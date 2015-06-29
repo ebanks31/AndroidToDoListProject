@@ -9,7 +9,9 @@
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
-        -->
+
+        <item name="android:textColorPrimary">#ffff0000</item>
+        <item name="android:background">@color/lightblue</item>   -->
     </style>
 
     <!-- Application theme. -->
@@ -27,4 +29,18 @@
            parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/darkblue</item>
     </style>
+
+
+
+    <style name="CustomActionBarTheme1"
+        parent="AppBaseTheme1">
+        <item name="android:actionBarStyle">@style/MyActionBar1</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="MyActionBar1"
+        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/lightblue</item>
+    </style>
+
 </resources>

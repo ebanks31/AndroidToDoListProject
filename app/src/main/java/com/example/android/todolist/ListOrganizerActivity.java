@@ -38,6 +38,9 @@ import android.widget.Toast;
 import android.preference.PreferenceFragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.preference.*;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.*;
 
 import com.example.android.todolist.DetailFragment.detailFragmentSelectedListener;
 import com.facebook.CallbackManager;
@@ -51,12 +54,13 @@ import com.facebook.share.widget.ShareDialog;
  * 
  * This class creates the main Activity for the Android program
  * 
- * @author Eric
+ * @author Eric Banks
  *
  */
 public class ListOrganizerActivity extends Activity implements detailFragmentSelectedListener,SpinnerFragment.OnItemSelectedListener{
 
 	TextView context;
+
 	private Context contextInfo;
 	public static ArrayList<String> listValues;
 	public static ArrayAdapter<String> listAdapter;
@@ -65,6 +69,11 @@ public class ListOrganizerActivity extends Activity implements detailFragmentSel
     private static final int SETTINGS_RESULT = 1;
     CallbackManager callbackManager;
     ShareDialog shareDialog;
+
+    SpinnerFragment spinnerFragment;
+    DetailFragment detailFragment;
+    FragmentManager fragmentManager;
+
     public  ListOrganizerActivity()
     {
         todolistutility = new ToDoListUtility();
@@ -79,10 +88,15 @@ public class ListOrganizerActivity extends Activity implements detailFragmentSel
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rssfeed);
-        Context contextApp = getApplicationContext();
-        contextInfo = contextApp;
-        context = (TextView) findViewById(R.id.contextmenu);
+
+
+      //  Context contextApp = getApplicationContext();
+      //  contextInfo = contextApp;
+      //  context = (TextView) findViewById(R.id.contextmenu);
+
+
+
+        /*
         Spinner spinner = (Spinner) findViewById(R.id.spinner1);
         // READ FROM DATABASE AND POPULATE VIEWS. ALSO POPULATE LIST TITLES in database. CREATE DATABASE LAYOUT(List of spinner title names, list of item in list fragments)
         // Think about database structure.
@@ -96,8 +110,29 @@ public class ListOrganizerActivity extends Activity implements detailFragmentSel
         DetailFragment detailFragment = (DetailFragment) getFragmentManager()
                 .findFragmentById(R.id.detailFragment);
         registerForContextMenu(detailFragment.getListView());
+*/
 
+
+
+        fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager
+                .beginTransaction ();
+        spinnerFragment = new SpinnerFragment();
+        detailFragment = new DetailFragment();
+       // myFrag
+         //       .setSpecialText ("Frag time:  " + System.currentTimeMillis ());
+       // myFragList.add (myFrag);
+        fragmentTransaction.add(R.id.main_activity, spinnerFragment, "SpinnerFragment");
+        fragmentTransaction.add(R.id.main_activity, detailFragment, "DetailFragment");
+        fragmentTransaction.addToBackStack("state");
+        fragmentTransaction.commit();
+
+        themeUtils.onActivityCreateSetTheme(this);
+
+        setContentView(R.layout.activity_rssfeed);
+      // registerForContextMenu(detailFragment.getListView());
         //List<ListItem> contacts = db.getAllListItems();
+
 
 
 
@@ -149,7 +184,22 @@ public class ListOrganizerActivity extends Activity implements detailFragmentSel
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 1 ){
+            getFragmentManager().popBackStack();
+        } else {
+            this.finish();
+            super.onBackPressed();
+        }
 
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+       super.onSaveInstanceState(outState);
+
+        }
     /**
      * 
      * Get Context from the RssFeedActivity
@@ -232,9 +282,16 @@ this.contextInfo = context;
                     String title = item.getTitle().toString();
                   switch (item.getItemId()){
                       case R.id.Settings:
+                        //  fragmentTransaction.hide(detailFragment);
                           // Display the fragment as the main content.
-                          getFragmentManager().beginTransaction()
-                                  .replace(android.R.id.content, new SettingsFragment())
+                       /*)   getFragmentManager().beginTransaction().hide(detailFragment)
+                                  .replace(R.id.main_activity, new SettingsFragment())
+                                  .addToBackStack(null)
+                                  .commit();*/
+
+                          getFragmentManager().beginTransaction().hide(detailFragment).hide(spinnerFragment)
+                                  .add(R.id.main_activity, new SettingsFragment())
+                                  .addToBackStack(null)
                                   .commit();
                           break;
                       case R.id.Options:
@@ -405,6 +462,7 @@ this.contextInfo = context;
         int valToSet = (int) spinner.getSelectedItemId();
         final int index = (info!=null) ? info.position : valToSet;
 
+
         final DetailFragment detailfragment = (DetailFragment)
                 getFragmentManager().findFragmentById(R.id.detailFragment);
 
@@ -531,8 +589,12 @@ this.contextInfo = context;
 		
 	    menu.setHeaderTitle("Context Menu Options");  
 	    
-	      DetailFragment detailFragment = (DetailFragment) getFragmentManager()
+	      DetailFragment detailFragment1 = (DetailFragment) getFragmentManager()
 	              .findFragmentById(R.id.detailFragment);
+
+        DetailFragment detailFragment = (DetailFragment) getFragmentManager()
+                .findFragmentByTag("DetailFragment");
+
 	      int listId = (int) detailFragment.getSelectedItemId();
 	     
 	     if (v.getId()== R.id.spinner1)
@@ -567,9 +629,9 @@ public boolean onContextItemSelected(MenuItem item) {
     Spinner spinner = (Spinner) findViewById(R.id.spinner1);
     int valToSet = (int) spinner.getSelectedItemId();
 
-    final DetailFragment detailFragment = (DetailFragment)
+    final DetailFragment detailFragment1 = (DetailFragment)
             getFragmentManager().findFragmentById(R.id.detailFragment);
-
+    final DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag("DetailFragment");
     final ListFragment listFragment = (ListFragment)
             getFragmentManager().findFragmentById(R.id.listfragment);
 
@@ -976,14 +1038,17 @@ public boolean onContextItemSelected(MenuItem item) {
             String listItems = "List Items: ";
 
             ArrayList<String> updatedListItems = todolistutility.getListTitleFromListItems(listItemList, SpinnerFragment.currentSpinnerTitle);
-            for (String value : updatedListItems) {
 
-                listItems += value + " ";
+            StringBuilder sb = new StringBuilder(listItems);
+
+            for (String value : updatedListItems)
+            {
+                sb.append(value + " ");
             }
 
             ShareLinkContent linkContent = new ShareLinkContent.Builder()
                     .setContentTitle("Title of List: " + SpinnerFragment.currentSpinnerTitle)
-                    .setContentDescription(listItems)
+                    .setContentDescription(sb.toString())
                     .setContentUrl(Uri.parse("http://developers.facebook.com/android"))
                     .build();
 
@@ -1014,9 +1079,11 @@ public void onRssItemSelected(int position) {
 @Override
 public void sampleFragmentList(int position) {
 
-    DetailFragment detailFragment = (DetailFragment) getFragmentManager()
+    DetailFragment detailFragment1 = (DetailFragment) getFragmentManager()
             .findFragmentById(R.id.detailFragment);
-        if (detailFragment != null && detailFragment.isInLayout()) {
+
+    DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag("DetailFragment");
+        if (detailFragment != null) {
        	    String[] values = new String[] { "Android1", "iPhone", "WindowsMobile",
     	        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
     	        "Linux", "OS/2" };
@@ -1035,12 +1102,12 @@ public void sampleFragmentList(int position) {
 @Override
 public void clearFragmentList(int position) {
 
-    DetailFragment detailFragment = (DetailFragment) getFragmentManager()
+    DetailFragment detailFragment1 = (DetailFragment) getFragmentManager()
             .findFragmentById(R.id.detailFragment);
         SpinnerFragment listfragment = (SpinnerFragment ) getFragmentManager()
             .findFragmentById(R.id.listfragment);
-        
-        if (detailFragment != null && detailFragment.isInLayout()) {
+    DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag("DetailFragment");
+        if (detailFragment != null) {
        	    String[] values = new String[] { "Android22222222", "iPhone", "WindowsMobile",
     	        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
     	        "Linux", "OS/2" };
@@ -1083,9 +1150,11 @@ public void detailFragmentSelected(String[] values, ArrayAdapter<String> adapter
  */
 @Override
 public void updateListView(ArrayList<String> values) {
-    DetailFragment detailFragment = (DetailFragment) getFragmentManager()
-            .findFragmentById(R.id.detailFragment);
-        if (detailFragment != null && detailFragment.isInLayout()) {
+   // DetailFragment detailFragment1 = (DetailFragment) getFragmentManager()
+         //   .findFragmentById(R.id.detailFragment);
+
+    //DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag("DetailFragment");
+        if (detailFragment != null) {
     	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
     	        android.R.layout.simple_list_item_1, values);
             detailFragment.setListAdapter(adapter);
@@ -1130,7 +1199,10 @@ public void setPositiveAlertOptionOK(AlertDialog.Builder alertDialog)
             });
 }
 
-    public static class SettingsFragment extends PreferenceFragment {
+    public static class SettingsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener{
+
+        public static final String KEY_PREF_COLOR_CHANGE = "prefColorChange";
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -1138,7 +1210,49 @@ public void setPositiveAlertOptionOK(AlertDialog.Builder alertDialog)
             // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.user_settings);
         }
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+                                              String key) {
+            if (key.equals(KEY_PREF_COLOR_CHANGE)) {
+                Preference connectionPref = findPreference(key);
 
+
+                // Set summary to be the user-description for the selected value
+                connectionPref.setSummary(sharedPreferences.getString(key, ""));
+
+                String value = sharedPreferences.getString(key, "");
+
+
+               if(value.equals("Blue"))
+               {
+
+                   themeUtils.changeToTheme(super.getActivity(), themeUtils.BLUE);
+               }
+               else
+               {
+                   themeUtils.changeToTheme(super.getActivity(), themeUtils.BLACK);
+
+               }
+
+
+
+            }
+        }
+
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            getPreferenceScreen().getSharedPreferences()
+                    .registerOnSharedPreferenceChangeListener(this);
+        }
+
+        @Override
+        public void onPause() {
+            super.onPause();
+            getPreferenceScreen().getSharedPreferences()
+                    .unregisterOnSharedPreferenceChangeListener(this);
+        }
     }
 
 } 

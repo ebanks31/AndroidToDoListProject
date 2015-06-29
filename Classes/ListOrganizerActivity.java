@@ -92,6 +92,7 @@ public class ListOrganizerActivity extends Activity implements detailFragmentSel
 
         SpinnerFragment listFragment = (SpinnerFragment ) getFragmentManager()
                 .findFragmentById(R.id.listfragment);
+
         registerForContextMenu(listFragment.getListView());
         DetailFragment detailFragment = (DetailFragment) getFragmentManager()
                 .findFragmentById(R.id.detailFragment);
@@ -405,8 +406,10 @@ this.contextInfo = context;
         int valToSet = (int) spinner.getSelectedItemId();
         final int index = (info!=null) ? info.position : valToSet;
 
-        final DetailFragment detailfragment = (DetailFragment)
+        final DetailFragment detailfragment1 = (DetailFragment)
                 getFragmentManager().findFragmentById(R.id.detailFragment);
+
+        final DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag("DetailFragment");
 
         AlertDialog.Builder  alertDialog = new AlertDialog.Builder(this);
 
@@ -533,6 +536,8 @@ this.contextInfo = context;
 	    
 	      DetailFragment detailFragment = (DetailFragment) getFragmentManager()
 	              .findFragmentById(R.id.detailFragment);
+
+        f
 	      int listId = (int) detailFragment.getSelectedItemId();
 	     
 	     if (v.getId()== R.id.spinner1)
@@ -567,11 +572,14 @@ public boolean onContextItemSelected(MenuItem item) {
     Spinner spinner = (Spinner) findViewById(R.id.spinner1);
     int valToSet = (int) spinner.getSelectedItemId();
 
-    final DetailFragment detailFragment = (DetailFragment)
+    final DetailFragment detailFragment` = (DetailFragment)
             getFragmentManager().findFragmentById(R.id.detailFragment);
+    final DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag("DetailFragment");
 
-    final ListFragment listFragment = (ListFragment)
+    final ListFragment 1 = (ListFragment)
             getFragmentManager().findFragmentById(R.id.listfragment);
+
+    final DetailFragment listFragment = (DetailFragment) getFragmentManager().findFragmentByTag("SpinnerFragment");
 
     ArrayAdapter<String> adapter = ListOrganizerActivity.listAdapter;
 
@@ -1014,8 +1022,9 @@ public void onRssItemSelected(int position) {
 @Override
 public void sampleFragmentList(int position) {
 
-    DetailFragment detailFragment = (DetailFragment) getFragmentManager()
+    DetailFragment detailFragment1 = (DetailFragment) getFragmentManager()
             .findFragmentById(R.id.detailFragment);
+    DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag("DetailFragment");
         if (detailFragment != null && detailFragment.isInLayout()) {
        	    String[] values = new String[] { "Android1", "iPhone", "WindowsMobile",
     	        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
@@ -1083,8 +1092,9 @@ public void detailFragmentSelected(String[] values, ArrayAdapter<String> adapter
  */
 @Override
 public void updateListView(ArrayList<String> values) {
-    DetailFragment detailFragment = (DetailFragment) getFragmentManager()
+    DetailFragment detailFragment` = (DetailFragment) getFragmentManager()
             .findFragmentById(R.id.detailFragment);
+    DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag("DetailFragment");
         if (detailFragment != null && detailFragment.isInLayout()) {
     	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
     	        android.R.layout.simple_list_item_1, values);
