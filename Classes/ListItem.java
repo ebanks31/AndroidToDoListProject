@@ -17,7 +17,7 @@ public class ListItem {
 	private int id;
 	private Date date;
     private int position;
-    private int value;
+
 	/**
 	 * Default Constructor for List Item Class
 	 */

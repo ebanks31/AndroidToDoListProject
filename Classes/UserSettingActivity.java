@@ -5,6 +5,9 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 
 
+/**
+ * The type User setting activity.
+ */
 public class UserSettingActivity extends PreferenceActivity
 {
 	
@@ -15,6 +18,9 @@ public class UserSettingActivity extends PreferenceActivity
         getFragmentManager().beginTransaction().replace(android.R.id.content, new MyPreferenceFragment()).commit();
     }
 
+    /**
+     * The type My preference fragment.
+     */
     public static class MyPreferenceFragment extends PreferenceFragment
     {
         @Override
