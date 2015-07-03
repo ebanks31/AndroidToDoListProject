@@ -59,7 +59,6 @@ import com.facebook.share.widget.ShareDialog;
  */
 public class ListOrganizerActivity extends Activity implements detailFragmentSelectedListener,SpinnerFragment.OnItemSelectedListener{
 
-	TextView context;
 
 	private Context contextInfo;
 	public static ArrayList<String> listValues;
@@ -279,7 +278,7 @@ this.contextInfo = context;
           popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
               @Override
               public boolean onMenuItemClick(MenuItem item) {
-                    String title = item.getTitle().toString();
+                  //  String title = item.getTitle().toString();
                   switch (item.getItemId()){
                       case R.id.Settings:
                         //  fragmentTransaction.hide(detailFragment);
@@ -456,11 +455,11 @@ this.contextInfo = context;
      * @param item Menu item that is clicked
      */
     public void addItemToListActionBar(MenuItem item) {
-        CustomOnItemSelectedListener customlistener = new CustomOnItemSelectedListener();
-        final AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+       // CustomOnItemSelectedListener customlistener = new CustomOnItemSelectedListener();
+//        final AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
         Spinner spinner = (Spinner)findViewById(R.id.spinner1);
         int valToSet = (int) spinner.getSelectedItemId();
-        final int index = (info!=null) ? info.position : valToSet;
+       // final int index = (info!=null) ? info.position : valToSet;
 
 
         final DetailFragment detailfragment = (DetailFragment)
@@ -527,7 +526,7 @@ this.contextInfo = context;
                             }
 
 
-                            if (ListOrganizerActivity.listValues != null || ListOrganizerActivity.listValues.size() > 0)
+                            if (ListOrganizerActivity.listValues.size() > 0)
                             {
                                 db.addListitem(new ListItem( SpinnerFragment.currentSpinnerTitle, listInput, date, ListOrganizerActivity.listValues.size() + 1));
                                 ListOrganizerActivity.listValues.add(ListOrganizerActivity.listValues.size(), listInput);
@@ -589,17 +588,17 @@ this.contextInfo = context;
 		
 	    menu.setHeaderTitle("Context Menu Options");  
 	    
-	      DetailFragment detailFragment1 = (DetailFragment) getFragmentManager()
-	              .findFragmentById(R.id.detailFragment);
+	     // DetailFragment detailFragment1 = (DetailFragment) getFragmentManager()
+	   //           .findFragmentById(R.id.detailFragment);
 
         DetailFragment detailFragment = (DetailFragment) getFragmentManager()
                 .findFragmentByTag("DetailFragment");
 
-	      int listId = (int) detailFragment.getSelectedItemId();
+	    //  int listId = (int) detailFragment.getSelectedItemId();
 	     
 	     if (v.getId()== R.id.spinner1)
 	     {
-    			AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+    			//AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
     			String[] menuItems = getResources().getStringArray(R.array.contextmenuitems);
     			for (int i = 0; i < menuItems.length; i++) {
       				menu.add(Menu.NONE, i, i, menuItems[i]);
@@ -629,13 +628,13 @@ public boolean onContextItemSelected(MenuItem item) {
     Spinner spinner = (Spinner) findViewById(R.id.spinner1);
     int valToSet = (int) spinner.getSelectedItemId();
 
-    final DetailFragment detailFragment1 = (DetailFragment)
-            getFragmentManager().findFragmentById(R.id.detailFragment);
+   // final DetailFragment detailFragment1 = (DetailFragment)
+   //         getFragmentManager().findFragmentById(R.id.detailFragment);
     final DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag("DetailFragment");
-    final ListFragment listFragment = (ListFragment)
-            getFragmentManager().findFragmentById(R.id.listfragment);
+   //final ListFragment listFragment = (ListFragment)
+     //       getFragmentManager().findFragmentById(R.id.listfragment);
 
-    ArrayAdapter<String> adapter = ListOrganizerActivity.listAdapter;
+   // ArrayAdapter<String> adapter = ListOrganizerActivity.listAdapter;
 
     final int index = (info != null) ? info.position : valToSet;
 
@@ -648,12 +647,12 @@ public boolean onContextItemSelected(MenuItem item) {
     final String menuItemName = menuItems[menuItemIndex];
     ListAdapter listAdapter = detailFragment.getListAdapter();
     long listSelectedId = listAdapter.getItemId(index);
-    final String currentItem = (String) listAdapter.getItem(index);
+  //  final String currentItem = (String) listAdapter.getItem(index);
 
     long spinnerPosition = SpinnerFragment.listSpinner.getSelectedItemId();
 
 
-    int parentId = ((View) info.targetView.getParent()).getId();
+  //  int parentId = ((View) info.targetView.getParent()).getId();
 
     if (menuItemName.equals("Add") && listSelectedId == index)
     //if(menuItemName.equals("Add") && parentId==R.id.detailFragment)
@@ -787,7 +786,7 @@ public boolean onContextItemSelected(MenuItem item) {
 
                             updateListView(lst4);
 
-                            String key = ((TextView) info.targetView).getText().toString();
+                            //String key = ((TextView) info.targetView).getText().toString();
 
                             if (!SpinnerFragment.currentSpinnerTitle.equals("New List") && !SpinnerFragment.currentSpinnerTitle.equals("Sample List")) {
                                 //db.updateListItem(new ListItem(SpinnerFragment.currentSpinnerTitle, listInput), date);
@@ -868,7 +867,7 @@ public boolean onContextItemSelected(MenuItem item) {
                         ArrayList<String> listItems = db.getAllListStringItemsByTitle(SpinnerFragment.currentSpinnerTitle);
                         Date date = ListOrganizerActivity.getCurrentDate();
 
-                        int position = index;
+                       // int position = index;
 
                         List<ListItem> list = db.getAllListItemsBySpinnerTitle(SpinnerFragment.currentSpinnerTitle);
                          /*
@@ -1079,8 +1078,8 @@ public void onRssItemSelected(int position) {
 @Override
 public void sampleFragmentList(int position) {
 
-    DetailFragment detailFragment1 = (DetailFragment) getFragmentManager()
-            .findFragmentById(R.id.detailFragment);
+ //   DetailFragment detailFragment1 = (DetailFragment) getFragmentManager()
+//            .findFragmentById(R.id.detailFragment);
 
     DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag("DetailFragment");
         if (detailFragment != null) {
@@ -1102,10 +1101,10 @@ public void sampleFragmentList(int position) {
 @Override
 public void clearFragmentList(int position) {
 
-    DetailFragment detailFragment1 = (DetailFragment) getFragmentManager()
-            .findFragmentById(R.id.detailFragment);
-        SpinnerFragment listfragment = (SpinnerFragment ) getFragmentManager()
-            .findFragmentById(R.id.listfragment);
+  //  DetailFragment detailFragment1 = (DetailFragment) getFragmentManager()
+  //          .findFragmentById(R.id.detailFragment);
+   //     SpinnerFragment listfragment = (SpinnerFragment ) getFragmentManager()
+//            .findFragmentById(R.id.listfragment);
     DetailFragment detailFragment = (DetailFragment) getFragmentManager().findFragmentByTag("DetailFragment");
         if (detailFragment != null) {
        	    String[] values = new String[] { "Android22222222", "iPhone", "WindowsMobile",

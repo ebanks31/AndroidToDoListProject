@@ -24,15 +24,15 @@ import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 /**
- * 
+ *
  * This class contains a ListFragments that holds the Spinner.
  * The Spinner contains a list of titles that is associated to it own list items.
- * 
+ *
  * @author Eric
  *
  */
 public class SpinnerFragment extends ListFragment implements OnItemSelectedListener {
-  
+
   public OnItemSelectedListener listener;
 
   public static OnItemSelectedListener staticListener;
@@ -41,8 +41,7 @@ public class SpinnerFragment extends ListFragment implements OnItemSelectedListe
   public static Spinner listSpinner;
   public static String currentSpinnerTitle;
   public static int previousSpinnerPosition;
-  Context context;
-  private ToDoListUtility todolistutility;
+    Context context;
     AdapterView<ListAdapter> spinnerAdapter1;
     public static Spinner listSpinner1;
 
@@ -52,8 +51,6 @@ public class SpinnerFragment extends ListFragment implements OnItemSelectedListe
   */
   public SpinnerFragment ()
   {
-
-      todolistutility = new ToDoListUtility();
       previousSpinnerPosition = 1;
   }
 
@@ -122,7 +119,7 @@ public class SpinnerFragment extends ListFragment implements OnItemSelectedListe
   }
 
   /**
-   * 
+   *
    * Get OnItemSelectedListener Listener
    * @return OnItemSelectedListener Listener
    */
@@ -135,19 +132,19 @@ public class SpinnerFragment extends ListFragment implements OnItemSelectedListe
 
   /**
    * Set OnitemSelected Listener for the spinner
-   * 
+   *
    * @param listener OnitemSelected Listener for the spinner
    */
    public void setListener(OnItemSelectedListener listener)
   {
 	 this.listener = listener;
   }
-  
 
-  
+
+
   /**
-   * Sets a custom OnItemSelectedListener to the spinner  
-   * 
+   * Sets a custom OnItemSelectedListener to the spinner
+   *
    * @param listSpinner Spinner of ListFragment
    * @param dataAdapter dataAdapter that is connected to the spinner
    * @param list List of spinner titles in the spinner.
@@ -247,13 +244,13 @@ public class SpinnerFragment extends ListFragment implements OnItemSelectedListe
 	}
   }
 
-	
-	
-    
+
+
+
 	  public interface OnItemSelectedListener {
 	      /**
 	       * Interface for communicating between SpinnerFragment and Activity
-	       * 
+	       *
 	     * @param position Position of spinner item
 	     */
 	    public void onRssItemSelected(int position);

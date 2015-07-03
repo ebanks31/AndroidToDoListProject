@@ -28,13 +28,11 @@ import android.widget.Spinner;
  */
 public class CustomOnItemSelectedListener extends SpinnerFragment implements OnItemSelectedListener {
  
-	static Context context;
-	static Spinner spinnerTitles;
-	static ArrayAdapter<String> spinnerAdapter;
-	ArrayList<String> spinnerList;
-	private OnItemSelectedListener listener;
-    private ToDoListUtility todolistutility;
-  
+	public static Context context;
+	public static Spinner spinnerTitles;
+	public static ArrayAdapter<String> spinnerAdapter;
+	private ArrayList<String> spinnerList;
+
 	/**
 	 * Overload constructor of CustomOnItemSelectedListener class. 
 	 * Sets intial values that are needed for the CustomOnItemSelectedListener
@@ -47,10 +45,10 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
 	public CustomOnItemSelectedListener(Context context, Spinner listSpinner,
 			ArrayAdapter<String> dataAdapter, ArrayList<String> spinnerList) {
 		// TODO Auto-generated constructor stub
-    	CustomOnItemSelectedListener.spinnerTitles = listSpinner;
-    	CustomOnItemSelectedListener.context = context;
-    	CustomOnItemSelectedListener.spinnerAdapter = dataAdapter;
-        todolistutility = new ToDoListUtility();
+    	//CustomOnItemSelectedListener.spinnerTitles = listSpinner;
+    	//CustomOnItemSelectedListener.context = context;
+    	//CustomOnItemSelectedListener.spinnerAdapter = dataAdapter;
+		this.context=context;
     	this.spinnerList = spinnerList;
 	}
 
@@ -140,9 +138,6 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
             LinearLayout.LayoutParams.MATCH_PARENT);
   			input.setLayoutParams(lp);
   			alertDialog.setView(input); 
-
-		    String listInput = input.getText().toString();
-		    
 
             // Setting Positive "Yes" Button
             alertDialog.setNegativeButton("YES",

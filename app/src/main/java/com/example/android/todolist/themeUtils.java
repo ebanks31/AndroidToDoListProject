@@ -11,39 +11,46 @@ import android.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
 
-public class themeUtils extends ActionBarActivity
+/**
+ * The type Theme utils.
+ */
+public class ThemeUtils extends ActionBarActivity
 
 {
 
     private static int cTheme;
 
 
+    /**
+     * The constant BLUE.
+     */
     public final static int BLUE = 0;
+    /**
+     * The constant BLACK.
+     */
     public final static int BLACK = 1;
 
 
-
-
-
+    /**
+     * Change to theme.
+     *
+     * @param activity the activity
+     * @param theme the theme
+     */
     public static void changeToTheme(Activity activity, int theme)
-
     {
-
         cTheme = theme;
-
         activity.finish();
-
-
-
         activity.startActivity(new Intent(activity, activity.getClass()));
-
-
     }
 
+    /**
+     * On activity create set theme.
+     *
+     * @param activity the activity
+     */
     public static void onActivityCreateSetTheme(Activity activity)
-
     {
-
         switch (cTheme)
 
         {
@@ -54,10 +61,10 @@ public class themeUtils extends ActionBarActivity
 
                 ActionBar actionBar =activity.getActionBar();
 
-
                 actionBar.setBackgroundDrawable(new ColorDrawable(0xff00DDED));
                 actionBar.setDisplayShowTitleEnabled(false);
                 actionBar.setDisplayShowTitleEnabled(true);
+                break;
             case BLUE:
 
                 activity.setTheme(R.style.AppBaseTheme);
