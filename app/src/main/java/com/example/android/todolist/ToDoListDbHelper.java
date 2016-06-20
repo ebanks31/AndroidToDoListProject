@@ -1,6 +1,8 @@
 package com.example.android.todolist;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -587,28 +589,34 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
      */
     public List<ListItem> getAllListItemsBySpinnerTitle(String spinnerTitle) {
         List<ListItem> listItemList = new ArrayList<ListItem>();
-        // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ? ORDER BY " + KEY_POSITION;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery,  new String[] {spinnerTitle});
-        // looping through all rows and adding to list
-        if (cursor.moveToFirst()) {
-            do {
-                ListItem listItem = new ListItem();
-                String id = cursor.getString(0);
-                String name =  cursor.getString(1);
-                String phonenumber = cursor.getString(2);
-
-                listItem.setPosition(Integer.parseInt(cursor.getString(4)));
-                listItem.setID(Integer.parseInt(cursor.getString(0)));
-                listItem.setTitle(cursor.getString(1));
-                listItem.setListItem(cursor.getString(2));
-                // Adding contact to list
-                listItemList.add(listItem);
-            } while (cursor.moveToNext());
+        if(spinnerTitle == null)
+        {
+            return listItemList;
         }
+        if(spinnerTitle != null || !spinnerTitle.isEmpty()) {
 
+            // Select All Query
+            String selectQuery = "SELECT  * FROM " + TABLE_LISTORGANIZER + " WHERE " + KEY_TITLE + " = ? ORDER BY " + KEY_POSITION;
+
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, new String[]{spinnerTitle});
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    ListItem listItem = new ListItem();
+                    String id = cursor.getString(0);
+                    String name = cursor.getString(1);
+                    String phonenumber = cursor.getString(2);
+
+                    listItem.setPosition(Integer.parseInt(cursor.getString(4)));
+                    listItem.setID(Integer.parseInt(cursor.getString(0)));
+                    listItem.setTitle(cursor.getString(1));
+                    listItem.setListItem(cursor.getString(2));
+                    // Adding contact to list
+                    listItemList.add(listItem);
+                } while (cursor.moveToNext());
+            }
+        }
         // return contact list
         return listItemList;
     }

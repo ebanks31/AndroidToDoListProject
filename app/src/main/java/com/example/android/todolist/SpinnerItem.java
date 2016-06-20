@@ -1,7 +1,5 @@
 package com.example.android.todolist;
 
-import java.util.Date;
-
 /**
  * 
  * This class initializes a SpinnerItem with a title and position.
@@ -10,7 +8,7 @@ import java.util.Date;
  * @author Eric
  *
  */
-public class SpinnerItem {
+public class SpinnerItem implements ISpinnerItem {
 
 
     private String title;

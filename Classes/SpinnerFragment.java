@@ -73,9 +73,6 @@ public class SpinnerFragment extends ListFragment implements OnItemSelectedListe
 
     ArrayList<String> list = new ArrayList<String>();
 
-
-   // String sampleList = "Sample List";
-  //  String newList = "New List";
       String sampleList = getResources().getString(R.string.sampleList);
       String newList = getResources().getString(R.string.newList);
 

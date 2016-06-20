@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="Settings" >
+        <EditTextPreference
+                android:title="Password"
+                android:summary="Set Your Password"
+                android:key="prefUserPassword"/>
+    </PreferenceCategory>
+     
+    <PreferenceCategory android:title="Security Settings" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefShowTips"
+            android:summary="@string/showTips"
+            android:title="Show Tips at StartUp?" >
+        </CheckBoxPreference>
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="prefLockScreen"
+            android:summary="Lock The Screen With Password"
+            android:title="Screen Lock" >
+        </CheckBoxPreference>
+
+        <ListPreference
+            android:key="prefColorChange"
+            android:title="Change Color Theme"
+            android:summary="Set Change Color Theme"
+            android:entries="@array/Change_Color_Theme"
+            android:entryValues="@array/Change_Color_Theme_Values"
+            android:defaultValue="@array/Change_Color_Theme_Values" />
+            />
+    </PreferenceCategory>
+
+</PreferenceScreen>

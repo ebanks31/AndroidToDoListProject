@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_action_call.png",
+        "source": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\src\\main\\res\\drawable-ldpi\\ic_action_call.png"
+    },
+    {
+        "merged": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_action_new.png",
+        "source": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\src\\main\\res\\drawable-ldpi\\ic_action_new.png"
+    }
+]

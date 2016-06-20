@@ -142,7 +142,7 @@ public class DetailFragment extends ListFragment  {
 			Boolean validCharactersFound = todolistutility.checkValidCharacters ( listInput );
 			
 			//Checks if edittext is empty,space, or null. Not a valid list item.
-			if (listInput.equals("") || listInput.equals(" ") || validCharactersFound == false)
+			if (listInput==null || listInput.isEmpty() || listInput.equals(" ") || validCharactersFound == false)
 			{
 			AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 

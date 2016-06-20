@@ -3,6 +3,8 @@ package com.example.android.todolist;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -10,10 +12,15 @@ import java.util.regex.Pattern;
 
 /**
  * Created by Eric on 4/22/2015.
+ * This is utility class to hold common methods for the To Do List Applications.
+ *
  */
 public class ToDoListUtility {
 
-
+    public ToDoListUtility()
+    {
+      // Adding empty oonstructor for now. Will be used later to initialize the state of is object.
+    }
 
     /**
      * This method checks for whitespaces given a string
@@ -24,15 +31,16 @@ public class ToDoListUtility {
      */
     public static Boolean checkWhiteSpaces(String listInput)
     {
+        if(listInput == null)
+        {
+            return false;
+        }
+
         Pattern pattern = Pattern.compile("^\\s");
         Matcher matcher = pattern.matcher(listInput);
         boolean found = matcher.find();
         return found;
     }
-
-
-
-
 
     /**
      * This method checks for invalid character given a string
@@ -43,6 +51,11 @@ public class ToDoListUtility {
      */
     public static Boolean checkValidCharacters(String listInput)
     {
+        if(listInput == null)
+        {
+            return false;
+        }
+
         Pattern pattern = Pattern.compile("^(?=[^\\s_])\\w(\\w|[!@#$%\\s]){0,20}$");
         Matcher matcher = pattern.matcher(listInput);
         boolean found = matcher.find();
@@ -63,6 +76,11 @@ public class ToDoListUtility {
      */
     public String[] replaceString(String input, String replaceString, String[] stringValues)
     {
+        if(stringValues == null || input == null || replaceString == null)
+        {
+            return null;
+        }
+
         String [] resultArray = new String[stringValues.length];
 
         for (int i = 0; i < stringValues.length; i++)
@@ -88,9 +106,14 @@ public class ToDoListUtility {
      */
     public static ArrayList<String> getListItems(final List<ListItem> itemListByTitle)
     {
+        if(itemListByTitle == null || itemListByTitle.isEmpty())
+        {
+            return null;
+        }
 
         final ArrayList<String> finalList = new ArrayList<String>();
 
+        /*
         Runnable runnable = new Runnable() { //Run in separate thread
             public void run() {
                 for (ListItem listitem: itemListByTitle)
@@ -102,6 +125,11 @@ public class ToDoListUtility {
 
         Thread myThread = new Thread(runnable);
         myThread.start();
+        */
+        for (ListItem listitem: itemListByTitle)
+        {
+            finalList.add(listitem.getListItem());
+        }
         return finalList;
     }
 
@@ -116,8 +144,14 @@ public class ToDoListUtility {
      */
     public ArrayList<String> getListTitleFromListItems(final List<ListItem> itemList, final String title)
     {
+        if(itemList == null || itemList.isEmpty() || title == null || title.isEmpty())
+        {
+            return null;
+        }
+
         final ArrayList<String> finalList = new ArrayList<String>();
 
+            /*
         Runnable runnable = new Runnable() { //Run in separate thread
             public void run() {
 
@@ -139,8 +173,23 @@ public class ToDoListUtility {
 
             }
         };
+
         Thread myThread = new Thread(runnable);
         myThread.start();
+        */
+
+        for (ListItem listItem: itemList) {
+
+            String currentTitle = listItem.getTitle();
+
+            if (currentTitle != null)
+            {
+                if (currentTitle.equals(title))
+                {
+                    finalList.add(listItem.getListItem());
+                }
+            }
+        }
 
         return finalList;
     }
@@ -157,6 +206,10 @@ public class ToDoListUtility {
      */
     public String[] updateArray(String[] stringArray, String currentItem, String newItem)
     {
+        if(stringArray == null || currentItem == null || newItem == null)
+        {
+            return null;
+        }
         String [] finalArray = new String[stringArray.length];
 
         for (int i = 0; i < stringArray.length-1; i++)
@@ -184,6 +237,11 @@ public class ToDoListUtility {
      */
     public String[] deleteItemFromArray(ArrayList<String> stringArrayList, String currentItem)
     {
+        if(stringArrayList == null || currentItem == null)
+        {
+            return null;
+        }
+
         ArrayList<String> finalList = new ArrayList<String>();
 
         for (int i=0; i < stringArrayList.size()-1; i++)
@@ -211,6 +269,11 @@ public class ToDoListUtility {
      */
     public ArrayList<String> getSpinnerTitles(final List<ListItem> itemList)
     {
+        if(itemList == null || itemList.isEmpty())
+        {
+            return null;
+        }
+
         ArrayList<String> list = new ArrayList<String>();
 
         try
@@ -244,7 +307,12 @@ public class ToDoListUtility {
      * @return ArrayList of String containing spinner items with duplicates removed
      */
     public ArrayList<String> removeDuplicates(ArrayList<String> list) {
-        list = new ArrayList<String>();
+
+        if(list == null || list.isEmpty())
+        {
+            return null;
+        }
+
         try{
             HashSet<String> hs = new HashSet<String>();
             hs.addAll(list);
@@ -275,8 +343,12 @@ public class ToDoListUtility {
      * @param input spinner title
      * @return ArrayList of String containing spinner titles with duplicates removed
      */
-    public boolean checkDuplicates(ArrayList<String> arrayList, String input)
+    public static boolean checkDuplicates(ArrayList<String> arrayList, String input)
     {
+        if(arrayList == null || arrayList.isEmpty() || input == null)
+        {
+            return false;
+        }
         for (String listItem: arrayList)
         {
             if (listItem.equals(input))
@@ -298,6 +370,11 @@ public class ToDoListUtility {
      */
     public String addSingleQuoteFrontAndBack(String listItemString)
     {
+        if(listItemString == null)
+        {
+            return null;
+        }
+
         StringBuilder _sb = new StringBuilder(listItemString);
         _sb.insert(0, "\'");
         _sb.insert(listItemString.length() + 1, "\'");

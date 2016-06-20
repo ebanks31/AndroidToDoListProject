@@ -10,7 +10,7 @@ import java.util.Date;
  * @author Eric
  *
  */
-public class ListItem {
+public class ListItem implements IListItem {
 
 	private String title;
 	private String listItem;

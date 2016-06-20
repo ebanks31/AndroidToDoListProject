@@ -126,10 +126,10 @@ public class ListOrganizerActivity extends Activity implements detailFragmentSel
         fragmentTransaction.addToBackStack("state");
         fragmentTransaction.commit();
 
-        themeUtils.onActivityCreateSetTheme(this);
+        ThemeUtils.onActivityCreateSetTheme(this);
 
         setContentView(R.layout.activity_rssfeed);
-      // registerForContextMenu(detailFragment.getListView());
+        //registerForContextMenu(detailFragment.getListView());
         //List<ListItem> contacts = db.getAllListItems();
 
 
@@ -180,6 +180,7 @@ public class ListOrganizerActivity extends Activity implements detailFragmentSel
 
        //registerForContextMenu(listFragment.getListView());
 
+        // Will have to register context menu to established list view to get the context menu to work.
 
     }
 
@@ -353,13 +354,6 @@ this.contextInfo = context;
         updateListView(listItemList);
 
         showAlertDialogPromptSortByTitle(db, listItemList );
-
-        /*
-		final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(ListOrganizerActivity.this,
-    	android.R.layout.simple_list_item_1, listitemlist);
-		SpinnerFragment.listspinner.setAdapter(dataAdapter);
-		*/
-		
 		//UPDATE Database. Update Database Sort Method by Title in DB class. Remove everything by title and insert into table by title.*/
 	
 	}
@@ -684,7 +678,7 @@ public boolean onContextItemSelected(MenuItem item) {
 
                         Boolean validCharactersFound = todolistutility.checkValidCharacters(listInput);
                         //Checks Invalid characters. Checks if edittext is empty,space, or null. Not a valid list item.
-                        if (listInput.equals("") || validCharactersFound == false) {
+                        if (listInput.isEmpty() || validCharactersFound == false) {
 
                             AlertDialog.Builder alertDialog = new AlertDialog.Builder(ListOrganizerActivity.this);
                             // Setting Dialog Title
@@ -764,7 +758,7 @@ public boolean onContextItemSelected(MenuItem item) {
                         Boolean validCharactersFound = todolistutility.checkValidCharacters(listInput);
 
                         //Checks if edittext is empty,space, or null. Not a valid list item.
-                        if (listInput.equals("") || validCharactersFound == false) {
+                        if (listInput.isEmpty() || validCharactersFound == false) {
 
                             AlertDialog.Builder alertDialog = new AlertDialog.Builder(ListOrganizerActivity.this);
                             // Setting Dialog Title
@@ -1225,11 +1219,11 @@ public void setPositiveAlertOptionOK(AlertDialog.Builder alertDialog)
                if(value.equals("Blue"))
                {
 
-                   themeUtils.changeToTheme(super.getActivity(), themeUtils.BLUE);
+                   ThemeUtils.changeToTheme(super.getActivity(), ThemeUtils.BLUE);
                }
                else
                {
-                   themeUtils.changeToTheme(super.getActivity(), themeUtils.BLACK);
+                   ThemeUtils.changeToTheme(super.getActivity(), ThemeUtils.BLACK);
 
                }
 

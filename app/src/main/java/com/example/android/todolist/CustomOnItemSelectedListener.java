@@ -50,6 +50,8 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
     	//CustomOnItemSelectedListener.spinnerAdapter = dataAdapter;
 		this.context=context;
     	this.spinnerList = spinnerList;
+		spinnerAdapter=dataAdapter;
+		spinnerTitles=listSpinner;
 	}
 
 
@@ -67,6 +69,8 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
 		  public void handleMessage(Message msg) {
 				Bundle bundle = msg.getData();
 				String listInput = bundle.getString("myKey");
+			  Log.d("listInput","listInput: " + listInput);
+
 				 spinnerAdapter.add(listInput);
 				 spinnerAdapter.notifyDataSetChanged();
                  spinnerTitles.setAdapter(spinnerAdapter);
@@ -137,7 +141,8 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT);
   			input.setLayoutParams(lp);
-  			alertDialog.setView(input); 
+  			alertDialog.setView(input);
+			 System.out.println("input1:" + input);
 
             // Setting Positive "Yes" Button
             alertDialog.setNegativeButton("YES",
@@ -147,10 +152,10 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
 
              final String listInput = input.getText().toString();
 
-             Boolean validcharacter = todolistutility.checkValidCharacters(listInput);
+             Boolean validcharacter = ToDoListUtility.checkValidCharacters(listInput);
 
 			//Checks if edit text is empty,space, or null. Not a valid list item.
-			if (listInput.equals("") || validcharacter == false) {
+			if (listInput.isEmpty() || validcharacter == false) {
 				 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
             // Setting Dialog Title
             alertDialog.setTitle("Invalid Name");
@@ -167,13 +172,13 @@ public class CustomOnItemSelectedListener extends SpinnerFragment implements OnI
 			else
 			{
 			
-		 if (!todolistutility.checkDuplicates(spinnerList, listInput)) //check duplicate spinner items
+		 if (!ToDoListUtility.checkDuplicates(spinnerList, listInput)) //check duplicate spinner items
 		 {
 			 try {
 
 			Runnable runnable = new Runnable() { //Run in separate thread
-		        public void run() {     	
-			 
+		        public void run() {
+					System.out.println("input2:" + input);
 		        	//Use Handler(newListHandler) to update User Interface from another thread.
 	            	Message msg = newListHandler.obtainMessage();
 	    			Bundle bundle = new Bundle();

@@ -1,0 +1,1144 @@
+[
+    {
+        "outputFile": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\res\\merged\\debug\\values-v14\\values-v14.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 5,
+                    "endColumn": 12,
+                    "endOffset": 252
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 227,
+                        "endLine": 10,
+                        "endColumn": 12,
+                        "endOffset": 427
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 257,
+                    "endLine": 9,
+                    "endColumn": 12,
+                    "endOffset": 454
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 435,
+                        "endLine": 15,
+                        "endColumn": 12,
+                        "endOffset": 635
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 459,
+                    "endColumn": 131,
+                    "endOffset": 586
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 283,
+                        "endColumn": 138,
+                        "endOffset": 417
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 591,
+                    "endColumn": 125,
+                    "endOffset": 712
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 423,
+                        "endColumn": 132,
+                        "endOffset": 551
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 717,
+                    "endColumn": 132,
+                    "endOffset": 845
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 557,
+                        "endColumn": 139,
+                        "endOffset": 692
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 850,
+                    "endColumn": 132,
+                    "endOffset": 978
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 698,
+                        "endColumn": 139,
+                        "endOffset": 833
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 983,
+                    "endColumn": 137,
+                    "endOffset": 1116
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 839,
+                        "endColumn": 144,
+                        "endOffset": 979
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1121,
+                    "endColumn": 131,
+                    "endOffset": 1248
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 985,
+                        "endColumn": 138,
+                        "endOffset": 1119
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1253,
+                    "endColumn": 138,
+                    "endOffset": 1387
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1125,
+                        "endColumn": 145,
+                        "endOffset": 1266
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1392,
+                    "endColumn": 138,
+                    "endOffset": 1526
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1272,
+                        "endColumn": 145,
+                        "endOffset": 1413
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1531,
+                    "endColumn": 130,
+                    "endOffset": 1657
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1419,
+                        "endColumn": 137,
+                        "endOffset": 1552
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1662,
+                    "endColumn": 138,
+                    "endOffset": 1796
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1558,
+                        "endColumn": 145,
+                        "endOffset": 1699
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1801,
+                    "endColumn": 154,
+                    "endOffset": 1951
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1705,
+                        "endColumn": 161,
+                        "endOffset": 1862
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1956,
+                    "endColumn": 132,
+                    "endOffset": 2084
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1868,
+                        "endColumn": 139,
+                        "endOffset": 2003
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2089,
+                    "endColumn": 148,
+                    "endOffset": 2233
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 2009,
+                        "endColumn": 155,
+                        "endOffset": 2160
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 2238,
+                    "endColumn": 140,
+                    "endOffset": 2374
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 2166,
+                        "endColumn": 147,
+                        "endOffset": 2309
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 2379,
+                    "endColumn": 156,
+                    "endOffset": 2531
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 2315,
+                        "endColumn": 163,
+                        "endOffset": 2474
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 2536,
+                    "endColumn": 134,
+                    "endOffset": 2666
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 2480,
+                        "endColumn": 141,
+                        "endOffset": 2617
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 2671,
+                    "endColumn": 150,
+                    "endOffset": 2817
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 2623,
+                        "endColumn": 157,
+                        "endOffset": 2776
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 2822,
+                    "endLine": 50,
+                    "endColumn": 12,
+                    "endOffset": 4451
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 3008,
+                        "endLine": 65,
+                        "endColumn": 12,
+                        "endOffset": 4637
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 51,
+                    "startColumn": 4,
+                    "startOffset": 4456,
+                    "endColumn": 107,
+                    "endOffset": 4559
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 67,
+                        "startColumn": 4,
+                        "startOffset": 4643,
+                        "endColumn": 108,
+                        "endOffset": 4747
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 52,
+                    "startColumn": 4,
+                    "startOffset": 4564,
+                    "endLine": 75,
+                    "endColumn": 12,
+                    "endOffset": 6230
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 69,
+                        "startColumn": 4,
+                        "startOffset": 4753,
+                        "endLine": 92,
+                        "endColumn": 12,
+                        "endOffset": 6419
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 76,
+                    "startColumn": 4,
+                    "startOffset": 6235,
+                    "endLine": 99,
+                    "endColumn": 12,
+                    "endOffset": 7876
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 94,
+                        "startColumn": 4,
+                        "startOffset": 6425,
+                        "endLine": 117,
+                        "endColumn": 12,
+                        "endOffset": 8066
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 100,
+                    "startColumn": 4,
+                    "startOffset": 7881,
+                    "endLine": 123,
+                    "endColumn": 12,
+                    "endOffset": 9567
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 119,
+                        "startColumn": 4,
+                        "startOffset": 8072,
+                        "endLine": 142,
+                        "endColumn": 12,
+                        "endOffset": 9758
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 124,
+                    "startColumn": 4,
+                    "startOffset": 9572,
+                    "endColumn": 119,
+                    "endOffset": 9687
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 144,
+                        "startColumn": 4,
+                        "startOffset": 9764,
+                        "endColumn": 120,
+                        "endOffset": 9880
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 125,
+                    "startColumn": 4,
+                    "startOffset": 9692,
+                    "endLine": 148,
+                    "endColumn": 12,
+                    "endOffset": 11370
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 146,
+                        "startColumn": 4,
+                        "startOffset": 9886,
+                        "endLine": 169,
+                        "endColumn": 12,
+                        "endOffset": 11564
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 149,
+                    "startColumn": 4,
+                    "startOffset": 11375,
+                    "endColumn": 90,
+                    "endOffset": 11461
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 173,
+                        "startColumn": 4,
+                        "startOffset": 11796,
+                        "endColumn": 97,
+                        "endOffset": 11889
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 150,
+                    "startColumn": 4,
+                    "startOffset": 11466,
+                    "endColumn": 102,
+                    "endOffset": 11564
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 175,
+                        "startColumn": 4,
+                        "startOffset": 11895,
+                        "endColumn": 109,
+                        "endOffset": 12000
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 151,
+                    "startColumn": 4,
+                    "startOffset": 11569,
+                    "endColumn": 104,
+                    "endOffset": 11669
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 177,
+                        "startColumn": 4,
+                        "startOffset": 12006,
+                        "endColumn": 111,
+                        "endOffset": 12113
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 152,
+                    "startColumn": 4,
+                    "startOffset": 11674,
+                    "endColumn": 106,
+                    "endOffset": 11776
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 179,
+                        "startColumn": 4,
+                        "startOffset": 12119,
+                        "endColumn": 113,
+                        "endOffset": 12228
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 153,
+                    "startColumn": 4,
+                    "startOffset": 11781,
+                    "endColumn": 106,
+                    "endOffset": 11883
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 181,
+                        "startColumn": 4,
+                        "startOffset": 12234,
+                        "endColumn": 113,
+                        "endOffset": 12343
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 154,
+                    "startColumn": 4,
+                    "startOffset": 11888,
+                    "endColumn": 96,
+                    "endOffset": 11980
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 183,
+                        "startColumn": 4,
+                        "startOffset": 12349,
+                        "endColumn": 103,
+                        "endOffset": 12448
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 155,
+                    "startColumn": 4,
+                    "startOffset": 11985,
+                    "endColumn": 116,
+                    "endOffset": 12097
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 185,
+                        "startColumn": 4,
+                        "startOffset": 12454,
+                        "endColumn": 123,
+                        "endOffset": 12573
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 156,
+                    "startColumn": 4,
+                    "startOffset": 12102,
+                    "endColumn": 114,
+                    "endOffset": 12212
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 187,
+                        "startColumn": 4,
+                        "startOffset": 12579,
+                        "endColumn": 121,
+                        "endOffset": 12696
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 157,
+                    "startColumn": 4,
+                    "startOffset": 12217,
+                    "endLine": 163,
+                    "endColumn": 12,
+                    "endOffset": 12610
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 189,
+                        "startColumn": 4,
+                        "startOffset": 12702,
+                        "endLine": 195,
+                        "endColumn": 12,
+                        "endOffset": 13095
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 164,
+                    "startColumn": 4,
+                    "startOffset": 12615,
+                    "endColumn": 112,
+                    "endOffset": 12723
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 197,
+                        "startColumn": 4,
+                        "startOffset": 13101,
+                        "endColumn": 113,
+                        "endOffset": 13210
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 165,
+                    "startColumn": 4,
+                    "startOffset": 12728,
+                    "endColumn": 102,
+                    "endOffset": 12826
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 199,
+                        "startColumn": 4,
+                        "startOffset": 13216,
+                        "endColumn": 109,
+                        "endOffset": 13321
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 166,
+                    "startColumn": 4,
+                    "startOffset": 12831,
+                    "endColumn": 106,
+                    "endOffset": 12933
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 201,
+                        "startColumn": 4,
+                        "startOffset": 13327,
+                        "endColumn": 107,
+                        "endOffset": 13430
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 167,
+                    "startColumn": 4,
+                    "startOffset": 12938,
+                    "endColumn": 93,
+                    "endOffset": 13027
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 203,
+                        "startColumn": 4,
+                        "startOffset": 13436,
+                        "endColumn": 94,
+                        "endOffset": 13526
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 168,
+                    "startColumn": 4,
+                    "startOffset": 13032,
+                    "endColumn": 90,
+                    "endOffset": 13118
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 205,
+                        "startColumn": 4,
+                        "startOffset": 13532,
+                        "endColumn": 97,
+                        "endOffset": 13625
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 169,
+                    "startColumn": 4,
+                    "startOffset": 13123,
+                    "endColumn": 86,
+                    "endOffset": 13205
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 207,
+                        "startColumn": 4,
+                        "startOffset": 13631,
+                        "endColumn": 87,
+                        "endOffset": 13714
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 170,
+                    "startColumn": 4,
+                    "startOffset": 13210,
+                    "endColumn": 102,
+                    "endOffset": 13308
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 209,
+                        "startColumn": 4,
+                        "startOffset": 13720,
+                        "endColumn": 109,
+                        "endOffset": 13825
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 171,
+                    "startColumn": 4,
+                    "startOffset": 13313,
+                    "endColumn": 114,
+                    "endOffset": 13423
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 211,
+                        "startColumn": 4,
+                        "startOffset": 13831,
+                        "endColumn": 121,
+                        "endOffset": 13948
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 172,
+                    "startColumn": 4,
+                    "startOffset": 13428,
+                    "endColumn": 130,
+                    "endOffset": 13554
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 213,
+                        "startColumn": 4,
+                        "startOffset": 13954,
+                        "endColumn": 137,
+                        "endOffset": 14087
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 173,
+                    "startColumn": 4,
+                    "startOffset": 13559,
+                    "endColumn": 116,
+                    "endOffset": 13671
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 215,
+                        "startColumn": 4,
+                        "startOffset": 14093,
+                        "endColumn": 123,
+                        "endOffset": 14212
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 174,
+                    "startColumn": 4,
+                    "startOffset": 13676,
+                    "endColumn": 132,
+                    "endOffset": 13804
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 217,
+                        "startColumn": 4,
+                        "startOffset": 14218,
+                        "endColumn": 139,
+                        "endOffset": 14353
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 175,
+                    "startColumn": 4,
+                    "startOffset": 13809,
+                    "endColumn": 118,
+                    "endOffset": 13923
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 219,
+                        "startColumn": 4,
+                        "startOffset": 14359,
+                        "endColumn": 125,
+                        "endOffset": 14480
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 176,
+                    "startColumn": 4,
+                    "startOffset": 13928,
+                    "endColumn": 134,
+                    "endOffset": 14058
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 221,
+                        "startColumn": 4,
+                        "startOffset": 14486,
+                        "endColumn": 141,
+                        "endOffset": 14623
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 177,
+                    "startColumn": 4,
+                    "startOffset": 14063,
+                    "endColumn": 118,
+                    "endOffset": 14177
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 223,
+                        "startColumn": 4,
+                        "startOffset": 14629,
+                        "endColumn": 125,
+                        "endOffset": 14750
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 178,
+                    "startColumn": 4,
+                    "startOffset": 14182,
+                    "endColumn": 134,
+                    "endOffset": 14312
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 225,
+                        "startColumn": 4,
+                        "startOffset": 14756,
+                        "endColumn": 141,
+                        "endOffset": 14893
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 179,
+                    "startColumn": 4,
+                    "startOffset": 14317,
+                    "endColumn": 108,
+                    "endOffset": 14421
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 227,
+                        "startColumn": 4,
+                        "startOffset": 14899,
+                        "endColumn": 115,
+                        "endOffset": 15010
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 180,
+                    "startColumn": 4,
+                    "startOffset": 14426,
+                    "endColumn": 128,
+                    "endOffset": 14550
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 229,
+                        "startColumn": 4,
+                        "startOffset": 15016,
+                        "endColumn": 135,
+                        "endOffset": 15147
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 181,
+                    "startColumn": 4,
+                    "startOffset": 14555,
+                    "endColumn": 126,
+                    "endOffset": 14677
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 231,
+                        "startColumn": 4,
+                        "startOffset": 15153,
+                        "endColumn": 133,
+                        "endOffset": 15282
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 182,
+                    "startColumn": 4,
+                    "startOffset": 14682,
+                    "endColumn": 120,
+                    "endOffset": 14798
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 233,
+                        "startColumn": 4,
+                        "startOffset": 15288,
+                        "endColumn": 127,
+                        "endOffset": 15411
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 183,
+                    "startColumn": 4,
+                    "startOffset": 14803,
+                    "endColumn": 124,
+                    "endOffset": 14923
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 235,
+                        "startColumn": 4,
+                        "startOffset": 15417,
+                        "endColumn": 125,
+                        "endOffset": 15538
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 184,
+                    "startColumn": 4,
+                    "startOffset": 14928,
+                    "endColumn": 114,
+                    "endOffset": 15038
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 237,
+                        "startColumn": 4,
+                        "startOffset": 15544,
+                        "endColumn": 121,
+                        "endOffset": 15661
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 185,
+                    "startColumn": 4,
+                    "startOffset": 15043,
+                    "endColumn": 112,
+                    "endOffset": 15151
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 239,
+                        "startColumn": 4,
+                        "startOffset": 15667,
+                        "endColumn": 113,
+                        "endOffset": 15776
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 186,
+                    "startColumn": 4,
+                    "startOffset": 15156,
+                    "endColumn": 102,
+                    "endOffset": 15254
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 241,
+                        "startColumn": 4,
+                        "startOffset": 15782,
+                        "endColumn": 109,
+                        "endOffset": 15887
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 187,
+                    "startColumn": 4,
+                    "startOffset": 15259,
+                    "endColumn": 98,
+                    "endOffset": 15353
+                },
+                "from": {
+                    "file": "C:\\Users\\Eric\\AndroidstudioProjects\\ListOrganizerContextWOCheck\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\values-v14\\values.xml",
+                    "position": {
+                        "startLine": 243,
+                        "startColumn": 4,
+                        "startOffset": 15893,
+                        "endColumn": 99,
+                        "endOffset": 15988
+                    }
+                }
+            }
+        ]
+    }
+]

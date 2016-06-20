@@ -2,6 +2,8 @@ package com.example.android.todolist;
 
 /**
  * Created by Eric Banks on 6/28/2015.
+ * This class is used in order to change the theme of the To Do List Android Application.
+ *
  */
 import android.app.Activity;
 
@@ -51,43 +53,46 @@ public class ThemeUtils extends ActionBarActivity
      */
     public static void onActivityCreateSetTheme(Activity activity)
     {
-        switch (cTheme)
+        if(activity !=null) {
 
-        {
-//Change to ActionBar v7
-            default:
-                activity.setTheme(R.style.AppBaseTheme);
-                //activity=(ActionBarActivity) Context.getApplicationContext();
+            switch (cTheme)
 
-                ActionBar actionBar =activity.getActionBar();
+            {
+                //Change to ActionBar v7
+                default:
+                    activity.setTheme(R.style.AppBaseTheme);
+                    //activity=(ActionBarActivity) Context.getApplicationContext();
 
-                actionBar.setBackgroundDrawable(new ColorDrawable(0xff00DDED));
-                actionBar.setDisplayShowTitleEnabled(false);
-                actionBar.setDisplayShowTitleEnabled(true);
-                break;
-            case BLUE:
+                    ActionBar actionBar = activity.getActionBar();
 
-                activity.setTheme(R.style.AppBaseTheme);
-                ActionBar actionBar1 =activity.getActionBar();
+                    actionBar.setBackgroundDrawable(new ColorDrawable(0xff00DDED));
+                    actionBar.setDisplayShowTitleEnabled(false);
+                    actionBar.setDisplayShowTitleEnabled(true);
+                    break;
+                case BLUE:
 
-
-                actionBar1.setBackgroundDrawable(new ColorDrawable(0xff006699));
-                actionBar1.setDisplayShowTitleEnabled(false);
-                actionBar1.setDisplayShowTitleEnabled(true);
-                break;
-
-            case BLACK:
-
-                activity.setTheme(R.style.AppBaseTheme1);
-                ActionBar actionBar2 =activity.getActionBar();
+                    activity.setTheme(R.style.AppBaseTheme);
+                    ActionBar actionBar1 = activity.getActionBar();
 
 
-                actionBar2.setBackgroundDrawable(new ColorDrawable(0xFFFF6666));
-                actionBar2.setDisplayShowTitleEnabled(false);
-                actionBar2.setDisplayShowTitleEnabled(true);
-                break;
+                    actionBar1.setBackgroundDrawable(new ColorDrawable(0xff006699));
+                    actionBar1.setDisplayShowTitleEnabled(false);
+                    actionBar1.setDisplayShowTitleEnabled(true);
+                    break;
+
+                case BLACK:
+
+                    activity.setTheme(R.style.AppBaseTheme1);
+                    ActionBar actionBar2 = activity.getActionBar();
 
 
+                    actionBar2.setBackgroundDrawable(new ColorDrawable(0xFFFF6666));
+                    actionBar2.setDisplayShowTitleEnabled(false);
+                    actionBar2.setDisplayShowTitleEnabled(true);
+                    break;
+
+
+            }
         }
 
     }
