@@ -8,9 +8,7 @@ import android.preference.PreferenceFragment;
 /**
  * The type User setting activity.
  */
-public class UserSettingActivity extends PreferenceActivity
-{
-	
+public class UserSettingActivity extends PreferenceActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState)
     {

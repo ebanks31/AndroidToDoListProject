@@ -10,35 +10,35 @@ public interface ISpinnerItem {
      *
      * @return returns Spinner Title
      */
-    public String getTitle();
+    String getTitle();
 
     /**
      * Sets Spinner Title
      *
      * @param title Sets Spinner Title
      */
-    public void setTitle(String title);
+    void setTitle(String title);
 
     /**
      * Get position in spinner title list
      *
      * @return position in spinner title list
      */
-    public int getPosition();
+    int getPosition();
 
     /**
      * Set position in spinner title list
      *
      * @param position position in spinner title list
      */
-    public void setPosition(int position);
+     void setPosition(int position);
 
     /**
      * Get unique ID for each Spinner Item
      *
      * @return unique ID for each Spinner Item
      */
-    public int getId();
+     int getId();
 
 
     /**
@@ -46,5 +46,5 @@ public interface ISpinnerItem {
      *
      * @param id unique ID for each Spinner Item
      */
-    public void setId(int id);
+     void setId(int id);
 }
