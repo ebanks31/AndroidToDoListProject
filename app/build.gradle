@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 23
@@ -9,6 +8,7 @@ android {
         applicationId "com.example.android.todolist"
         minSdkVersion 14
         targetSdkVersion 23
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -22,27 +22,34 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    compile 'com.android.support:appcompat-v7:19.0.+'
+    androidTestCompile 'junit:junit:4.12'
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.facebook.android:facebook-android-sdk:4.0.0'
-    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    //compile 'com.google.firebase:firebase-appindexing:11.6.2'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:8.2.1'
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.2.1'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     testCompile 'org.robolectric:robolectric:3.0'
     testCompile 'junit:junit:4.12'
     androidTestCompile 'org.testng:testng:6.9.6'
-    androidTestCompile 'junit:junit:4.12'
-// https://mvnrepository.com/artifact/com.jayway.android.robotium/robotium-solo
-    compile group: 'com.jayway.android.robotium', name: 'robotium-solo', version: '5.6.1'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+    // https://mvnrepository.com/artifact/com.jayway.android.robotium/robotium-solo
+    compile 'com.jayway.android.robotium:robotium-solo:5.6.1'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'com.google.android.gms:play-services:9.0.0'
     // https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
-    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
+    compile 'org.apache.commons:commons-collections4:4.1'
     compile 'org.apache.ant:ant:1.8.0'
+    // Optional -- Mockito framework
+    testCompile 'org.mockito:mockito-core:2.13.0'
+    // Required for instrumented tests
+    androidTestCompile 'com.android.support:support-annotations:24.0.0'
+    androidTestCompile 'com.android.support.test:runner:0.5'
 }
 

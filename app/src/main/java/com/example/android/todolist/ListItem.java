@@ -17,21 +17,22 @@ public class ListItem implements IListItem {
     private int position;
 
     /**
-     * Default Constructor for List Item Class
+     * Default Constructor for List Item Class.
      */
     public ListItem() {
 
     }
 
     /**
-     * Overloaded Constructor for List Item. Initalizes a List Item with a title and listitem
+     * Overloaded Constructor for List Item. Initalizes a List Item with a title and listitem.
      *
      * @param title    title from the spinner
      * @param listItem list item from the list that is associated to spinner
      * @param date     current date list was modified for title
      * @param position current position
      */
-    public ListItem(String title, String listItem, Date date, int position) {
+    public ListItem(final String title, final String listItem,
+                    final Date date, final int position) {
         this.title = title;
         this.listItem = listItem;
         this.date = date;
@@ -39,7 +40,7 @@ public class ListItem implements IListItem {
     }
 
     /**
-     * Gets the title of the spinner
+     * Gets the title of the spinner.
      *
      * @return title of the spnner
      */
@@ -50,9 +51,9 @@ public class ListItem implements IListItem {
     /**
      * Set position
      *
-     * @param position position that will be set
+     * @param position position that will be set.
      */
-    public void setPosition(int position) {
+    public void setPosition(final int position) {
         this.position = position;
     }
 
@@ -66,11 +67,11 @@ public class ListItem implements IListItem {
     }
 
     /**
-     * Sets the title of the spinner
+     * Sets the title of the spinner.
      *
      * @param title title of the spinner
      */
-    public void setTitle(String title) {
+    public void setTitle(final String title) {
         this.title = title;
 
     }
@@ -89,13 +90,13 @@ public class ListItem implements IListItem {
      *
      * @param listItem List Item from the associated to the title
      */
-    public void setListItem(String listItem) {
+    public void setListItem(final String listItem) {
         this.listItem = listItem;
 
     }
 
     /**
-     * Get unique ID for each List Item
+     * Get unique ID for each List Item.
      *
      * @return unique ID for each List Item
      */
@@ -104,21 +105,21 @@ public class ListItem implements IListItem {
     }
 
     /**
-     * Set unique ID for each List Item
+     * Set unique ID for each List Item.
      *
      * @param id unique ID for each List Item
      */
-    public void setID(int id) {
+    public void setID(final int id) {
         this.id = id;
     }
 
     /**
-     * Gets the date
+     * Gets the date.
      *
      * @return date returns date
      */
     public Date getDate() {
         return date;
     }
-
 }
+

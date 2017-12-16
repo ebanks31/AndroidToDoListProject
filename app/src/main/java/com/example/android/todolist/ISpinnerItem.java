@@ -6,43 +6,42 @@ package com.example.android.todolist;
 public interface ISpinnerItem {
 
     /**
-     * Get Spinner Title
+     * Get the spinner title.
      *
      * @return returns Spinner Title
      */
     String getTitle();
 
     /**
-     * Sets Spinner Title
+     * Sets the spinner title.
      *
      * @param title Sets Spinner Title
      */
     void setTitle(String title);
 
     /**
-     * Get position in spinner title list
+     * Gets the position in spinner title list.
      *
      * @return position in spinner title list
      */
     int getPosition();
 
     /**
-     * Set position in spinner title list
+     * Sets the position in spinner title list.
      *
      * @param position position in spinner title list
      */
      void setPosition(int position);
 
     /**
-     * Get unique ID for each Spinner Item
+     * Gets the unique ID for each Spinner Item.
      *
      * @return unique ID for each Spinner Item
      */
      int getId();
 
-
     /**
-     * Set unique ID for each Spinner Item
+     * Sets the unique ID for each Spinner Item.
      *
      * @param id unique ID for each Spinner Item
      */

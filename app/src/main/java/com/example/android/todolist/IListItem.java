@@ -9,57 +9,64 @@ import java.util.Date;
  */
 public interface IListItem {
     /**
-     * Gets the title of the spinner
-     * @return title of the spnner
+     * Gets the title of the spinner.
+     *
+     * @return title of the spinner
      */
     int getPosition();
 
     /**
-     * Set position
-     * @param position position that will be set
+     * Sets the position of the list item.
+     *
+     * @param position position that will be set.
      */
     void setPosition(int position);
 
     /**
-     * Gets the title of the spinner
+     * Gets the title of the spinner.
+     *
      * @return title of the spnner
      */
     String getTitle();
 
     /**
-     * Sets the title of the spinner
+     * Sets the title of the spinner.
+     *
      * @param title title of the spinner
      */
     void setTitle(String title);
 
     /**
-     * Get List Item from the associated to the title.
+     * Gets the list item from the associated to the title.
      *
      * @return Item from the associated to the title
      */
     String getListItem();
 
     /**
-     * Set List Item from the associated to the title.
+     * Sets the list item from the associated to the title.
      *
      * @param listItem List Item from the associated to the title
      */
     void setListItem(String listItem);
 
     /**
-     * Get unique ID for each List Item
+     * Gets the unique ID for each List Item.
+     *
      * @return unique ID for each List Item
      */
     int getID();
 
     /**
-     * Set unique ID for each List Item
+     * Sets the unique ID for each List Item.
+     *
      * @param id unique ID for each List Item
      */
     void setID(int id);
 
     /**
-     * Gets the date
+     * Gets the date.
+     *
      * @return date returns date
      */
     Date getDate();

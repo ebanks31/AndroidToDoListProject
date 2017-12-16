@@ -28,13 +28,13 @@ import org.apache.commons.lang3.StringUtils;
 public class DetailFragment extends ListFragment {
 
     DetailFragmentSelectedListener listener;
-    private ToDoListUtility todolistutility;
+    private ToDoListUtility toDoListUtility;
 
     /**
      * Default Constructor for Detail Fragment. Initialized variables needed for this fragment.
      */
     public DetailFragment() {
-        todolistutility = new ToDoListUtility();
+        toDoListUtility = new ToDoListUtility();
     }
 
     /* (non-Javadoc)
@@ -44,8 +44,8 @@ public class DetailFragment extends ListFragment {
   */
     @SuppressWarnings("unchecked")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
+                             final Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_rssitem_detail,
                 container, false);
@@ -68,7 +68,7 @@ public class DetailFragment extends ListFragment {
    * Attaches activity to detail fragment listener
    */
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(final Activity activity) {
         super.onAttach(activity);
         if (activity instanceof OnItemSelectedListener) {
             listener = (DetailFragmentSelectedListener) activity;
@@ -83,8 +83,8 @@ public class DetailFragment extends ListFragment {
    *
    * This method invokes when an individual list item is clicked.
    */
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
+    public void onListItemClick(final ListView listView, final View view,
+                                final int position, final int id) {
         // Creating alert Dialog with one Button
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
@@ -106,14 +106,14 @@ public class DetailFragment extends ListFragment {
         // Setting Positive "Yes" Button
         alertDialog.setPositiveButton("YES",
                 new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(final DialogInterface dialog, final int which) {
                         addItemtoList(input);
                     }
                 });
         // Setting Negative "NO" Button
         alertDialog.setNegativeButton("NO",
                 new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(final DialogInterface dialog, final int which) {
                         // Write your code here to execute after dialog
                         dialog.cancel();
                     }
@@ -138,13 +138,13 @@ public class DetailFragment extends ListFragment {
     /**
      * Adds a item to spinner list.
      *
-     * @param input the input from edit text box
+     * @param inputFromTitle the input from edit text box
      */
-    public void addItemtoList(EditText input) {
-        String listInput = input.getText().toString();
+    public void addItemtoList(final EditText inputFromTitle) {
+        String listInput = inputFromTitle.getText().toString();
 
         //Check for invalid characters
-        Boolean validCharactersFound = todolistutility.checkValidCharacters(listInput);
+        Boolean validCharactersFound = toDoListUtility.checkValidCharacters(listInput);
 
         //Checks if the edittext is empty,space, or null. Not a valid list item.
         if (StringUtils.isNotEmpty(listInput.trim()) || !validCharactersFound) {
@@ -162,7 +162,7 @@ public class DetailFragment extends ListFragment {
                 ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
                 spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(spinnerAdapter);
-                spinnerAdapter.add(input.getText().toString());
+                spinnerAdapter.add(inputFromTitle.getText().toString());
                 spinnerAdapter.notifyDataSetChanged();
 
             } catch (ArrayIndexOutOfBoundsException ex) {
@@ -173,5 +173,4 @@ public class DetailFragment extends ListFragment {
             }
         }
     }
-
-} 
+}
