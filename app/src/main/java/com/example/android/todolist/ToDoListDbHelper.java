@@ -10,6 +10,7 @@ import android.util.Log;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -234,9 +235,10 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
      *
      * @return ListItem By Title passed in parameter
      */
-    public List<String> getAllSpinnerTitleListString() {
+    public ArrayList<String> getAllSpinnerTitleListString() {
+        ArrayList<String> listItemList = new ArrayList<String>();
+
         try {
-            ArrayList<String> listItemList = new ArrayList<String>();
             // Select All Query
             String selectQuery = "SELECT DISTINCT  * FROM " + TABLE_SPINNERITEMS;
             SQLiteDatabase db = this.getWritableDatabase();
@@ -264,7 +266,7 @@ public class ToDoListDbHelper extends SQLiteOpenHelper {
             Log.e("NULL", "NullPointerException Error", ex);         //Log error for Null Pointer Exception
         }
 
-        return Collections.emptyList();
+        return listItemList;
     }
 
 

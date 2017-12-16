@@ -88,7 +88,7 @@ public class ToDoListUtility {
      * @return List of String containing list items by spinner title.
      */
     public static List<String> getListItems(final List<ListItem> itemListByTitle) {
-        if (itemListByTitle == null || itemListByTitle.isEmpty()) {
+        if (CollectionUtils.isEmpty(itemListByTitle)) {
             return Collections.emptyList();
         }
 
@@ -112,7 +112,7 @@ public class ToDoListUtility {
                                                   final String title) {
         final ArrayList<String> finalList = new ArrayList<String>();
 
-        if (itemList == null || itemList.isEmpty() || title == null || title.isEmpty()) {
+        if (CollectionUtils.isEmpty(itemList) || StringUtils.isBlank(title)) {
             return Collections.emptyList();
         }
 
