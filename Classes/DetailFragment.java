@@ -20,8 +20,8 @@ import android.widget.Spinner;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * This class keeps track of the detail Fragments.
- * It keeps track of the list items that associated to an individual spinner title
+ * This class keeps track of the detail fragments.
+ * It keeps track of the list items that are associated to an individual spinner title
  *
  * @author Eric
  */
