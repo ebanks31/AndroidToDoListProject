@@ -2,10 +2,6 @@ package com.example.android.todolist;
 
 import android.util.Log;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -13,39 +9,54 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * This is utility class to hold common methods for the To Do List Applications.
  */
 public class ToDoListUtility {
+    /**
+     * Regular expression that checks for white spaces.
+     */
+    private static final String WHITE_SPACES_REG_EX = "^\\s";
 
     /**
-     * This method checks for whitespaces given a string
+     * Regular expression that checks for invalid character.
+     * Check if character's length is at least 20 characters and must begin with a letter or number.
+     */
+    private static final String INVALID_CHARS_REG_EX = "^(?=[^\\s_])\\w(\\w|[!@#$%\\s]){0,20}$";
+
+    /**
+     * This method checks for whitespaces given a string.
      *
      * @param listInput string that will be checked for whitespaces.
      * @return true if string can invalid character, false it if doesn't contain whitespaces.
      */
-    public static Boolean checkWhiteSpaces(String listInput) {
+    public static Boolean checkWhiteSpaces(final String listInput) {
         if (listInput == null) {
             return false;
         }
 
-        Pattern pattern = Pattern.compile("^\\s");
+        Pattern pattern = Pattern.compile(WHITE_SPACES_REG_EX);
         Matcher matcher = pattern.matcher(listInput);
         return matcher.find();
     }
 
     /**
-     * This method checks for invalid character given a string
+     * This method checks for invalid character given a string.
+     * Valid characters must start with a number or character and must be at minimum 20 characters.
      *
      * @param listInput string that will be checked for invalid characters.
      * @return true if string can invalid character, false it if doesn't contain invalid characters.
      */
-    public static Boolean checkValidCharacters(String listInput) {
+    public static Boolean checkValidCharacters(final String listInput) {
         if (listInput == null) {
             return false;
         }
 
-        Pattern pattern = Pattern.compile("^(?=[^\\s_])\\w(\\w|[!@#$%\\s]){0,20}$");
+        Pattern pattern = Pattern.compile(INVALID_CHARS_REG_EX);
         Matcher matcher = pattern.matcher(listInput);
         return matcher.find();
     }
@@ -55,14 +66,15 @@ public class ToDoListUtility {
      * Iterates through an ArrayList of Strings and looks for a current string.
      * If string is found, string is replaced by string that is mentioned in parameter.
      *
-     * @param input         String that will be replaced
+     * @param stringToBeReplaced         String that will be replaced
      * @param replaceString String that replace string mentioned in parameter
      * @param stringValues  String array of list items
      * @return String array with replaced value
      */
-    public String[] replaceString(String input, String replaceString,
-                                  String[] stringValues) {
-        if (stringValues == null || input == null || replaceString == null) {
+    public String[] replaceStringInArray(final String stringToBeReplaced, final  String replaceString,
+                                         final String[] stringValues) {
+        if (stringValues == null || stringToBeReplaced == null
+                || replaceString == null) {
             return ArrayUtils.toArray();
         }
 
@@ -71,8 +83,8 @@ public class ToDoListUtility {
         for (int i = 0; i < stringValues.length; i++) {
             resultArray[i] = stringValues[i];
 
-            if (stringValues[i].equals(input)) {
-                resultArray[i] = input;
+            if (stringValues[i].equals(stringToBeReplaced)) {
+                resultArray[i] = stringToBeReplaced;
             }
 
         }
@@ -82,7 +94,7 @@ public class ToDoListUtility {
     }
 
     /**
-     * Gets List Items by Spinner Title
+     * Gets List Items by Spinner Title.
      *
      * @param itemListByTitle List of ListItems
      * @return List of String containing list items by spinner title.
@@ -102,7 +114,7 @@ public class ToDoListUtility {
 
 
     /**
-     * Get List Item Objects by spinner title
+     * Get List Item Objects by spinner title.
      *
      * @param itemList List of List Item Objects
      * @param title    selected Spinner title
@@ -132,12 +144,13 @@ public class ToDoListUtility {
     /**
      * Update array list and swap current item with new item.
      *
-     * @param stringArray String array of list items.
-     * @param currentItem Current list item
+     * @param stringArray the string array of list items.
+     * @param currentItem the current urrent list item
      * @param newItem     New item that will replace current list item
      * @return String array containing new list item swap with the current list item
      */
-    public String[] updateArray(String[] stringArray, String currentItem, String newItem) {
+    public String[] updateArray(final String[] stringArray,
+                                final String currentItem, final String newItem) {
         if (stringArray == null || currentItem == null || newItem == null) {
             return ArrayUtils.toArray();
         }
@@ -157,13 +170,14 @@ public class ToDoListUtility {
     }
 
     /**
-     * Delete a specified item in ArrayList if item is found
+     * Delete a specified item in ArrayList if item is found.
      *
      * @param stringArrayList ArrayList of string containing list items
      * @param currentItem     Contains current list item
      * @return String array with list item deleted from parameter
      */
-    public String[] deleteItemFromArray(List<String> stringArrayList, String currentItem) {
+    public String[] deleteItemFromArray(final List<String> stringArrayList,
+                                        final String currentItem) {
         if (stringArrayList == null || currentItem == null) {
             return ArrayUtils.toArray();
         }
@@ -204,10 +218,9 @@ public class ToDoListUtility {
             }
             return list;
         } catch (ArrayIndexOutOfBoundsException ex) {
-            Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred", ex);                  //Log error for Array Out of Bounds Exception
+            Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred", ex);
         } catch (NullPointerException ex) {
-            Log.e("Null", "Null Pointer Exception Error", ex);                  //Log error for Null Pointer Exception
-
+            Log.e("Null", "Null Pointer Exception Error", ex);
         }
 
         return Collections.emptyList();
@@ -219,7 +232,7 @@ public class ToDoListUtility {
      * @param list ArrayList of String
      * @return ArrayList of String with duplicates removed
      */
-    public List<String> removeDuplicates(List<String> list) {
+    public List<String> removeDuplicates(final List<String> list) {
 
         if (list == null || list.isEmpty()) {
             return Collections.emptyList();
@@ -231,23 +244,24 @@ public class ToDoListUtility {
             list.clear();
             list.addAll(hs);
         } catch (ArrayIndexOutOfBoundsException ex) {
-            Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred", ex);                  //Log error for Array Out of Bounds Exception
+            Log.e("ArrayIOO", "Array Index Out of Bound Exception has occurred", ex);
         } catch (NullPointerException ex) {
-            Log.e("Null", "Null Pointer Exception Error", ex);                  //Log error for Null Pointer Exception
-
+            Log.e("Null", "Null Pointer Exception Error", ex);
         }
         return list;
     }
 
     /**
-     * Check for duplicates in an ArrayList of String
+     * Check for duplicates in an ArrayList of String.
      *
      * @param spinnerTitleList ArrayList of String containing spinner titles
      * @param spinnerTitle     spinner title
      * @return ArrayList of String containing spinner titles with duplicates removed
      */
-    public static boolean checkDuplicates(List<String> spinnerTitleList, String spinnerTitle) {
-        if (CollectionUtils.isNotEmpty(spinnerTitleList) || spinnerTitle == null) {
+    public static boolean checkDuplicates(final List<String> spinnerTitleList,
+                                          final String spinnerTitle) {
+        if (CollectionUtils.isNotEmpty(spinnerTitleList)
+                || spinnerTitle == null) {
             return false;
         }
         for (String listItem : spinnerTitleList) {
@@ -256,16 +270,15 @@ public class ToDoListUtility {
             }
         }
         return false;
-
     }
 
     /**
-     * Adds Single Quote to the beginning and end of string
+     * Adds Single Quote to the beginning and end of string.
      *
      * @param listItemString String from list item
      * @return String with single quote at beginning and the end of string
      */
-    public String addSingleQuoteFrontAndBack(String listItemString) {
+    public String addSingleQuoteFrontAndBack(final String listItemString) {
         if (StringUtils.isEmpty(listItemString)) {
             return null;
         }
@@ -275,4 +288,19 @@ public class ToDoListUtility {
         stringBuilder.insert(listItemString.length() + 1, "\'");
         return stringBuilder.toString();
     }
+
+    /**
+     * Removes Duplicates from ArrayList of strings
+     *
+     * @param stringList Array List of string containing spinner titles
+     * @return ArrayList of strings with duplicates removed
+     */
+    public ArrayList<String> removeDuplicates(final ArrayList<String> stringList) {
+        HashSet hs = new HashSet();
+        hs.addAll(stringList);
+        stringList.clear();
+        stringList.addAll(hs);
+        return stringList;
+    }
+
 }
