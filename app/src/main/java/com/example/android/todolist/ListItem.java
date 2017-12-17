@@ -3,7 +3,7 @@ package com.example.android.todolist;
 import java.util.Date;
 
 /**
- * This class initializes a ListItem with a title and list item string.
+ * This class initializes a ListItem with a title and list item value.
  * This class can also set and get: title, list item, and id.
  *
  * @author Eric
@@ -24,7 +24,8 @@ public class ListItem implements IListItem {
     }
 
     /**
-     * Overloaded Constructor for List Item. Initalizes a List Item with a title and listitem.
+     * Overloaded Constructor for List Item.
+     * Initializes a List Item with a title and list item.
      *
      * @param title    title from the spinner
      * @param listItem list item from the list that is associated to spinner
@@ -49,7 +50,7 @@ public class ListItem implements IListItem {
     }
 
     /**
-     * Set position
+     * Sets the position of the list item
      *
      * @param position position that will be set.
      */
@@ -77,7 +78,7 @@ public class ListItem implements IListItem {
     }
 
     /**
-     * Get List Item from the associated to the title.
+     * Gets the list item from the associated to the title.
      *
      * @return Item from the associated to the title
      */
@@ -86,7 +87,7 @@ public class ListItem implements IListItem {
     }
 
     /**
-     * Set List Item from the associated to the title.
+     * Sets the list item from the associated to the title.
      *
      * @param listItem List Item from the associated to the title
      */
