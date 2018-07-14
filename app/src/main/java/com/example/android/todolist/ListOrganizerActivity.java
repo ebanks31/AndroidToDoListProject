@@ -9,7 +9,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ListFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,7 +24,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -42,11 +40,16 @@ import android.preference.*;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.*;
 
-import com.example.android.todolist.DetailFragment.detailFragmentSelectedListener;
+import com.example.android.todolist.main.CustomOnItemSelectedListener;
+import com.example.android.todolist.main.DetailFragment;
+import com.example.android.todolist.main.DetailFragment.detailFragmentSelectedListener;
+import com.example.android.todolist.database.ToDoListDbHelper;
+import com.example.android.todolist.main.SpinnerFragment;
+import com.example.android.todolist.model.ListItem;
+import com.example.android.todolist.utility.ThemeUtils;
+import com.example.android.todolist.utility.ToDoListUtility;
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
 import com.facebook.FacebookSdk;
-import com.facebook.share.Sharer;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
 

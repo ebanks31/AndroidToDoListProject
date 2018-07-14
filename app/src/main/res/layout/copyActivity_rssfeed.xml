@@ -12,14 +12,14 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:layout_marginTop="?android:attr/actionBarSize"
-        class="com.example.android.todolist.SpinnerFragment" ></fragment>
+        class="com.example.android.todolist.main.SpinnerFragment" ></fragment>
 
     <fragment
         android:id="@+id/detailFragment"
         android:layout_width="fill_parent"
         android:layout_weight="2"
         android:layout_height="wrap_content"
-        class="com.example.android.todolist.DetailFragment" >
+        class="com.example.android.todolist.main.DetailFragment" >
         <!-- Preview: layout=@layout/details -->
     </fragment>
 </LinearLayout> 
