@@ -3,7 +3,7 @@ package com.example.android.todolist.test;
 import android.test.ActivityInstrumentationTestCase2;
 
 import com.example.android.todolist.ListOrganizerActivity;
-import com.example.android.todolist.ToDoListUtility;
+import com.example.android.todolist.utility.ToDoListUtility;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;

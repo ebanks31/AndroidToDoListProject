@@ -8,6 +8,11 @@ import android.preference.PreferenceFragment;
  * The type User setting activity.
  */
 public class UserSettingActivity extends PreferenceActivity {
+    /**
+     * On create.
+     *
+     * @param savedInstanceState the saved instance state
+     */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +23,11 @@ public class UserSettingActivity extends PreferenceActivity {
      * The type My preference fragment.
      */
     public static class MyPreferenceFragment extends PreferenceFragment {
+        /**
+         * On create.
+         *
+         * @param savedInstanceState the saved instance state
+         */
         @Override
         @SuppressWarnings("deprecation")
         public void onCreate(final Bundle savedInstanceState) {
